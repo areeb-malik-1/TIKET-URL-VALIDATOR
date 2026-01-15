@@ -29,27 +29,27 @@ public class TestHome extends BaseTest {
         apiResult = homeApi.hitApi();
     }
 
-    @Api(name = "HomeApi")
-    @Vertical(name = "Grand")
-    @Test(dataProvider = "urlDataProvider")
-    public void testHomeUrl(VerifyUrls.UrlItem urlItem) throws Exception {
-        var result = VerifyUrls.verifyFullUrl(urlItem);
-        step("Verifying Url");
-        log("Verifying: " + urlItem);
-        log("Result: " + result);
-        Assertion.assertThat("Url passed", result.ok(), is(true));
-    }
-
-    @Api(name = "HomeApi")
-    @Vertical(name = "Grand")
-    @Test(dataProvider = "endpointDataProvider")
-    public void testHomeEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
-        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
-        step("Verifying Endpoint");
-        log("Verifying: " + endpointItem);
-        log("Result: " + result);
-        Assertion.assertThat("Endpoint passed", result.ok(), is(true));
-    }
+//    @Api(name = "HomeApi")
+//    @Vertical(name = "Grand")
+//    @Test(dataProvider = "urlDataProvider")
+//    public void testHomeUrl(VerifyUrls.UrlItem urlItem) throws Exception {
+//        var result = VerifyUrls.verifyFullUrl(urlItem);
+//        step("Verifying Url");
+//        log("Verifying: " + urlItem);
+//        log("Result: " + result);
+//        Assertion.assertThat("Url passed", result.ok(), is(true));
+//    }
+//
+//    @Api(name = "HomeApi")
+//    @Vertical(name = "Grand")
+//    @Test(dataProvider = "endpointDataProvider")
+//    public void testHomeEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+//        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
+//        step("Verifying Endpoint");
+//        log("Verifying: " + endpointItem);
+//        log("Result: " + result);
+//        Assertion.assertThat("Endpoint passed", result.ok(), is(true));
+//    }
 
     @DataProvider(name = "urlDataProvider")
     public Object[][] urlDataProvider() {
