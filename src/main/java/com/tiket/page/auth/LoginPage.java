@@ -33,7 +33,11 @@ public class LoginPage {
 
     public LoginResult hitApi() throws Exception {
 
-        String baseUrl = BaseUrl.get(env);
+        String baseUrl = switch (env) {
+            case GK -> null;
+            case PROD -> "https://www.tiket.com";
+            case PREPROD -> "https://preprod.tiket.com";
+        };
         String url = switch (env) {
             case GK -> null;
             case PROD -> "https://account.bliblitiket.com/gateway/gks-unm-go-be/api/v1/auth/login";
