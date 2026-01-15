@@ -30,6 +30,8 @@ public class HomeApi implements BaseApi {
         String url = baseUrl + endpoint;
         String fullUrl = url + "?availablePlatforms=ANDROID&isNotificationActive=true&pageModuleCode=HOME_V2&verticalIconVariant=control&variant=HOME_V2&vertical=HOME&headerVariant=newhome&platform=MOBILE";
 
+        System.out.println("Homepage full url: " + fullUrl);
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
                 .GET()
