@@ -31,7 +31,6 @@ public class HomeApi implements BaseApi {
         String fullUrl = url + "?availablePlatforms=ANDROID&isNotificationActive=true&pageModuleCode=HOME_V2&verticalIconVariant=control&variant=HOME_V2&vertical=HOME&headerVariant=newhome&platform=MOBILE";
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(fullUrl))
                 .header("authorization", "Bearer " + this.accessToken)
                 .headers("HOST", "api.tiket.com")
                 .header("X-Country-Code", "IDN")
@@ -42,6 +41,7 @@ public class HomeApi implements BaseApi {
                 .header("currency", "IDR")
                 .header("Accept-Language", "en")
                 .header("User-Agent", "tiketcom/android-version (twh:20296642) - v5.4.0")
+                .uri(URI.create(fullUrl))
                 .GET()
                 .build();
 
