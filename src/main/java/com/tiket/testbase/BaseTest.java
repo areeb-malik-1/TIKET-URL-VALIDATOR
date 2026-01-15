@@ -61,7 +61,7 @@ public class BaseTest {
         // 3. Get Service Token / Access Token
         ServiceTiket serviceTiketPage = new ServiceTiket(serviceTicket, "prod");
         var serviceResult = serviceTiketPage.hitApi();
-        accessToken = serviceResult.accessToken();
+        accessToken = serviceResult.accessToken().trim();
         logger.debug("Auth Token: " + accessToken);
     }
 
