@@ -34,7 +34,7 @@ public class BaseTest {
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     protected Environment env;
-    protected String baseUrl = "https://api.tiket.com";
+    protected String baseUrl = "https://tiket.com";
     protected String accessToken;
 
     @BeforeSuite
