@@ -34,8 +34,8 @@ public class BaseTest {
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     protected Environment env;
-    static String baseUrl = "https://api.tiket.com";
-    static String accessToken;
+    protected static String baseUrl;
+    protected static String accessToken;
 
     @BeforeSuite
     public void beforeSuite(ITestContext context) throws Exception {
@@ -43,7 +43,7 @@ public class BaseTest {
         String identity = System.getProperty("username");
         String secret = System.getProperty("secret");
 
-        //baseUrl = BaseUrl.get(env);
+        baseUrl = BaseUrl.get(env);
         logger.debug("Set baseurl: " + baseUrl);
 
         // 1. Login
