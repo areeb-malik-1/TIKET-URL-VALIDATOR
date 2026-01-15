@@ -40,6 +40,7 @@ public class HomeApi implements BaseApi {
                 .header("currency", "IDR")
                 .header("Accept-Language", "en")
                 .header("User-Agent", "tiketcom/android-version (twh:20296642) - v5.4.0")
+                .headers("Cookie", "_cfuvid=z7gRF834XbUD6MB2gE6ex8mX_KDmHCZtfKc9AF8FBi0-1767873365186-0.0.1.1-604800000; __cf_bm=VxiVGdHSSJdVgoUHB0GEAG52d0Ieu8SeFq6hmYMHSQg-1768377076-1.0.1.1-S9kTtnoS90L87V5gSwzQQB3bvedjQdbPPQkWGIiAwdWYCv_1dTHsFPFFjvNmbPf7Ushsx59ikP3WZ8lgOSzuuTba.XS8r7Ix5JhBR8M08KeHH8tgBFPu_7rc6pnyxGs4")
                 .uri(URI.create(fullUrl))
                 .GET()
                 .build();
