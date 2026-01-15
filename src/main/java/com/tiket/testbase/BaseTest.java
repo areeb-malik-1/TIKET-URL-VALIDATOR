@@ -34,8 +34,8 @@ public class BaseTest {
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     protected Environment env;
-    protected String baseUrl = "https://api.tiket.com";
-    protected String accessToken;
+    static String baseUrl = "https://api.tiket.com";
+    static String accessToken;
 
     @BeforeSuite
     public void beforeSuite(ITestContext context) throws Exception {
@@ -61,7 +61,7 @@ public class BaseTest {
         // 3. Get Service Token / Access Token
         ServiceTiket serviceTiketPage = new ServiceTiket(serviceTicket, "prod");
         var serviceResult = serviceTiketPage.hitApi();
-        accessToken = serviceResult.accessToken().trim();
+        accessToken = serviceResult.accessToken();
         logger.debug("Auth Token: " + accessToken);
     }
 
