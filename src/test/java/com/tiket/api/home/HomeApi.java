@@ -32,7 +32,6 @@ public class HomeApi implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .header("authorization", "Bearer " + this.accessToken)
-                .headers("HOST", "api.tiket.com")
                 .header("X-Country-Code", "IDN")
                 .header("Accept", "application/json")
                 .header("X-Account-Id", "asdad")
