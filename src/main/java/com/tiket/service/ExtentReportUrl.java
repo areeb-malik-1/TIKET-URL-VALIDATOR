@@ -3,7 +3,7 @@ package com.tiket.service;
 public class ExtentReportUrl {
     public static String get() {
         if(isJenkinsSystem()) {
-            String buildUrl = System.getenv("BUILD_URL");
+            String buildUrl = System.getProperty("BUILD_URL");
             return buildUrl + "artifact/extent-reports/extent-report.html";
         }
         return "Executed locally";
