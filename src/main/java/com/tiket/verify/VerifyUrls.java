@@ -26,7 +26,20 @@ public class VerifyUrls {
             String contentType,
             String contentLength,
             String error
-    ) {}
+    ) {
+        @Override
+        public String toString() {
+            return "RedirectedInfo{" +
+                    "url='" + url + '\'' +
+                    ", status=" + status +
+                    ", statusText='" + statusText + '\'' +
+                    ", ok=" + ok +
+                    ", contentType='" + contentType + '\'' +
+                    ", contentLength='" + contentLength + '\'' +
+                    ", error='" + error + '\'' +
+                    '}';
+        }
+    }
 
     public record UrlVerificationResult(
             Integer status,
@@ -36,7 +49,20 @@ public class VerifyUrls {
             String contentLength,
             String error,
             RedirectedInfo redirected
-    ) {}
+    ) {
+        @Override
+        public String toString() {
+            return "UrlVerificationResult{" +
+                    "status=" + status +
+                    ", statusText='" + statusText + '\'' +
+                    ", ok=" + ok +
+                    ", contentType='" + contentType + '\'' +
+                    ", contentLength='" + contentLength + '\'' +
+                    ", error='" + error + '\'' +
+                    ", redirected=" + redirected +
+                    '}';
+        }
+    }
 
     // Find "iconUrl" or "imageUrl" recursively
     public static List<UrlItem> findAllUrls(JsonNode node, String targetKey) {
