@@ -11,6 +11,7 @@ public class ExtentReportUrl {
 
     private static boolean isJenkinsSystem() {
         String buildUrl = System.getProperty("BUILD_URL");
+        System.out.println("Build url: " + buildUrl);
         return buildUrl != null && buildUrl.contains("http");
     }
 }
