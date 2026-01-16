@@ -51,7 +51,7 @@ public class TestNavbar  extends BaseTest {
         Assertion.assertThat("Endpoint passed", result.ok(), is(true));
     }
 
-    @DataProvider(name = "urlDataProvider")
+    @DataProvider(name = "urlDataProvider", parallel = true)
     public Object[][] urlDataProvider() {
 
         JsonNode data = apiResult.data();
@@ -68,7 +68,7 @@ public class TestNavbar  extends BaseTest {
         return objects;
     }
 
-    @DataProvider(name = "endpointDataProvider")
+    @DataProvider(name = "endpointDataProvider", parallel = true)
     public Object[][] endpointDataProvider() {
         JsonNode data = apiResult.data();
         List<VerifyUrls.EndpointItem> endpointItems = new ArrayList<>();
