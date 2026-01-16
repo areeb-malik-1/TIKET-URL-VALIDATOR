@@ -10,7 +10,7 @@ public class ExtentReportUrl {
     }
 
     private static boolean isJenkinsSystem() {
-        String pwd = System.getProperty("user.dir");
-        return pwd != null && pwd.contains("jenkins");
+        String buildUrl = System.getProperty("BUILD_URL");
+        return buildUrl != null && buildUrl.contains("http");
     }
 }
