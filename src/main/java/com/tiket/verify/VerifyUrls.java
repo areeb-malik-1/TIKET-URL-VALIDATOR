@@ -1,6 +1,8 @@
 package com.tiket.verify;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tiket.testbase.Ignored;
+import org.testng.SkipException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -372,6 +374,9 @@ public class VerifyUrls {
 
     public static UrlVerificationResult verifyFullUrl(UrlItem item) {
         System.out.println("Verifying url: " + item.url);
+        if(Ignored.getLinks().contains(item.url)) {
+            throw new SkipException("URL should be ignored");
+        }
         var res = verifyUrl(item.url());
         if (!res.ok()) {
             System.out.println("Failed: " + item.url() + " (" + (res.error() != null ? res.error() : res.status()) + ")");
@@ -395,6 +400,9 @@ public class VerifyUrls {
     public static UrlVerificationResult verifyEndpoint(EndpointItem item, String baseUrl) {
         String fullUrl = item.endpoint();
         System.out.println("Verifying endpoint: " + item.endpoint);
+        if(Ignored.getLinks().contains(item.endpoint)) {
+            throw new SkipException("URL should be ignored");
+        }
         if(!fullUrl.startsWith("http")) {
             fullUrl = baseUrl + (fullUrl.startsWith("/") ? "" : "/") + fullUrl;
         }

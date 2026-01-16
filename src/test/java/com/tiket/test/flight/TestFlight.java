@@ -1,10 +1,10 @@
-package com.tiket.test.home;
+package com.tiket.test.flight;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Vertical;
+import com.tiket.api.flight.FlightApi;
 import com.tiket.api.home.HomeApi;
-import com.tiket.api.home.SettingsApi;
 import com.tiket.model.ApiResult;
 import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
@@ -18,22 +18,22 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 
-public class TestSetting extends BaseTest {
+public class TestFlight extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = {"image"};
-    String[] endpointKeys = {};
+    String[] urlKeys = {"icon"};
+    String[] endpointKeys = {"link"};
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        SettingsApi settingsApi = new SettingsApi(accessToken, "ANDROID", baseUrl);
-        apiResult = settingsApi.hitApi();
+        FlightApi flightApi = new FlightApi(accessToken, "ANDROID", baseUrl);
+        apiResult = flightApi.hitApi();
     }
 
-    @Api(name = "SettingApi")
-    @Vertical(name = "Grand")
+    @Api(name = "FlightApi")
+    @Vertical(name = "Flight")
     @Test(dataProvider = "urlDataProvider")
-    public void testSettingUrl(VerifyUrls.UrlItem urlItem) throws Exception {
+    public void testFlightUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         step("Verifying Url");
         log("Verifying: " + urlItem);
@@ -41,10 +41,10 @@ public class TestSetting extends BaseTest {
         Assertion.assertThat("Url passed", result.ok(), is(true));
     }
 
-    @Api(name = "SettingApi")
-    @Vertical(name = "Grand")
+    @Api(name = "FlightApi")
+    @Vertical(name = "Flight")
     @Test(dataProvider = "endpointDataProvider")
-    public void testSettingEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+    public void testFlightEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
