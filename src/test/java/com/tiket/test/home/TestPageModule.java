@@ -39,7 +39,7 @@ public class TestPageModule extends BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        Assertion.assertThat("Status: " + result.statusText() + ", " + result.statusText(), result.ok(), is(true));
+        Assertion.assertThat("Status: " + result.status() + ", " + result.statusText(), result.ok(), is(true));
     }
 
     @Api(name = "PageModuleApi")
@@ -50,7 +50,7 @@ public class TestPageModule extends BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        Assertion.assertThat("Status: " + result.statusText() + ", " + result.statusText(), result.ok(), is(true));
+        Assertion.assertThat("Status: " + result.status() + ", " + result.statusText(), result.ok(), is(true));
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)
