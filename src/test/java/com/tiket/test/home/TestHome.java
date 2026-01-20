@@ -38,7 +38,7 @@ public class TestHome extends BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        Assertion.assertThat("Asserting url: " + urlItem.url(), result.ok(), is(true));
+        Assertion.assertThat("Status: " + result.statusText() + ", " + result.statusText(), result.ok(), is(true));
     }
 
     @Api(name = "HomeApi")
@@ -49,7 +49,7 @@ public class TestHome extends BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        Assertion.assertThat("Asserting endpoint: " + endpointItem.endpoint(), result.ok(), is(true));
+        Assertion.assertThat("Status: " + result.statusText() + ", " + result.statusText(), result.ok(), is(true));
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)

@@ -31,25 +31,25 @@ public class TestFlightPageModule extends BaseTest {
     }
 
     @Api(name = "FlightPageModuleApi")
-    @Vertical(name = "Grand")
+    @Vertical(name = "Flight")
     @Test(dataProvider = "urlDataProvider")
     public void testFlightPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        Assertion.assertThat("Asserting url: " + urlItem.url(), result.ok(), is(true));
+        Assertion.assertThat("Status: " + result.statusText() + ", " + result.statusText(), result.ok(), is(true));
     }
 
     @Api(name = "FlightPageModuleApi")
-    @Vertical(name = "Grand")
+    @Vertical(name = "Flight")
     @Test(dataProvider = "endpointDataProvider")
     public void testFlightPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        Assertion.assertThat("Asserting endpoint: " + endpointItem.endpoint(), result.ok(), is(true));
+        Assertion.assertThat("Status: " + result.statusText() + ", " + result.statusText(), result.ok(), is(true));
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)
