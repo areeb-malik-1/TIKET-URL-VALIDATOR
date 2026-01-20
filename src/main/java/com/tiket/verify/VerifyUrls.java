@@ -167,6 +167,8 @@ public class VerifyUrls {
 
     public static UrlVerificationResult verifyUrlWithHead(String url) {
 
+
+
         HttpClient NO_REDIRECT_CLIENT =
                 HttpClient.newBuilder()
                         .followRedirects(HttpClient.Redirect.NEVER)
@@ -220,6 +222,10 @@ public class VerifyUrls {
             String redirectedUrl,
             int timeoutMillis
     ) {
+
+        if(Ignored.getLinks().contains(redirectedUrl)) {
+            throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
+        }
         try {
             HttpClient followClient = HttpClient.newBuilder()
                     .followRedirects(HttpClient.Redirect.ALWAYS)
@@ -284,6 +290,9 @@ public class VerifyUrls {
             String redirectedUrl,
             int timeoutMillis
     ) {
+        if(Ignored.getLinks().contains(redirectedUrl)) {
+            throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
+        }
         try {
             HttpClient followClient = HttpClient.newBuilder()
                     .followRedirects(HttpClient.Redirect.ALWAYS)
