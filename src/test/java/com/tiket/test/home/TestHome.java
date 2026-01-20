@@ -38,6 +38,7 @@ public class TestHome extends BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
+        if(!result.ok()) failedResults.add(result);
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
     }
 
@@ -49,6 +50,7 @@ public class TestHome extends BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
+        if(!result.ok()) failedResults.add(result);
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
     }
 

@@ -25,6 +25,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.tiket.testng.TestListener.timestamp;
 import static org.hamcrest.core.Is.is;
@@ -33,6 +35,7 @@ public class BaseTest {
 
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
+    public static final List<VerifyUrls.UrlVerificationResult> failedResults = new CopyOnWriteArrayList<>();
     protected Environment env;
     protected static String baseUrl;
     protected static String accessToken;

@@ -7,12 +7,15 @@ import com.tiket.annotation.Vertical;
 import com.tiket.io.Slack;
 import com.tiket.report.ExtentTestManager;
 import com.tiket.report.TestCountTracker;
+import com.tiket.testbase.BaseTest;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
+import java.util.Arrays;
 
 public class TestListener implements ITestListener {
 
@@ -101,6 +104,8 @@ public class TestListener implements ITestListener {
     public void onFinish(ITestContext context) {
         ITestListener.super.onFinish(context);
 
+        logger.debug("Failed cases: ");
+        BaseTest.failedResults.forEach(logger::debug);
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
