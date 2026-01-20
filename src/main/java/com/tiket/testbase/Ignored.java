@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class Ignored {
     private static List<String> list = List.of(
-            "https://www.google.com",
-            "https://facebook.com"
+//            "https://www.google.com",
+//            "https://facebook.com"
     );
 
     public static Set<String> getLinks() {

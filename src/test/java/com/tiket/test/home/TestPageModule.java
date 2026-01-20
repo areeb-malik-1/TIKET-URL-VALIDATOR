@@ -6,6 +6,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.home.NavbarApi;
 import com.tiket.api.home.PageModuleApi;
 import com.tiket.model.ApiResult;
+import com.tiket.test.Mapping;
 import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -21,8 +22,8 @@ import static org.hamcrest.core.Is.is;
 public class TestPageModule extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = {"imageUrl"};
-    String[] endpointKeys = {"ctaUrl"};
+    String[] urlKeys = Mapping.mapping.get(TestPageModule.class.getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(TestPageModule.class.getName()).endpoints();;
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -38,7 +39,7 @@ public class TestPageModule extends BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        Assertion.assertThat("Url passed", result.ok(), is(true));
+        Assertion.assertThat("Asserting url: " + urlItem.url(), result.ok(), is(true));
     }
 
     @Api(name = "PageModuleApi")
@@ -49,7 +50,7 @@ public class TestPageModule extends BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        Assertion.assertThat("Endpoint passed", result.ok(), is(true));
+        Assertion.assertThat("Asserting endpoint: " + endpointItem.endpoint(), result.ok(), is(true));
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)

@@ -5,6 +5,7 @@ import com.tiket.annotation.Api;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.home.HomeApi;
 import com.tiket.model.ApiResult;
+import com.tiket.test.Mapping;
 import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -20,8 +21,8 @@ import static org.hamcrest.core.Is.is;
 public class TestHome extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = {"icon", "active", "inactive", "backgroundImage", "globalSearchImage", "iconUrl", "supergraphicImage", "backgroundUrl", "url", "mobileUrl", "airlineIcon", "image"};
-    String[] endpointKeys = {"url", "linkUrl", "clickUrl", "buttonUrl", "actionUrl", "link", "linkInactive"};
+    String[] urlKeys = Mapping.mapping.get(TestHome.class.getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(TestHome.class.getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {
@@ -37,7 +38,7 @@ public class TestHome extends BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        Assertion.assertThat("Url passed", result.ok(), is(true));
+        Assertion.assertThat("Asserting url: " + urlItem.url(), result.ok(), is(true));
     }
 
     @Api(name = "HomeApi")
@@ -48,7 +49,7 @@ public class TestHome extends BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        Assertion.assertThat("Endpoint passed", result.ok(), is(true));
+        Assertion.assertThat("Asserting endpoint: " + endpointItem.endpoint(), result.ok(), is(true));
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)
