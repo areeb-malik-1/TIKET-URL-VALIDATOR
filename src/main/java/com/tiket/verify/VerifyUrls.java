@@ -152,6 +152,9 @@ public class VerifyUrls {
 
                 if (location != null) {
                     String redirectedUrl = resolveRedirect(urlStr, location);
+                    if(Ignored.getLinks().contains(redirectedUrl)) {
+                        throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
+                    }
                     return followRedirect(baseResult, redirectedUrl, timeoutMillis);
                 }
             }
@@ -204,6 +207,9 @@ public class VerifyUrls {
 
                 if (location != null) {
                     String redirectedUrl = resolveRedirect(url, location);
+                    if(Ignored.getLinks().contains(redirectedUrl)) {
+                        throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
+                    }
                     return followRedirectHead(baseResult, redirectedUrl, timeoutMillis);
                 }
             }
@@ -222,10 +228,6 @@ public class VerifyUrls {
             String redirectedUrl,
             int timeoutMillis
     ) {
-
-        if(Ignored.getLinks().contains(redirectedUrl)) {
-            throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
-        }
         try {
             HttpClient followClient = HttpClient.newBuilder()
                     .followRedirects(HttpClient.Redirect.ALWAYS)
@@ -290,9 +292,6 @@ public class VerifyUrls {
             String redirectedUrl,
             int timeoutMillis
     ) {
-        if(Ignored.getLinks().contains(redirectedUrl)) {
-            throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
-        }
         try {
             HttpClient followClient = HttpClient.newBuilder()
                     .followRedirects(HttpClient.Redirect.ALWAYS)
