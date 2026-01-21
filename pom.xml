@@ -66,7 +66,7 @@
                     <version>3.0.0-M7</version>
                     <configuration>
                         <parallel>methods</parallel>
-                        <threadCount>10</threadCount>
+                        <threadCount>1</threadCount>
                         <properties>
                             <property>
                                 <name>listener</name>

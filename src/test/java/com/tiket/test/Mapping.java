@@ -42,6 +42,7 @@ public class Mapping {
             TestHotelPageModule.class.getName(), new Data(
                     new String[]{"icon", "imageUrl", "supergraphicImage", "mobileUrl", "url"},
                     new String[]{"clickUrl", "buttonUrl", "actionUrl"}),
+            // Vilas and Apt.
             TestVilasAndAptPageModule.class.getName(), new Data(
                     new String[]{"icon", "mobileUrl", "url", "imageUrl", "supergraphicImage"},
                     new String[]{"link", "actionUrl", "clickUrl", "buttonUrl"})
