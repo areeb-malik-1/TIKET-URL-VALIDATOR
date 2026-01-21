@@ -1,6 +1,7 @@
 package com.tiket.core;
 
 import com.tiket.model.Summary;
+import com.tiket.service.ExtentReportUrl;
 
 import java.util.Map;
 
@@ -41,6 +42,7 @@ public final class SlackSummaryFormatter {
             ));
         });
 
+        sb.append("\nExtent report url: ").append(ExtentReportUrl.get());
         sb.append("```");
         return sb.toString();
     }
