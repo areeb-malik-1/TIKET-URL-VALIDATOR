@@ -48,7 +48,7 @@ public class Mapping {
                     new String[]{"icon", "mobileUrl", "url", "imageUrl", "supergraphicImage"},
                     new String[]{"link", "actionUrl", "clickUrl", "buttonUrl"}),
             TestVilasAndApt1.class.getName(), new Data(
-                    new String[]{"url", "mobileUrl"},
+                    new String[]{"image", "iconUrl"},
                     new String[]{})
     );
 }

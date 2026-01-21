@@ -2,6 +2,7 @@ package com.tiket.report;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.JsonFormatter;
 import com.tiket.logging.Log4JLogger;
 import org.apache.logging.log4j.LogManager;
 
@@ -26,7 +27,8 @@ public class ExtentReportManager {
         ExtentSparkReporter reporter = new ExtentSparkReporter(extenReportName);
         reporter.config().setReportName("Url Validation Automation Report");
         reporter.config().thumbnailForBase64(true);
-        extentReports.attachReporter(reporter);
+        JsonFormatter jsonReporter = new JsonFormatter("extent.json");
+        extentReports.attachReporter(reporter, jsonReporter);
     }
 
     private static void setupSystemInfo() {
