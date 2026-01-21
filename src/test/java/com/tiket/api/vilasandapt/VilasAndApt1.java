@@ -60,7 +60,6 @@ public class VilasAndApt1 implements BaseApi {
 
         System.out.println("\n=== Vilas&Apt. API Response ===");
         System.out.println("Status: " + response.statusCode());
-        System.out.println("Raw Response: " + response.headers());
 
         JsonNode data = null;
         if (response.headers().firstValue("content-type").orElse("").contains("application/json")) {
