@@ -161,6 +161,8 @@ public class VerifyUrls {
 
             return baseResult;
 
+        } catch (SkipException skipException) {
+            throw skipException;
         } catch (HttpTimeoutException e) {
             return timeoutResult();
         } catch (Exception e) {
@@ -216,6 +218,8 @@ public class VerifyUrls {
 
             return baseResult;
 
+        } catch (SkipException skipException) {
+            throw skipException;
         } catch (HttpTimeoutException e) {
             return timeoutResult();
         } catch (Exception e) {
