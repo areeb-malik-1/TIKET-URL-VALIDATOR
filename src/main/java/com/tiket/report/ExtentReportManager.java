@@ -27,8 +27,8 @@ public class ExtentReportManager {
         ExtentSparkReporter reporter = new ExtentSparkReporter(extenReportName);
         reporter.config().setReportName("Url Validation Automation Report");
         reporter.config().thumbnailForBase64(true);
-        JsonFormatter jsonReporter = new JsonFormatter("extent.json");
-        extentReports.attachReporter(reporter, jsonReporter);
+        //JsonFormatter jsonReporter = new JsonFormatter("extent.json");
+        extentReports.attachReporter(reporter);
     }
 
     private static void setupSystemInfo() {
