@@ -10,7 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class HotelApi implements BaseApi {
+public class HotelPageModuleApi implements BaseApi {
 
     private final String accessToken;
     private final String platform;
@@ -18,7 +18,7 @@ public class HotelApi implements BaseApi {
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public HotelApi(String accessToken, String platform, String baseUrl) {
+    public HotelPageModuleApi(String accessToken, String platform, String baseUrl) {
         this.accessToken = accessToken;
         this.platform = platform;
         this.baseUrl = baseUrl;
@@ -26,11 +26,17 @@ public class HotelApi implements BaseApi {
 
     @Override
     public ApiResult hitApi() throws Exception {
-        String endpoint = "/ms-gateway/tix-hotel-home-api/longstay";
+        String endpoint = "/ms-gateway/tix-home/v2/page-modules-full";
         String url = baseUrl + endpoint;
-        String fullUrl = url + "?accommodationType=hotel";
+        String fullUrl = url + "?pageModuleCode=hotel_LP"
+                + "&variant=hotel_LP"
+                + "&taxDisplay=abt"
+                + "&ABTest%5BdeferredCostVariant%5D=control"
+                + "&isNotificationActive=false"
+                + "&accommPriceBeforeTax=true"
+                + "&recommendationVersion=";
 
-        System.out.println("Hotel full url: " + accessToken);
+        System.out.println("HotelPageModule full url: " + baseUrl);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
@@ -39,12 +45,13 @@ public class HotelApi implements BaseApi {
                 .header("Cookie",
                         "_cfuvid=JARHbqo74xbYSxYV3IOWyoD1MnT5mhxP3itQsEwULB8-1767867758268-0.0.1.1-604800000; "
                                 + "__cf_bm=m.LN60hokLf0ZUe9g6.Rxr_v0YO3zOaeVAfmKrlybVo-1767870954-1.0.1.1-4BgikjN2yT0eQDJicnWOtA3sIsKWIqL.G3r9_vvAy1lyITU3eHoxZcn7Yb5FMonJ1DJKafOI2HN6Q0K_.UQUnCCF2.pFnnGo9Y83npAqW_noiMNVbjxkjOu2obP.hayr")
+
                 .header("containername",
                         "com.tiket.android.hotelv2.presentation.landing.HotelLandingActivity")
                 .header("screenname",
                         "com.tiket.android.hotelv2.presentation.landing.HotelLandingActivity")
                 .header("x-correlation-id",
-                        "c5f0154e-aa0b-481a-a5c7-ad9d5b3cc3ca|1767871430664")
+                        "c5f0154e-aa0b-481a-a5c7-ad9d5b3cc3ca|1767871430683")
                 .header("deviceid", "179dd086888c94ec")
                 .header("devicemodel", "Xiaomi+23108RN04Y")
                 .header("osversion", "14")
@@ -52,9 +59,7 @@ public class HotelApi implements BaseApi {
                 .header("tiketsessionid", "c5f0154e-aa0b-481a-a5c7-ad9d5b3cc3ca")
                 .header("platform", "ANDROID")
                 .header("user-agent",
-                        "Mozilla/5.0 (Linux; Android 14; 23108RN04Y Build/UP1A.231005.007; wv) "
-                                + "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 "
-                                + "Chrome/143.0.7499.146 Mobile Safari/537.36")
+                        "Mozilla/5.0 (Linux; Android 14; 23108RN04Y Build/UP1A.231005.007; wv)")
                 .header("tiket-user-agent",
                         "tiketcom/android-version (twh:20296642) - v5.9.1-debug-NCT-20474/play_integrity")
                 .header("lang", "en")
@@ -65,12 +70,12 @@ public class HotelApi implements BaseApi {
                 .header("language", "en")
                 .header("content-type", "application/json")
                 .header("channelid", "ANDROID")
-                .header("if-modified-since", "Thu, 08 Jan 2026 10:27:47 GMT")
+                .header("if-modified-since", "Thu, 08 Jan 2026 10:27:51 GMT")
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("\n=== Hotel API Response ===");
+        System.out.println("\n=== HotelPageModule API Response ===");
         System.out.println("Status: " + response.statusCode());
 
         JsonNode data = null;
