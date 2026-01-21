@@ -9,46 +9,50 @@ import com.tiket.test.home.TestSetting;
 import com.tiket.test.hotel.TestHotel;
 import com.tiket.test.hotel.TestHotelPageModule;
 import com.tiket.test.vilasandapt.TestVilasAndApt1;
+import com.tiket.test.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.vilasandapt.TestVilasAndAptPageModule;
 
 import java.util.Map;
 
 public class Mapping {
     public  record Data(String[] urls, String[] endpoints) {}
-    public static final Map<String, Data> mapping = Map.of(
+    public static final Map<String, Data> mapping = Map.ofEntries(
             // flight
-            TestFlight.class.getName(), new Data(
+            Map.entry(TestFlight.class.getName(), new Data(
                     new String[]{"icon"},
-                    new String[]{"link"}),
-            TestFlightPageModule.class.getName(), new Data(
+                    new String[]{"link"})),
+            Map.entry(TestFlightPageModule.class.getName(), new Data(
                     new String[]{"icon", "url", "mobileUrl", "airlineIcon", "imageUrl"},
-                    new String[]{"clickUrl", "actionUrl"}),
+                    new String[]{"clickUrl", "actionUrl"})),
             // homepage
-            TestHome.class.getName(), new Data(
+            Map.entry(TestHome.class.getName(), new Data(
                     new String[]{"icon", "active", "inactive", "backgroundImage", "globalSearchImage", "iconUrl", "supergraphicImage", "backgroundUrl", "url", "mobileUrl", "airlineIcon", "image"},
-                    new String[]{"url", "linkUrl", "clickUrl", "buttonUrl", "actionUrl", "link", "linkInactive"}),
-            TestNavbar.class.getName(), new Data(
+                    new String[]{"url", "linkUrl", "clickUrl", "buttonUrl", "actionUrl", "link", "linkInactive"})),
+            Map.entry(TestNavbar.class.getName(), new Data(
                     new String[]{"active", "inactive"},
-                    new String[]{}),
-            TestHomePageModule.class.getName(), new Data(
+                    new String[]{})),
+            Map.entry(TestHomePageModule.class.getName(), new Data(
                     new String[]{"imageUrl"},
-                    new String[]{"ctaUrl"}),
-            TestSetting.class.getName(), new Data(
+                    new String[]{"ctaUrl"})),
+            Map.entry(TestSetting.class.getName(), new Data(
                     new String[]{"image"},
-                    new String[]{}),
+                    new String[]{})),
             // hotel
-            TestHotel.class.getName(), new Data(
+            Map.entry(TestHotel.class.getName(), new Data(
                     new String[]{"iconUrl", "image"},
-                    new String[]{"url"}),
-            TestHotelPageModule.class.getName(), new Data(
+                    new String[]{"url"})),
+            Map.entry(TestHotelPageModule.class.getName(), new Data(
                     new String[]{"icon", "imageUrl", "supergraphicImage", "mobileUrl", "url"},
-                    new String[]{"clickUrl", "buttonUrl", "actionUrl"}),
+                    new String[]{"clickUrl", "buttonUrl", "actionUrl"})),
             // Vilas and Apt.
-            TestVilasAndAptPageModule.class.getName(), new Data(
+            Map.entry(TestVilasAndAptPageModule.class.getName(), new Data(
                     new String[]{"icon", "mobileUrl", "url", "imageUrl", "supergraphicImage"},
-                    new String[]{"link", "actionUrl", "clickUrl", "buttonUrl"}),
-            TestVilasAndApt1.class.getName(), new Data(
+                    new String[]{"link", "actionUrl", "clickUrl", "buttonUrl"})),
+            Map.entry(TestVilasAndApt1.class.getName(), new Data(
                     new String[]{"image", "iconUrl"},
-                    new String[]{})
+                    new String[]{})),
+            Map.entry(TestVilasAndApt2.class.getName(), new Data(
+                    new String[]{"image", "iconUrl"},
+                    new String[]{}))
     );
 }
