@@ -5,6 +5,7 @@ import com.aventstack.extentreports.Status;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Vertical;
 import com.tiket.io.Slack;
+import com.tiket.model.Summary;
 import com.tiket.report.ExtentTestManager;
 import com.tiket.report.TestCountTracker;
 import com.tiket.testbase.BaseTest;
@@ -15,9 +16,13 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class TestListener implements ITestListener {
 
     private static final Logger logger = LogManager.getLogger(TestListener.class);
+    private static final Map<String, Summary> summaryMap = new ConcurrentHashMap<>();
     public static final ThreadLocal<Long> timestamp = new ThreadLocal<>();
 
     @Override
@@ -43,6 +48,7 @@ public class TestListener implements ITestListener {
         logger.info("Test success: " + result.getMethod().getMethodName());
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "PASS");
+        updatePass(result);
         ExtentTestManager.flushReports();
     }
 
@@ -55,6 +61,7 @@ public class TestListener implements ITestListener {
         logger.fatal("Test failed: " + result.getMethod().getMethodName());
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "FAIL");
+        updateFail(result);
         ExtentTestManager.flushReports();
     }
 
@@ -67,6 +74,7 @@ public class TestListener implements ITestListener {
         logger.error("Test Skipped: " + result.getMethod().getMethodName());
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "SKIP");
+        updateSkip(result);
         ExtentTestManager.flushReports();
     }
 
@@ -89,6 +97,7 @@ public class TestListener implements ITestListener {
 
         test.log(Status.FAIL, "Test failed with timeout: " + result.getMethod().getMethodName());
         logger.fatal("Test failed with timeout: " + result.getMethod().getMethodName());
+        updateFail(result);
 
         ExtentTestManager.flushReports();
     }
@@ -107,7 +116,7 @@ public class TestListener implements ITestListener {
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
-        Slack.send(summary);
+        Slack.send(summaryMap.toString());
     }
 
     private void setAnnotations(ITestResult result, ExtentTest test) {
@@ -127,11 +136,54 @@ public class TestListener implements ITestListener {
 
     private void setVerticalAnnotation(ITestResult result, ExtentTest test) {
         try {
-            String module = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Vertical.class).name();
+            String module = getVerticalName(result);
             test.assignCategory(module);
         } catch (Exception e) {
             logger.warn(ExceptionUtils.getStackTrace(e));
             test.warning(ExceptionUtils.getStackTrace(e));
+        }
+    }
+
+    private String getVerticalName(ITestResult result) {
+        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Vertical.class).name();
+    }
+
+    private void updatePass(ITestResult result) {
+        String vertical = getVerticalName(result);
+        if(summaryMap.get(vertical) == null) {
+            summaryMap.put(vertical, new Summary(1, 0, 0));
+        } else {
+            summaryMap.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
+                    currentSummary.pass() + 1,
+                    currentSummary.fail(),
+                    currentSummary.skip()
+            ));
+        }
+    }
+
+    private void updateFail(ITestResult result) {
+        String vertical = getVerticalName(result);
+        if(summaryMap.get(vertical) == null) {
+            summaryMap.put(vertical, new Summary(1, 0, 0));
+        } else {
+            summaryMap.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
+                    currentSummary.pass(),
+                    currentSummary.fail() + 1,
+                    currentSummary.skip()
+            ));
+        }
+    }
+
+    public void updateSkip(ITestResult result) {
+        String vertical = getVerticalName(result);
+        if(summaryMap.get(vertical) == null) {
+            summaryMap.put(vertical, new Summary(1, 0, 0));
+        } else {
+            summaryMap.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
+                    currentSummary.pass(),
+                    currentSummary.fail(),
+                    currentSummary.skip() + 1
+            ));
         }
     }
 }
