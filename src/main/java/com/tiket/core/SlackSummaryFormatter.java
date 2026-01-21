@@ -12,43 +12,37 @@ public final class SlackSummaryFormatter {
     }
 
     public static String toSlackMessage(Map<String, Summary> summaryMap) {
-        if (summaryMap == null || summaryMap.isEmpty()) {
-            return "No test execution data available.\n\n"
-                    + "📊 Extent Report: " + ExtentReportUrl.get();
-        }
-
         StringBuilder sb = new StringBuilder();
 
         sb.append("```\n");
         sb.append(String.format(
-                "%-15s %7s %7s %7s %7s %8s%n",
-                "Vertical", "Total", "Pass", "Fail", "Skip", "Pass%"
+                "%-12s %5s %5s %5s %5s %6s%n",
+                "Vertical", "Tot", "Pass", "Fail", "Skip", "Pass%"
         ));
-        sb.append("-".repeat(60)).append("\n");
+        sb.append("---------------------------------------------\n");
 
-        summaryMap.forEach((vertical, summary) -> {
-            int total = summary.total();
-            double passPercent = total == 0
-                    ? 0.0
-                    : (summary.pass() * 100.0) / total;
+        summaryMap.forEach((vertical, s) -> {
+            int total = s.total();
+            double passPct = total == 0 ? 0 : (s.pass() * 100.0 / total);
 
             sb.append(String.format(
-                    "%-15s %7d %7d %7d %7d %7.2f%%%n",
-                    vertical,
+                    "%-12s %5d %5d %5d %5d %5.1f%%%n",
+                    trim(vertical, 12),
                     total,
-                    summary.pass(),
-                    summary.fail(),
-                    summary.skip(),
-                    passPercent
+                    s.pass(),
+                    s.fail(),
+                    s.skip(),
+                    passPct
             ));
         });
 
         sb.append("```");
-
-        // Append Extent report link
-        sb.append("\n📊 *Extent Report:* ")
-                .append(ExtentReportUrl.get());
+        sb.append("\n📊 Extent Report: ").append(ExtentReportUrl.get());
 
         return sb.toString();
+    }
+
+    private static String trim(String text, int max) {
+        return text.length() <= max ? text : text.substring(0, max - 1) + "…";
     }
 }
