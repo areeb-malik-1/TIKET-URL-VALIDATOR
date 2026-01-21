@@ -25,7 +25,7 @@ public class TestHotelPageModule extends BaseTest {
         apiResult = hotelPageModuleApi.hitApi();
     }
 
-    @Api(name = "HotelApi")
+    @Api(name = "HotelPageModuleApi")
     @Vertical(name = "Accommodation")
     @Test(dataProvider = "urlDataProvider")
     public void testSettingUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -33,7 +33,7 @@ public class TestHotelPageModule extends BaseTest {
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "HotelApi")
+    @Api(name = "HotelPageModuleApi")
     @Vertical(name = "Accommodation")
     @Test(dataProvider = "endpointDataProvider")
     public void testSettingEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
