@@ -45,7 +45,7 @@ public class ExtentLogger implements ILogger {
 
     @Override
     public void assertion(String msg, String detail, boolean passed) {
-        log("[Assertion passed: " + msg + "]");
+        log("[Assertion: " + msg + "]");
         log(detail);
         ExtentTest assertionNode;
         if (passed) {
