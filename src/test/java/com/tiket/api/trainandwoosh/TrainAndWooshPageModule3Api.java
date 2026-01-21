@@ -26,7 +26,7 @@ public class TrainAndWooshPageModule3Api implements BaseApi {
 
     @Override
     public ApiResult hitApi() throws Exception {
-        String endpoint = "/ms-gateway/tix-home/v2/page-modules-full?pageModuleCode=KCIC_LANDING_PAGE&isNotificationActive=false&accommPriceBeforeTax=true&recommendationVersion=";
+        String endpoint = "/ms-gateway/tix-home/v2/page-modules-full";
         String url = baseUrl + endpoint;
         String fullUrl = url + "?pageModuleCode=KCIC_LANDING_PAGE&isNotificationActive=false&accommPriceBeforeTax=true&recommendationVersion=";
 

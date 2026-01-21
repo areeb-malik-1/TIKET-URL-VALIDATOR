@@ -1,0 +1,51 @@
+package com.tiket.test.airporttransfer;
+
+import com.tiket.annotation.Api;
+import com.tiket.annotation.Vertical;
+import com.tiket.api.airporttransfer.AirportTransfer3Api;
+import com.tiket.model.ApiResult;
+import com.tiket.test.Mapping;
+import com.tiket.testbase.BaseTest;
+import com.tiket.verify.VerifyUrls;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class TestAirportTransfer3 extends BaseTest {
+
+    ApiResult apiResult;
+    String[] urlKeys = Mapping.mapping.get(TestAirportTransfer3.class.getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(TestAirportTransfer3.class.getName()).endpoints();
+
+    @BeforeClass
+    public void beforeClass() throws Exception {
+        AirportTransfer3Api airportTransfer3Api = new AirportTransfer3Api(accessToken, "ANDROID", baseUrl);
+        apiResult = airportTransfer3Api.hitApi();
+    }
+
+    @Api(name = "AirportTransfer3Api")
+    @Vertical(name = "Ground")
+    @Test(dataProvider = "urlDataProvider")
+    public void testAirportTransfer3Url(VerifyUrls.UrlItem urlItem) throws Exception {
+        var result = VerifyUrls.verifyFullUrl(urlItem);
+        verifyFullUrl(result, urlItem);
+    }
+
+    @Api(name = "AirportTransfer3Api")
+    @Vertical(name = "Ground")
+    @Test(dataProvider = "endpointDataProvider")
+    public void testAirportTransfer3Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
+        verifyEndpoint(result, endpointItem);
+    }
+
+    @DataProvider(name = "urlDataProvider", parallel = true)
+    public Object[][] urlDataProvider() {
+        return getFullUrls(apiResult, urlKeys);
+    }
+
+    @DataProvider(name = "endpointDataProvider", parallel = true)
+    public Object[][] endpointDataProvider() {
+        return getEndpoints(apiResult, endpointKeys);
+    }
+}
