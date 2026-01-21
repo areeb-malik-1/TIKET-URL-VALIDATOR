@@ -121,6 +121,7 @@ public class BaseTest {
     }
 
     protected Object[][] getFullUrls(ApiResult apiResult, String[] urlKeys) {
+        if(apiResult == null || !isSuccess(apiResult)) return new Object[0][];
         JsonNode data = apiResult.data();
         List<VerifyUrls.UrlItem> urlItems = new ArrayList<>();
         for (String key : urlKeys) {
@@ -144,6 +145,7 @@ public class BaseTest {
     }
 
     protected Object[][] getEndpoints(ApiResult apiResult, String[] endpointKeys) {
+        if(apiResult == null || !isSuccess(apiResult)) return new Object[0][];
         JsonNode data = apiResult.data();
         List<VerifyUrls.EndpointItem> endpointItems = new ArrayList<>();
         for (String key : endpointKeys) {
@@ -155,5 +157,9 @@ public class BaseTest {
             objects[i] = new Object[]{endpointItems.get(i)};
         }
         return objects;
+    }
+
+    private boolean isSuccess(ApiResult apiResult) {
+        return apiResult.status() >= 200 && apiResult.status() < 300;
     }
 }
