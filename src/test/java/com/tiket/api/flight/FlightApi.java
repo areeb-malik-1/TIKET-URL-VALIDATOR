@@ -76,7 +76,7 @@ public class FlightApi implements BaseApi {
             data = mapper.readTree(response.body());
             System.out.println("Response: " + data.toPrettyString());
         }
-
+        isSuccess(response.statusCode());
         return new ApiResult(data, response.statusCode());
     }
 }
