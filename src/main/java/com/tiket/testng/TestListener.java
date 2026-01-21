@@ -63,7 +63,7 @@ public class TestListener implements ITestListener {
         ITestListener.super.onTestSkipped(result);
 
         ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), timestamp.get());
-        test.log(Status.SKIP, "Test skipped: " + result.getMethod().getMethodName());
+        test.skip("Test skipped: " + result.getMethod().getMethodName());
         logger.error("Test Skipped: " + result.getMethod().getMethodName());
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "SKIP");
