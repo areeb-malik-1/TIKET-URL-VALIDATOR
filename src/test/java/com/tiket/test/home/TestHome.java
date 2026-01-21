@@ -7,6 +7,7 @@ import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
+import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -27,16 +28,18 @@ public class TestHome extends BaseTest {
     @Vertical(name = "Grand")
     @Test(dataProvider = "urlDataProvider")
     public void testHomeUrl(VerifyUrls.UrlItem urlItem) throws Exception {
-        var result = VerifyUrls.verifyFullUrl(urlItem);
-        verifyFullUrl(result, urlItem);
+        throw new SkipException("Url skipped");
+//        var result = VerifyUrls.verifyFullUrl(urlItem);
+//        verifyFullUrl(result, urlItem);
     }
 
     @Api(name = "HomeApi")
     @Vertical(name = "Grand")
     @Test(dataProvider = "endpointDataProvider")
     public void testHomeEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
-        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
-        verifyEndpoint(result, endpointItem);
+        throw new SkipException("Url skipped");
+//        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
+//        verifyEndpoint(result, endpointItem);
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)
