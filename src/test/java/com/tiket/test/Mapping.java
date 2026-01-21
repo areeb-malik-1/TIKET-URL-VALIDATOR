@@ -72,6 +72,9 @@ public class Mapping {
                     new String[]{"imageUrl"},
                     new String[]{"clickUrl"})),
             Map.entry(TestTrainAndWooshPageModule3.class.getName(), new Data(
+                    new String[]{"imageUrl"},
+                    new String[]{"clickUrl"})),
+            Map.entry(TestAirportTransfer1.class.getName(), new Data(
                     new String[]{"iconUrl"},
                     new String[]{})),
             Map.entry(TestAirportTransfer2.class.getName(), new Data(
