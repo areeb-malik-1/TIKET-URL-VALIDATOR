@@ -9,6 +9,9 @@ import com.tiket.test.home.TestSetting;
 import com.tiket.test.hotel.TestHotel;
 import com.tiket.test.hotel.TestHotelPageModule;
 import com.tiket.test.trainandwoosh.TestTrainAndWoosh;
+import com.tiket.test.trainandwoosh.TestTrainAndWooshPageModule1;
+import com.tiket.test.trainandwoosh.TestTrainAndWooshPageModule2;
+import com.tiket.test.trainandwoosh.TestTrainAndWooshPageModule3;
 import com.tiket.test.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.vilasandapt.TestVilasAndAptPageModule;
@@ -55,8 +58,18 @@ public class Mapping {
             Map.entry(TestVilasAndApt2.class.getName(), new Data(
                     new String[]{"url", "mobileUrl"},
                     new String[]{})),
+            // Train and Woosh
             Map.entry(TestTrainAndWoosh.class.getName(), new Data(
                     new String[]{"heroBannerImageUrl", "heroBannerImageUrlDesktop", "imageUrl"},
-                    new String[]{}))
+                    new String[]{})),
+            Map.entry(TestTrainAndWooshPageModule1.class.getName(), new Data(
+                    new String[]{"imageUrl"},
+                    new String[]{"clickUrl"})),
+            Map.entry(TestTrainAndWooshPageModule2.class.getName(), new Data(
+                    new String[]{"imageUrl"},
+                    new String[]{"clickUrl"})),
+            Map.entry(TestTrainAndWooshPageModule3.class.getName(), new Data(
+                    new String[]{"imageUrl"},
+                    new String[]{"clickUrl"}))
     );
 }
