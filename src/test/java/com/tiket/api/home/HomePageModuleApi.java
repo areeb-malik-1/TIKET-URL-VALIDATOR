@@ -10,7 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class PageModuleApi implements BaseApi {
+public class HomePageModuleApi implements BaseApi {
 
     private final String accessToken;
     private final String platform;
@@ -18,7 +18,7 @@ public class PageModuleApi implements BaseApi {
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public PageModuleApi(String accessToken, String platform, String baseUrl) {
+    public HomePageModuleApi(String accessToken, String platform, String baseUrl) {
         this.accessToken = accessToken;
         this.platform = platform;
         this.baseUrl = baseUrl;

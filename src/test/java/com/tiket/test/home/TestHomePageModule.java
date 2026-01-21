@@ -2,7 +2,7 @@ package com.tiket.test.home;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.home.PageModuleApi;
+import com.tiket.api.home.HomePageModuleApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
@@ -19,8 +19,8 @@ public class TestHomePageModule extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        PageModuleApi pageModuleApi = new PageModuleApi(accessToken, "ANDROID", baseUrl);
-        apiResult = pageModuleApi.hitApi();
+        HomePageModuleApi homePageModuleApi = new HomePageModuleApi(accessToken, "ANDROID", baseUrl);
+        apiResult = homePageModuleApi.hitApi();
     }
 
     @Api(name = "HomePageModuleApi")
