@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Vertical;
+import com.tiket.core.SlackSummaryFormatter;
 import com.tiket.io.Slack;
 import com.tiket.model.Summary;
 import com.tiket.report.ExtentTestManager;
@@ -116,7 +117,7 @@ public class TestListener implements ITestListener {
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
-        Slack.send(summaryMap.toString());
+        Slack.send(SlackSummaryFormatter.toSlackTable(summaryMap));
     }
 
     private void setAnnotations(ITestResult result, ExtentTest test) {
