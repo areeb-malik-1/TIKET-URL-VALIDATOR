@@ -7,6 +7,7 @@ import com.tiket.test.home.TestNavbar;
 import com.tiket.test.home.TestHomePageModule;
 import com.tiket.test.home.TestSetting;
 import com.tiket.test.hotel.TestHotel;
+import com.tiket.test.hotel.TestHotelPageModule;
 
 import java.util.Map;
 
@@ -36,6 +37,9 @@ public class Mapping {
             // hotel
             TestHotel.class.getName(), new Data(
                     new String[]{"iconUrl", "image"},
-                    new String[]{"url"})
+                    new String[]{"url"}),
+            TestHotelPageModule.class.getName(), new Data(
+                    new String[]{"icon", "imageUrl", "supergraphicImage", "mobileUrl", "url"},
+                    new String[]{"clickUrl", "buttonUrl", "actionUrl"})
     );
 }
