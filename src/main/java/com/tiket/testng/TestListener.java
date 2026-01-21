@@ -117,7 +117,7 @@ public class TestListener implements ITestListener {
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
-        Slack.send(SlackSummaryFormatter.toSlackTable(summaryMap));
+        Slack.send(SlackSummaryFormatter.toSlackMessage(summaryMap));
     }
 
     private void setAnnotations(ITestResult result, ExtentTest test) {

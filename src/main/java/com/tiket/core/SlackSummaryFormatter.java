@@ -11,9 +11,10 @@ public final class SlackSummaryFormatter {
         // utility class
     }
 
-    public static String toSlackTable(Map<String, Summary> summaryMap) {
+    public static String toSlackMessage(Map<String, Summary> summaryMap) {
         if (summaryMap == null || summaryMap.isEmpty()) {
-            return "No test execution data available.";
+            return "No test execution data available.\n\n"
+                    + "📊 Extent Report: " + ExtentReportUrl.get();
         }
 
         StringBuilder sb = new StringBuilder();
@@ -42,8 +43,12 @@ public final class SlackSummaryFormatter {
             ));
         });
 
-        sb.append("\nExtent report url: ").append(ExtentReportUrl.get());
         sb.append("```");
+
+        // Append Extent report link
+        sb.append("\n📊 *Extent Report:* ")
+                .append(ExtentReportUrl.get());
+
         return sb.toString();
     }
 }
