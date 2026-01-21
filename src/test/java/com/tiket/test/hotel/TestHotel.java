@@ -1,40 +1,42 @@
-package com.tiket.test.home;
+package com.tiket.test.hotel;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.home.PageModuleApi;
+import com.tiket.api.home.SettingsApi;
+import com.tiket.api.hotel.HotelApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
+import com.tiket.test.home.TestSetting;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestPageModule extends BaseTest {
+public class TestHotel extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = Mapping.mapping.get(TestPageModule.class.getName()).urls();
-    String[] endpointKeys = Mapping.mapping.get(TestPageModule.class.getName()).endpoints();;
+    String[] urlKeys = Mapping.mapping.get(TestSetting.class.getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(TestSetting.class.getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        PageModuleApi pageModuleApi = new PageModuleApi(accessToken, "ANDROID", baseUrl);
-        apiResult = pageModuleApi.hitApi();
+        HotelApi hotelApi = new HotelApi(accessToken, "ANDROID", baseUrl);
+        apiResult = hotelApi.hitApi();
     }
 
-    @Api(name = "PageModuleApi")
-    @Vertical(name = "Grand")
+    @Api(name = "HotelApi")
+    @Vertical(name = "Accommodation")
     @Test(dataProvider = "urlDataProvider")
-    public void testPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
+    public void testSettingUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "PageModuleApi")
-    @Vertical(name = "Grand")
+    @Api(name = "HotelApi")
+    @Vertical(name = "Accommodation")
     @Test(dataProvider = "endpointDataProvider")
-    public void testPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+    public void testSettingEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
