@@ -70,11 +70,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod(ITestContext context, Method method) {
-        //ThreadLocal<ILogger> mainLogger = (ThreadLocal<ILogger>) context.getAttribute("mainLogger");
-        long t = System.currentTimeMillis();
-        timestamp.set(t);
-        ExtentTest test = ExtentTestManager.getTest(method.getName(), t);
-        mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
+        synchronized (this) {
+            long t = System.currentTimeMillis();
+            timestamp.set(t);
+            ExtentTest test = ExtentTestManager.getTest(method.getName(), t);
+            mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
+        }
         context.setAttribute("mainLogger", mainLogger);
     }
 
