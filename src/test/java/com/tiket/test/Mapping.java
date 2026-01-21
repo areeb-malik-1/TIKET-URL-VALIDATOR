@@ -8,6 +8,7 @@ import com.tiket.test.home.TestHomePageModule;
 import com.tiket.test.home.TestSetting;
 import com.tiket.test.hotel.TestHotel;
 import com.tiket.test.hotel.TestHotelPageModule;
+import com.tiket.test.trainandwoosh.TestTrainAndWoosh;
 import com.tiket.test.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.vilasandapt.TestVilasAndAptPageModule;
@@ -52,7 +53,10 @@ public class Mapping {
                     new String[]{"image", "iconUrl"},
                     new String[]{})),
             Map.entry(TestVilasAndApt2.class.getName(), new Data(
-                    new String[]{"image", "iconUrl"},
+                    new String[]{"url", "mobileUrl"},
+                    new String[]{})),
+            Map.entry(TestTrainAndWoosh.class.getName(), new Data(
+                    new String[]{"heroBannerImageUrl", "heroBannerImageUrlDesktop", "imageUrl"},
                     new String[]{}))
     );
 }
