@@ -2,7 +2,6 @@ package com.tiket.page.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tiket.model.Environment;
-import com.tiket.service.BaseUrl;
 
 import java.net.URI;
 import java.net.http.HttpClient;

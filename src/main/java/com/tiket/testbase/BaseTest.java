@@ -2,7 +2,6 @@ package com.tiket.testbase;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.tiket.io.Slack;
 import com.tiket.logging.ExtentLogger;
 import com.tiket.logging.ILogger;
 import com.tiket.logging.Log4JLogger;
@@ -25,6 +24,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -112,40 +112,48 @@ public class BaseTest {
         mainLogger.get().fail(msg);
     }
 
-    protected boolean checkApiResult(String baseUrl, ApiResult apiResult, String[] urlKeys, String[] endpointKeys) {
-        boolean resultFlag = true;
+    protected void verifyFullUrl(VerifyUrls.UrlVerificationResult result, VerifyUrls.UrlItem urlItem) {
+        step("Verifying Url");
+        log("Verifying: " + urlItem);
+        log("Result: " + result);
+        if(!result.ok()) failedResults.add(result);
+        Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
+    }
+
+    protected Object[][] getFullUrls(ApiResult apiResult, String[] urlKeys) {
         JsonNode data = apiResult.data();
-
-        // Verify urls
+        List<VerifyUrls.UrlItem> urlItems = new ArrayList<>();
         for (String key : urlKeys) {
-            step("Verifying: " + key);
             var iconUrls = VerifyUrls.findAllUrls(data, key);
-            log("Found " + iconUrls.size() + " urls for key: " + key);
-            iconUrls.forEach(urlItem -> log(urlItem.toString()));
-            var failed = VerifyUrls.verifyFullUrls(iconUrls);
-            Assertion.assertThat("Failure count is 0", failed.size(), is(0));
-            for (VerifyUrls.UrlVerificationResult failure : failed) {
-                resultFlag = false;
-                fail(failure.toString());
-                Slack.send(failure);
-            }
+            urlItems.addAll(iconUrls);
         }
 
-        // Verify endpoints
+        Object[][] objects = new Object[urlItems.size()][];
+        for (int i = 0; i < urlItems.size(); i++) {
+            objects[i] = new Object[]{urlItems.get(i)};
+        }
+        return objects;
+    }
+
+    protected void verifyEndpoint(VerifyUrls.UrlVerificationResult result, VerifyUrls.EndpointItem endpointItem) {
+        step("Verifying Endpoint");
+        log("Verifying: " + endpointItem);
+        log("Result: " + result);
+        if(!result.ok()) failedResults.add(result);
+        Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
+    }
+
+    protected Object[][] getEndpoints(ApiResult apiResult, String[] endpointKeys) {
+        JsonNode data = apiResult.data();
+        List<VerifyUrls.EndpointItem> endpointItems = new ArrayList<>();
         for (String key : endpointKeys) {
-            step("Verifying: " + key);
-            var clickUrls = VerifyUrls.findAllEndpoints(data, key);
-            log("Found " + clickUrls.size() + " endpoints for key: " + key);
-            clickUrls.forEach(urlItem -> log(urlItem.toString()));
-            var failed = VerifyUrls.verifyEndpoints(clickUrls, baseUrl);
-            Assertion.assertThat("Failure count is 0", failed.size(), is(0));
-            for (VerifyUrls.UrlVerificationResult failure : failed) {
-                resultFlag = false;
-                fail(failure.toString());
-                Slack.send(failure);
-            }
+            var endpoints = VerifyUrls.findAllEndpoints(data, key);
+            endpointItems.addAll(endpoints);
         }
-
-        return resultFlag;
+        Object[][] objects = new Object[endpointItems.size()][];
+        for (int i = 0; i < endpointItems.size(); i++) {
+            objects[i] = new Object[]{endpointItems.get(i)};
+        }
+        return objects;
     }
 }
