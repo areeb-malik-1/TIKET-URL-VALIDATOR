@@ -74,7 +74,7 @@ public class AirportTransfer1Api implements BaseApi {
             System.out.println("Response: " + data.toPrettyString());
         }
 
-        isSuccess(response.statusCode());
+        isSuccess(response, data);
 
         return new ApiResult(data, response.statusCode());
     }

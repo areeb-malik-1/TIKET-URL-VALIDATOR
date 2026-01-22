@@ -66,7 +66,7 @@ public class VilasAndApt1 implements BaseApi {
             data = mapper.readTree(response.body());
             System.out.println("Response: " + data.toPrettyString());
         }
-        isSuccess(response.statusCode());
+        isSuccess(response, data);
         return new ApiResult(data, response.statusCode());
     }
 }
