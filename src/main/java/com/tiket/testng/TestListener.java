@@ -3,7 +3,7 @@ package com.tiket.testng;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.tiket.annotation.Api;
-import com.tiket.annotation.Vertical;
+import com.tiket.annotation.Module;
 import com.tiket.core.SlackSummaryFormatter;
 import com.tiket.io.Slack;
 import com.tiket.model.Summary;
@@ -137,7 +137,7 @@ public class TestListener implements ITestListener {
 
     private void setVerticalAnnotation(ITestResult result, ExtentTest test) {
         try {
-            String module = getVerticalName(result);
+            String module = getModuleName(result);
             test.assignCategory(module);
         } catch (Exception e) {
             logger.warn(ExceptionUtils.getStackTrace(e));
@@ -145,12 +145,12 @@ public class TestListener implements ITestListener {
         }
     }
 
-    private String getVerticalName(ITestResult result) {
-        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Vertical.class).name();
+    private String getModuleName(ITestResult result) {
+        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Module.class).name();
     }
 
     private void updatePass(ITestResult result) {
-        String vertical = getVerticalName(result);
+        String vertical = getModuleName(result);
         if(summaryMap.get(vertical) == null) {
             summaryMap.put(vertical, new Summary(1, 0, 0));
         } else {
@@ -163,7 +163,7 @@ public class TestListener implements ITestListener {
     }
 
     private void updateFail(ITestResult result) {
-        String vertical = getVerticalName(result);
+        String vertical = getModuleName(result);
         if(summaryMap.get(vertical) == null) {
             summaryMap.put(vertical, new Summary(1, 0, 0));
         } else {
@@ -176,7 +176,7 @@ public class TestListener implements ITestListener {
     }
 
     public void updateSkip(ITestResult result) {
-        String vertical = getVerticalName(result);
+        String vertical = getModuleName(result);
         if(summaryMap.get(vertical) == null) {
             summaryMap.put(vertical, new Summary(1, 0, 0));
         } else {

@@ -1,6 +1,7 @@
 package com.tiket.test.trainandwoosh;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.trainandwoosh.TrainAndWooshPageModule3Api;
 import com.tiket.model.ApiResult;
@@ -24,7 +25,8 @@ public class TestTrainAndWooshPageModule3 extends BaseTest {
     }
 
     @Api(name = "TrainAndWooshPageModule3Api")
-    @Vertical(name = "Ground")
+    @Module(name = "Train")
+    @Vertical(name = "NFT")
     @Test(dataProvider = "urlDataProvider")
     public void testTrainAndWooshPageModule3Url(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
@@ -32,7 +34,8 @@ public class TestTrainAndWooshPageModule3 extends BaseTest {
     }
 
     @Api(name = "TrainAndWooshPageModule3Api")
-    @Vertical(name = "Ground")
+    @Module(name = "Train")
+    @Vertical(name = "NFT")
     @Test(dataProvider = "endpointDataProvider")
     public void testTrainAndWooshPageModule3Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);

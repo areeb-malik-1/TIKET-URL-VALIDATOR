@@ -1,6 +1,7 @@
 package com.tiket.test.carrental;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.carrental.CarRental1Api;
 import com.tiket.model.ApiResult;
@@ -24,6 +25,7 @@ public class TestCarRental1 extends BaseTest {
     }
 
     @Api(name = "CarRental1Api")
+    @Module(name = "CarRental")
     @Vertical(name = "NFT")
     @Test(dataProvider = "urlDataProvider")
     public void testCarRental1Url(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -32,6 +34,7 @@ public class TestCarRental1 extends BaseTest {
     }
 
     @Api(name = "CarRental1Api")
+    @Module(name = "CarRental")
     @Vertical(name = "NFT")
     @Test(dataProvider = "endpointDataProvider")
     public void testCarRental1Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
