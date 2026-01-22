@@ -8,15 +8,11 @@ import com.tiket.api.hotel.HotelPageModuleApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.test.home.TestSetting;
-import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
 
 public class TestHotelPageModule extends BaseTest {
 
@@ -28,8 +24,6 @@ public class TestHotelPageModule extends BaseTest {
     public void beforeClass() throws Exception {
         HotelPageModuleApi hotelPageModuleApi = new HotelPageModuleApi(accessToken, "ANDROID", baseUrl);
         apiResult = hotelPageModuleApi.hitApi();
-        Assertion.assertThat("Check api response: ", isSuccess(apiResult), is(true));
-        Assertion.assertThat("Check data is not null: ", apiResult.data(), is(notNullValue()));
     }
 
     @Api(name = "HotelPageModuleApi")

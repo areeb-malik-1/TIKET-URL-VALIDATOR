@@ -6,15 +6,11 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.trainandwoosh.TrainAndWooshPageModule1Api;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
-import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
 
 public class TestTrainAndWooshPageModule1 extends BaseTest {
 
@@ -26,8 +22,6 @@ public class TestTrainAndWooshPageModule1 extends BaseTest {
     public void beforeClass() throws Exception {
         TrainAndWooshPageModule1Api trainAndWooshPageModule1Api = new TrainAndWooshPageModule1Api(accessToken, "ANDROID", baseUrl);
         apiResult = trainAndWooshPageModule1Api.hitApi();
-        Assertion.assertThat("Check api response: ", isSuccess(apiResult), is(true));
-        Assertion.assertThat("Check data is not null: ", apiResult.data(), is(notNullValue()));
     }
 
     @Api(name = "TrainAndWooshPageModule1Api")

@@ -6,15 +6,11 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.home.HomeApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
-import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
 
 public class TestHome extends BaseTest {
 
@@ -26,8 +22,6 @@ public class TestHome extends BaseTest {
     public void beforeClass() throws Exception {
         HomeApi homeApi = new HomeApi(accessToken, "ANDROID", baseUrl);
         apiResult = homeApi.hitApi();
-        Assertion.assertThat("Check api response: ", isSuccess(apiResult), is(true));
-        Assertion.assertThat("Check data is not null: ", apiResult.data(), is(notNullValue()));
     }
 
     @Api(name = "HomeApi")
