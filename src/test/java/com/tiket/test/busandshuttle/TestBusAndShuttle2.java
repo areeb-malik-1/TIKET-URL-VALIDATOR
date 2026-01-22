@@ -1,6 +1,7 @@
 package com.tiket.test.busandshuttle;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.busandshuttle.BusAndShuttle2Api;
 import com.tiket.model.ApiResult;
@@ -24,6 +25,7 @@ public class TestBusAndShuttle2 extends BaseTest {
     }
 
     @Api(name = "BusAndShuttle2Api")
+    @Module(name = "BUS")
     @Vertical(name = "NFT")
     @Test(dataProvider = "urlDataProvider")
     public void testBusAndShuttle2Url(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -32,6 +34,7 @@ public class TestBusAndShuttle2 extends BaseTest {
     }
 
     @Api(name = "BusAndShuttle2Api")
+    @Module(name = "BUS")
     @Vertical(name = "NFT")
     @Test(dataProvider = "endpointDataProvider")
     public void testBusAndShuttle2Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

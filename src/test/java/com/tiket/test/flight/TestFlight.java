@@ -1,6 +1,7 @@
 package com.tiket.test.flight;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.flight.FlightApi;
 import com.tiket.model.ApiResult;
@@ -25,6 +26,7 @@ public class TestFlight extends BaseTest {
 
     @Api(name = "FlightApi")
     @Vertical(name = "Flight")
+    @Module(name = "Flight")
     @Test(dataProvider = "urlDataProvider")
     public void testFlightUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
@@ -33,6 +35,7 @@ public class TestFlight extends BaseTest {
 
     @Api(name = "FlightApi")
     @Vertical(name = "Flight")
+    @Module(name = "Flight")
     @Test(dataProvider = "endpointDataProvider")
     public void testFlightEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);

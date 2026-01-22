@@ -1,6 +1,7 @@
 package com.tiket.test.home;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.home.HomePageModuleApi;
 import com.tiket.model.ApiResult;
@@ -24,6 +25,7 @@ public class TestHomePageModule extends BaseTest {
     }
 
     @Api(name = "HomePageModuleApi")
+    @Module(name = "Home")
     @Vertical(name = "Grand")
     @Test(dataProvider = "urlDataProvider")
     public void testPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -32,6 +34,7 @@ public class TestHomePageModule extends BaseTest {
     }
 
     @Api(name = "HomePageModuleApi")
+    @Module(name = "Home")
     @Vertical(name = "Grand")
     @Test(dataProvider = "endpointDataProvider")
     public void testPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

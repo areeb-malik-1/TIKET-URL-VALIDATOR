@@ -1,6 +1,7 @@
 package com.tiket.test.home;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.home.NavbarApi;
 import com.tiket.model.ApiResult;
@@ -24,6 +25,7 @@ public class TestNavbar  extends BaseTest {
     }
 
     @Api(name = "NavbarApi")
+    @Module(name = "Home")
     @Vertical(name = "Grand")
     @Test(dataProvider = "urlDataProvider")
     public void testNavbarUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -32,6 +34,7 @@ public class TestNavbar  extends BaseTest {
     }
 
     @Api(name = "NavbarApi")
+    @Module(name = "Home")
     @Vertical(name = "Grand")
     @Test(dataProvider = "endpointDataProvider")
     public void testNavbarEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

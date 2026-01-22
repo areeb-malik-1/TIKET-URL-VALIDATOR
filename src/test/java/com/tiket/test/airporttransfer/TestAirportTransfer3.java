@@ -1,6 +1,7 @@
 package com.tiket.test.airporttransfer;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.airporttransfer.AirportTransfer3Api;
 import com.tiket.model.ApiResult;
@@ -24,7 +25,8 @@ public class TestAirportTransfer3 extends BaseTest {
     }
 
     @Api(name = "AirportTransfer3Api")
-    @Vertical(name = "Ground")
+    @Module(name = "AT")
+    @Vertical(name = "NFT")
     @Test(dataProvider = "urlDataProvider")
     public void testAirportTransfer3Url(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
@@ -32,7 +34,8 @@ public class TestAirportTransfer3 extends BaseTest {
     }
 
     @Api(name = "AirportTransfer3Api")
-    @Vertical(name = "Ground")
+    @Module(name = "AT")
+    @Vertical(name = "NFT")
     @Test(dataProvider = "endpointDataProvider")
     public void testAirportTransfer3Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);

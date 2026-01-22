@@ -1,9 +1,9 @@
-package com.tiket.test.vilasandapt;
+package com.tiket.test.tour;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.vilasandapt.VilasAndApt1;
+import com.tiket.api.tour.Tour1Api;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
@@ -12,32 +12,32 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestVilasAndApt1 extends BaseTest {
+public class TestTour1 extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = Mapping.mapping.get(TestVilasAndApt1.class.getName()).urls();
-    String[] endpointKeys = Mapping.mapping.get(TestVilasAndApt1.class.getName()).endpoints();
+    String[] urlKeys = Mapping.mapping.get(TestTour1.class.getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(TestTour1.class.getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        VilasAndApt1 vilasAndApt1 = new VilasAndApt1(accessToken, "ANDROID", baseUrl);
-        apiResult = vilasAndApt1.hitApi();
+        Tour1Api tour1Api = new Tour1Api(accessToken, "ANDROID", baseUrl);
+        apiResult = tour1Api.hitApi();
     }
 
-    @Api(name = "VilasAndApt1")
-    @Module(name = "NHA")
-    @Vertical(name = "Accommodation")
+    @Api(name = "Tour1Api")
+    @Module(name = "Tour")
+    @Vertical(name = "TTD")
     @Test(dataProvider = "urlDataProvider")
-    public void testNhaLongstayUrl(VerifyUrls.UrlItem urlItem) throws Exception {
+    public void testTour1Url(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "VilasAndApt1")
-    @Module(name = "NHA")
-    @Vertical(name = "Accommodation")
+    @Api(name = "Tour1Api")
+    @Module(name = "Tour")
+    @Vertical(name = "TTD")
     @Test(dataProvider = "endpointDataProvider")
-    public void testNhaLongstayEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+    public void testTour1Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }

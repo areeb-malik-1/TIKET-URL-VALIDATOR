@@ -1,6 +1,7 @@
 package com.tiket.test.events;
 
 import com.tiket.annotation.Api;
+import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.events.Events3Api;
 import com.tiket.model.ApiResult;
@@ -24,6 +25,7 @@ public class TestEvents3 extends BaseTest {
     }
 
     @Api(name = "Events3Api")
+    @Module(name = "Events")
     @Vertical(name = "TTD")
     @Test(dataProvider = "urlDataProvider")
     public void testEvents3Url(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -32,6 +34,7 @@ public class TestEvents3 extends BaseTest {
     }
 
     @Api(name = "Events3Api")
+    @Module(name = "Events")
     @Vertical(name = "TTD")
     @Test(dataProvider = "endpointDataProvider")
     public void testEvents3Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
