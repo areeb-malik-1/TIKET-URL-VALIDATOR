@@ -23,7 +23,7 @@ public final class SlackSummaryFormatter {
             int passPct = total == 0 ? 0 : (int) Math.round(s.pass() * 100.0 / total);
 
             sb.append(String.format(
-                    "%-3s %4d %3d %3d %3d %3d%n",
+                    "%-12s %4d %4d %4d %4d %3d%n",
                     //shortName(module),
                     module,
                     total,
