@@ -160,7 +160,7 @@ public class BaseTest {
         return objects;
     }
 
-    private boolean isSuccess(ApiResult apiResult) {
+    protected boolean isSuccess(ApiResult apiResult) {
         return apiResult.status() >= 200 && apiResult.status() < 300;
     }
 }

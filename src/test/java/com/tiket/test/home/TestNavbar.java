@@ -6,11 +6,15 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.home.NavbarApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
+import com.tiket.testbase.Assertion;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 public class TestNavbar  extends BaseTest {
 
@@ -22,6 +26,8 @@ public class TestNavbar  extends BaseTest {
     public void beforeClass() throws Exception {
         NavbarApi navbarApi = new NavbarApi(accessToken, "ANDROID", baseUrl);
         apiResult = navbarApi.hitApi();
+        Assertion.assertThat("Check api response: ", isSuccess(apiResult), is(true));
+        Assertion.assertThat("Check data is not null: ", apiResult.data(), is(notNullValue()));
     }
 
     @Api(name = "NavbarApi")
