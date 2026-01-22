@@ -20,6 +20,8 @@ import com.tiket.test.busandshuttle.TestBusAndShuttle2;
 import com.tiket.test.carrental.TestCarRental1;
 import com.tiket.test.carrental.TestCarRental2;
 import com.tiket.test.events.TestEvents1;
+import com.tiket.test.events.TestEvents2;
+import com.tiket.test.events.TestEvents3;
 import com.tiket.test.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.vilasandapt.TestVilasAndAptPageModule;
@@ -106,6 +108,14 @@ public class Mapping {
             // Events
             Map.entry(TestEvents1.class.getName(), new Data(
                     new String[]{"urlSmall", "urlMedium", "urlLarge"},
-                    new String[]{}))
+                    new String[]{})),
+            Map.entry(TestEvents2.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{})),
+            Map.entry(TestEvents3.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{"url"}))
+            // Tours
+            
     );
 }
