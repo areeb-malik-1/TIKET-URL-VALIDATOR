@@ -15,6 +15,7 @@ import com.tiket.test.trainandwoosh.TestTrainAndWooshPageModule3;
 import com.tiket.test.airporttransfer.TestAirportTransfer1;
 import com.tiket.test.airporttransfer.TestAirportTransfer2;
 import com.tiket.test.airporttransfer.TestAirportTransfer3;
+import com.tiket.test.busandshuttle.TestBusAndShuttle1;
 import com.tiket.test.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.vilasandapt.TestVilasAndAptPageModule;
@@ -75,13 +76,16 @@ public class Mapping {
                     new String[]{"imageUrl"},
                     new String[]{"clickUrl"})),
             Map.entry(TestAirportTransfer1.class.getName(), new Data(
-                    new String[]{"iconUrl"},
-                    new String[]{})),
-            Map.entry(TestAirportTransfer2.class.getName(), new Data(
                     new String[]{"originalIcon", "destinationIcon"},
                     new String[]{})),
-            Map.entry(TestAirportTransfer3.class.getName(), new Data(
+            Map.entry(TestAirportTransfer2.class.getName(), new Data(
                     new String[]{"image", "originalIcon", "destinationIcon"},
+                    new String[]{})),
+            Map.entry(TestAirportTransfer3.class.getName(), new Data(
+                    new String[]{"imageUrl", "iconUrl"},
+                    new String[]{"webUrl"})),
+            Map.entry(TestBusAndShuttle1.class.getName(), new Data(
+                    new String[]{"iconUrl"},
                     new String[]{}))
     );
 }
