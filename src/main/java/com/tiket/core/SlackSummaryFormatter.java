@@ -15,7 +15,7 @@ public final class SlackSummaryFormatter {
         StringBuilder sb = new StringBuilder();
 
         sb.append("```\n");
-        sb.append("Module  Total  Pass  Fail  Skip  Pass%\n");
+        sb.append("Mod  Tot  P  F  S  P%\n");
         sb.append("--------------------\n");
 
         summaryMap.forEach((module, s) -> {
