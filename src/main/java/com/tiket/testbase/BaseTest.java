@@ -27,8 +27,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
-import static com.tiket.testng.TestListener.timestamp;
+import static com.tiket.testng.TestListener.THREAD_LOCAL_COUNT;
 import static org.hamcrest.core.Is.is;
 
 public class BaseTest {
@@ -39,6 +41,7 @@ public class BaseTest {
     protected Environment env;
     protected static String baseUrl;
     protected static String accessToken;
+    private static final AtomicLong testCount = new AtomicLong(0);
 
     @BeforeSuite
     public void beforeSuite(ITestContext context) throws Exception {
@@ -71,9 +74,8 @@ public class BaseTest {
     @BeforeMethod
     public void beforeMethod(ITestContext context, Method method) {
         synchronized (this) {
-            long t = System.currentTimeMillis();
-            timestamp.set(t);
-            ExtentTest test = ExtentTestManager.getTest(method.getName(), t);
+            THREAD_LOCAL_COUNT.set(testCount.incrementAndGet());
+            ExtentTest test = ExtentTestManager.getTest(method.getName(), testCount.get());
             mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
         }
         context.setAttribute("mainLogger", mainLogger);
