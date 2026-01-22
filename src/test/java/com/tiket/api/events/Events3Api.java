@@ -31,7 +31,7 @@ public class Events3Api implements BaseApi {
         String fullUrl = url + "?pageSize=8&sortField=popularityScore&sortDirection=DESC&ff-ttde-popularity-score-automation=true&ff-ttde-enter-search-improvement=true&excludeSubcategoryGroup=true";
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(fullUrl))
                 .header("authorization", "Bearer " + this.accessToken)
                 .header("Cookie", "__cf_bm=bHyc7V0.W428cHfATM5vNr6pbjUkku0bKEYILvm_TPM-1767873365-1.0.1.1-fKK8JJVihcLWHnbZReOVsUZhwO3WqR5sqf4nenioZw.xS4hGy_lLaCHRjfx5WMnH6LVkRcBLficdLwrUC4qXNtLfo2C4YqxT9sS4i3IW0rII9Dpw5.kD4rmUtWFSzrUS; _cfuvid=z7gRF834XbUD6MB2gE6ex8mX_KDmHCZtfKc9AF8FBi0-1767873365186-0.0.1.1-604800000")
                 .header("useragent", "tiketcom/android-version (twh:20296642)")

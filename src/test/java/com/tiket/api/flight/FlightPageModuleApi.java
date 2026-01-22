@@ -37,25 +37,31 @@ public class FlightPageModuleApi implements BaseApi {
                 .uri(URI.create(fullUrl))
                 .GET()
                 .header("authorization", "Bearer " + this.accessToken)
+                .header("Cookie",
+                        "__cf_bm=1PJsJFbKILXTV5Z7F.l78BOZ9sgc76UeFzkOItinuP0-1768991585-1.0.1.1-_3h9jd81JBAKMe3az94LuuxHpXfGYH3xikjMq.4htz1W8QVgx6MzzXpSn4lYkCniboSDLd6JMgj5YgXN2V3ClvldT8lBEGMDdacOV0UfVxxKsWB0lxm.mWn52YiqNwLG; " +
+                                "_cfuvid=6cE6ZeXKdlbd0cedTou5Cq8umjoxFPfQToc3aABi3rs-1768991585906-0.0.1.1-604800000")
                 .header("containername", "com.tiket.android.flight.presentation.landing.FlightLandingActivity")
                 .header("screenname", "com.tiket.android.flight.presentation.landing.FlightLandingActivity")
-                .header("x-correlation-id", "c5f0154e-aa0b-481a-a5c7-ad9d5b3cc3ca|1767868706883")
+                .header("x-correlation-id", "10863874-9f7f-462d-ba6b-265847bb3b8e|1768991587184")
                 .header("deviceid", "179dd086888c94ec")
                 .header("devicemodel", "Xiaomi+23108RN04Y")
                 .header("osversion", "14")
-                .header("appversion", "5.9.1-debug-NCT-20474/play_integrity")
-                .header("tiketsessionid", "c5f0154e-aa0b-481a-a5c7-ad9d5b3cc3ca")
+                .header("appversion", "5.9.1-uat-HEAD")
+                .header("tiketsessionid", "10863874-9f7f-462d-ba6b-265847bb3b8e")
                 .header("platform", "ANDROID")
-                .header("tiket-user-agent", "tiketcom/android-version (twh:20296642) - v5.9.1-debug-NCT-20474/play_integrity")
+                .header("user-agent",
+                        "Mozilla/5.0 (Linux; Android 14; 23108RN04Y Build/UP1A.231005.007; wv) " +
+                                "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/143.0.7499.146 Mobile Safari/537.36")
+                .header("tiket-user-agent", "tiketcom/android-version (twh:20296642) - v5.9.1-uat-HEAD")
                 .header("lang", "en")
-                .header("currency", "SGD")
+                .header("currency", "USD")
                 .header("accept-language", "en")
-                .header("x-currency", "SGD")
+                .header("x-currency", "USD")
                 .header("x-country-code", "IDN")
                 .header("language", "en")
                 .header("content-type", "application/json")
                 .header("channelid", "ANDROID")
-                .header("if-modified-since", "Thu, 08 Jan 2026 10:25:41 GMT")
+
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
