@@ -37,7 +37,6 @@ public class TestListener implements ITestListener {
         setAnnotations(result, test);
 
         TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
-        ExtentTestManager.flushReports();
     }
 
     @Override
@@ -50,7 +49,6 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "PASS");
         updatePass(result);
-        ExtentTestManager.flushReports();
     }
 
     @Override
@@ -63,7 +61,6 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "FAIL");
         updateFail(result);
-        ExtentTestManager.flushReports();
     }
 
     @Override
@@ -76,7 +73,6 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "SKIP");
         updateSkip(result);
-        ExtentTestManager.flushReports();
     }
 
     @Override
@@ -86,8 +82,6 @@ public class TestListener implements ITestListener {
         ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
         test.log(Status.FAIL, "Test failed intermittently: " + result.getMethod().getMethodName());
         logger.fatal("Test failed intermittently: " + result.getMethod().getMethodName());
-
-        ExtentTestManager.flushReports();
     }
 
     @Override
@@ -99,8 +93,6 @@ public class TestListener implements ITestListener {
         test.log(Status.FAIL, "Test failed with timeout: " + result.getMethod().getMethodName());
         logger.fatal("Test failed with timeout: " + result.getMethod().getMethodName());
         updateFail(result);
-
-        ExtentTestManager.flushReports();
     }
 
     @Override

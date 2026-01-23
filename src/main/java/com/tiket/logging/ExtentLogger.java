@@ -40,7 +40,6 @@ public class ExtentLogger implements ILogger {
     @Override
     public void step(String msg) {
         node = test.createNode("<h4 style=\"color: blue\">" + msg + "</h4>");
-        test.getExtent().flush();
     }
 
     @Override
@@ -55,13 +54,11 @@ public class ExtentLogger implements ILogger {
             assertionNode = this.node.createNode("<h4 style=\"color: red\";>[Assertion failed: " + msg + "]</h4>");
             assertionNode.fail(detail);
         }
-        test.getExtent().flush();
     }
 
     @Override
     public void exception(Throwable throwable) {
         ExtentTest exceptionNode = node.createNode("<h4 style=\"color: red\";>Exception</h4>");
         exceptionNode.fail(throwable);
-        test.getExtent().flush();
     }
 }
