@@ -37,7 +37,6 @@ public class SettingsApi implements BaseApi {
                 .header("containername", "com.tiket.gits.HomeSplashActivity")
                 .header("screenname", "com.tiket.gits.HomeSplashActivity")
                 .header("x-correlation-id", "10863874-9f7f-462d-ba6b-265847bb3b8e|1768991461995")
-                .header("authorization", "Bearer eyJraWQiOiJoaUJOenpIeXBLb3JtRzdWYWFjcm5RYnpLOWEwOTd4ZSJ9.eyJhdWQiOiJ0aWtldC5jb20iLCJzdWIiOiI2OTVmOWI1NjI1N2I4ZTEzNTdhZmJkNGIiLCJuYmYiOjE3Njc4NzMzNjYsImlzcyI6Imh0dHBzOi8vd3d3LnRpa2V0LmNvbSIsImV4cCI6MTc2OTA4Mjk2Nn0.T5bi-4qX9vL1w9rxQ-Kt0qUnuL3NNp0F2thCuYzhZ9ZV_vI8Y0BD9hpI096bFTnW")
                 .header("deviceid", "179dd086888c94ec")
                 .header("devicemodel", "Xiaomi+23108RN04Y")
                 .header("osversion", "14")
