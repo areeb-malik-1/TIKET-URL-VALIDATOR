@@ -14,13 +14,12 @@ public class ExtentTestManager {
     private static final ExtentReports extentReports = ExtentReportManager.getReports();
     private static final Map<String, ExtentTest> nameToTestMap = new ConcurrentHashMap<>();
 
-    public synchronized static ExtentTest createTest(String testName, String testDescription, long timestamp) {
-        String name = testName + "_" + timestamp;
+    public synchronized static ExtentTest createTest(String name) {
         try {
-            ExtentTest test = extentReports.createTest(name, testDescription);
+            ExtentTest test = extentReports.createTest(name, "");
             Long threadID = Thread.currentThread().getId();
             nameToTestMap.put(name, test);
-            TestCountTracker.incrementTestsInExtentReport(testName);
+            TestCountTracker.incrementTestsInExtentReport(name);
             logger.info("Created ExtentTest for: {} on thread: {}", name, threadID);
             return test;
         } catch (Exception e) {
@@ -29,12 +28,7 @@ public class ExtentTestManager {
         }
     }
 
-    public synchronized static ExtentTest createTest(String testName, long timestamp) {
-        return createTest(testName, "", timestamp);
-    }
-
-    public synchronized static ExtentTest getTest(String testName, long timestamp) {
-        String name = testName + "_" + timestamp;
+    public synchronized static ExtentTest getTest(String name) {
         if(!nameToTestMap.containsKey(name)) {
             throw new RuntimeException("No ExtentTest found for name: " + name);
         }
