@@ -17,19 +17,23 @@ public class ExtentTestManager {
 
     public synchronized static ExtentTest getTest(String testName, String testDescription, long timestamp) {
         String name = testName + "_" + timestamp;
-        if (!nameToTestMap.containsKey(name)) {
+        nameToTestMap.computeIfAbsent(name, key -> {
             try {
-                ExtentTest test = extentReports.createTest(name, testDescription);
-                Long threadID = Thread.currentThread().getId();
-                nameToTestMap.put(name, test);
+                ExtentTest test = extentReports.createTest(key, testDescription);
                 TestCountTracker.incrementTestsInExtentReport(testName);
-                logger.info("Created ExtentTest for: {} on thread: {}", name, threadID);
+
+                logger.info(
+                        "Created ExtentTest for: {} on thread: {}",
+                        key,
+                        Thread.currentThread().getId()
+                );
+
+                return test;
             } catch (Exception e) {
-                logger.error("Failed to create ExtentTest for: {}", name, e);
-                throw new RuntimeException("Failed to create test: " + name, e);
+                logger.error("Failed to create ExtentTest for: {}", key, e);
+                throw new RuntimeException("Failed to create test: " + key, e);
             }
-        }
-        return nameToTestMap.get(name);
+        });
     }
 
     public synchronized static ExtentTest getTest(String testName, long timestamp) {
