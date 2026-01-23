@@ -56,7 +56,7 @@ public class TestCountTracker {
         int expectedTotal = testsPassed.get() + testsFailed.get() + testsSkipped.get();
         if (testsInExtentReport.get() != expectedTotal) {
             logger.warn("DISCREPANCY DETECTED: ExtentReport shows {} tests but {} tests were executed",
-                    testsInExtentReport.get(), expectedTotal);
+                    testsInExtentReport.get(), testsStarted.get());
         } else {
             logger.info("Test counts match - ExtentReport is accurate");
         }
