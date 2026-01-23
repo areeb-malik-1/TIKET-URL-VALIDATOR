@@ -38,7 +38,7 @@ public final class SlackSummaryFormatter {
         });
 
         sb.append("```\n");
-        sb.append("Total links verified: ").append(TestCountTracker.getTestsCompleted()).append("\n");
+        sb.append("Total links verified: ").append(TestCountTracker.getTestsStarted()).append("\n");
         if(!NON_WORKING_APIS.isEmpty()) {
             sb.append("Non Working APIs: ").append("\n");
             for(String api : NON_WORKING_APIS) {

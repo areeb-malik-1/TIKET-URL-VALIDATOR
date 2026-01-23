@@ -24,26 +24,26 @@ public class TestListener implements ITestListener {
 
     private static final Logger logger = LogManager.getLogger(TestListener.class);
     private static final Map<String, Summary> summaryMap = new ConcurrentHashMap<>();
-    public static final ThreadLocal<Long> THREAD_LOCAL_COUNT = new ThreadLocal<>();
 
     @Override
     public void onTestStart(ITestResult result) {
         ITestListener.super.onTestStart(result);
 
+        TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
+
         String msg = "Test start: " + result.getMethod().getMethodName();
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
         logger.info(msg);
         test.info(msg);
         setAnnotations(result, test);
 
-        TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
 
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
         test.log(Status.PASS, "Test success: " + result.getMethod().getMethodName());
         logger.info("Test success: " + result.getMethod().getMethodName());
 
@@ -55,7 +55,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
 
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
         test.log(Status.FAIL, "Test failed: " + result.getMethod().getMethodName());
         logger.fatal("Test failed: " + result.getMethod().getMethodName());
 
@@ -67,7 +67,7 @@ public class TestListener implements ITestListener {
     public void onTestSkipped(ITestResult result) {
         ITestListener.super.onTestSkipped(result);
 
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
         test.skip("Test skipped: " + result.getMethod().getMethodName());
         logger.error("Test Skipped: " + result.getMethod().getMethodName());
 
@@ -79,7 +79,7 @@ public class TestListener implements ITestListener {
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
 
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
         test.log(Status.FAIL, "Test failed intermittently: " + result.getMethod().getMethodName());
         logger.fatal("Test failed intermittently: " + result.getMethod().getMethodName());
     }
@@ -88,7 +88,7 @@ public class TestListener implements ITestListener {
     public void onTestFailedWithTimeout(ITestResult result) {
         ITestListener.super.onTestFailedWithTimeout(result);
 
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), THREAD_LOCAL_COUNT.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
 
         test.log(Status.FAIL, "Test failed with timeout: " + result.getMethod().getMethodName());
         logger.fatal("Test failed with timeout: " + result.getMethod().getMethodName());

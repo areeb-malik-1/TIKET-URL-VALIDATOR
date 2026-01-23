@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.tiket.testng.TestListener.THREAD_LOCAL_COUNT;
 import static org.hamcrest.core.Is.is;
 
 public class BaseTest {
@@ -74,7 +73,6 @@ public class BaseTest {
     @BeforeMethod
     public void beforeMethod(ITestContext context, Method method) {
         synchronized (this) {
-            THREAD_LOCAL_COUNT.set(testCount.incrementAndGet());
             ExtentTest test = ExtentTestManager.getTest(method.getName(), testCount.get());
             mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
         }
