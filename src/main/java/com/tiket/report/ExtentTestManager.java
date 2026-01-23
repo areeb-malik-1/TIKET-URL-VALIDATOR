@@ -17,7 +17,7 @@ public class ExtentTestManager {
 
     public synchronized static ExtentTest getTest(String testName, String testDescription, long timestamp) {
         String name = testName + "_" + timestamp;
-        nameToTestMap.computeIfAbsent(name, key -> {
+        return nameToTestMap.computeIfAbsent(name, key -> {
             try {
                 ExtentTest test = extentReports.createTest(key, testDescription);
                 TestCountTracker.incrementTestsInExtentReport(testName);
