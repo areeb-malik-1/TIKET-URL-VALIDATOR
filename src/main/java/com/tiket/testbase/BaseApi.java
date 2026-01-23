@@ -17,7 +17,7 @@ public interface BaseApi {
     default void isSuccess(HttpResponse<?> response, JsonNode data) {
         int statusCode = response.statusCode();
         boolean ok = statusCode >= 200 && statusCode < 300;
-        if(!ok || data == null) {
+        if(data == null) {
             logger.debug("Base Api Failed, Response Status Code: {}, for API: {}, requestUrl: {}", statusCode, this.getClass().getSimpleName(), response.request().uri());
             NON_WORKING_APIS.add(this.getClass().getSimpleName());
         }
