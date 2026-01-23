@@ -40,7 +40,7 @@ public class BaseTest {
     protected Environment env;
     protected static String baseUrl;
     protected static String accessToken;
-    private static final AtomicLong testCount = new AtomicLong(0);
+    public static final AtomicLong testCount = new AtomicLong(0);
 
     @BeforeSuite
     public void beforeSuite(ITestContext context) throws Exception {

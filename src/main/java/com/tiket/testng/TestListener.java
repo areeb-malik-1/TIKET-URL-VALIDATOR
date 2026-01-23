@@ -20,6 +20,8 @@ import org.testng.ITestResult;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.tiket.testbase.BaseTest.testCount;
+
 public class TestListener implements ITestListener {
 
     private static final Logger logger = LogManager.getLogger(TestListener.class);
@@ -32,7 +34,7 @@ public class TestListener implements ITestListener {
         TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
 
         String msg = "Test start: " + result.getMethod().getMethodName();
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), testCount.get());
         logger.info(msg);
         test.info(msg);
         setAnnotations(result, test);
