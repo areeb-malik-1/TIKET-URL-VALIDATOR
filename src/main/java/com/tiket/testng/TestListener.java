@@ -6,6 +6,10 @@ import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.core.SlackSummaryFormatter;
 import com.tiket.io.Slack;
+import com.tiket.logging.ExtentLogger;
+import com.tiket.logging.ILogger;
+import com.tiket.logging.Log4JLogger;
+import com.tiket.logging.MainLogger;
 import com.tiket.model.Summary;
 import com.tiket.report.ExtentTestManager;
 import com.tiket.report.TestCountTracker;
@@ -26,6 +30,7 @@ public class TestListener implements ITestListener {
 
     private static final Logger logger = LogManager.getLogger(TestListener.class);
     private static final Map<String, Summary> summaryMap = new ConcurrentHashMap<>();
+    public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -34,7 +39,8 @@ public class TestListener implements ITestListener {
         TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
 
         String msg = "Test start: " + result.getMethod().getMethodName();
-        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), testCount.get());
+        ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), testCount.incrementAndGet());
+        mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
         logger.info(msg);
         test.info(msg);
         setAnnotations(result, test);

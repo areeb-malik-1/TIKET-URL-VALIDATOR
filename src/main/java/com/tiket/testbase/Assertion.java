@@ -6,6 +6,8 @@ import org.hamcrest.StringDescription;
 import org.junit.Assert;
 import org.testng.SkipException;
 
+import static com.tiket.testng.TestListener.mainLogger;
+
 public class Assertion {
 
     public static <T> void assertThat(String reason, T actual, Matcher<T> matcher) {
@@ -20,18 +22,18 @@ public class Assertion {
         String detail = description.toString().replaceAll("<", "[").replaceAll(">", "]");
 
         boolean passed = matcher.matches(actual);
-        BaseTest.mainLogger.get().assertion(reason, detail, passed);
+        mainLogger.get().assertion(reason, detail, passed);
 
         Assert.assertThat(reason, actual, matcher);
     }
 
     public static void fail(String reason) {
-        BaseTest.mainLogger.get().fail(reason);
+        mainLogger.get().fail(reason);
         Assert.fail(reason);
     }
 
     public static void skip(String detail) {
-        BaseTest.mainLogger.get().skip(detail);
+        mainLogger.get().skip(detail);
         throw new SkipException(detail);
     }
 }

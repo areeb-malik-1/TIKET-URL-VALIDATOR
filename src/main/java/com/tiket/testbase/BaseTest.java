@@ -29,12 +29,12 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static com.tiket.testng.TestListener.mainLogger;
 import static org.hamcrest.core.Is.is;
 
 public class BaseTest {
 
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
-    public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     public static final List<VerifyUrls.UrlVerificationResult> FAILED_RESULTS = new CopyOnWriteArrayList<>();
     public static final List<String> NON_WORKING_APIS = new CopyOnWriteArrayList<>();
     protected Environment env;
@@ -72,11 +72,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod(ITestContext context, Method method) {
-        synchronized (this) {
-            ExtentTest test = ExtentTestManager.getTest(method.getName(), testCount.get());
-            mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
-        }
-        context.setAttribute("mainLogger", mainLogger);
+
     }
 
     @AfterMethod
