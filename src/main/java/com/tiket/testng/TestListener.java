@@ -38,7 +38,7 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
         ExtentTest test = ExtentTestManager.getTest(result.getMethod().getMethodName(), TestCountTracker.getTestsStarted());
-        
+
         mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
         logger.info(msg);
         test.info(msg);
