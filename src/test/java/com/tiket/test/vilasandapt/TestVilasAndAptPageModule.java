@@ -30,7 +30,7 @@ public class TestVilasAndAptPageModule extends BaseTest {
     @Module(name = "NHA")
     @Vertical(name = "Accommodation")
     @Test(dataProvider = "urlDataProvider")
-    public void testSettingUrl(VerifyUrls.UrlItem urlItem) throws Exception {
+    public void testVilasAndAptUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -39,7 +39,7 @@ public class TestVilasAndAptPageModule extends BaseTest {
     @Module(name = "NHA")
     @Vertical(name = "Accommodation")
     @Test(dataProvider = "endpointDataProvider")
-    public void testSettingEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+    public void testVilasAndAptEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
