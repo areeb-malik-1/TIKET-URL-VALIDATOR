@@ -28,7 +28,7 @@ public class TestHomePageModule extends BaseTest {
     @Module(name = "Home")
     @Vertical(name = "Grand")
     @Test(dataProvider = "urlDataProvider")
-    public void testPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
+    public void testHomePageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -37,7 +37,7 @@ public class TestHomePageModule extends BaseTest {
     @Module(name = "Home")
     @Vertical(name = "Grand")
     @Test(dataProvider = "endpointDataProvider")
-    public void testPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+    public void testHomePageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
