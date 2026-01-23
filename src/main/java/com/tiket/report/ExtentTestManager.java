@@ -17,9 +17,9 @@ public class ExtentTestManager {
 
     public synchronized static ExtentTest getTest(String testName, String testDescription, long timestamp) {
         String name = testName + "_" + timestamp;
-        ExtentTest test = extentReports.createTest(name, testDescription);
         if (!nameToTestMap.containsKey(name)) {
             try {
+                ExtentTest test = extentReports.createTest(name, testDescription);
                 Long threadID = Thread.currentThread().getId();
                 nameToTestMap.put(name, test);
                 TestCountTracker.incrementTestsInExtentReport(testName);
