@@ -63,6 +63,10 @@ public class TestCountTracker {
         return summary.toString();
     }
 
+    public static int getTestsCompleted() {
+        return testsCompleted.get();
+    }
+
     public static void reset() {
         testsStarted.set(0);
         testsCompleted.set(0);

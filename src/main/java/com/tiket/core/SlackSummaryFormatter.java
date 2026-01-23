@@ -1,9 +1,12 @@
 package com.tiket.core;
 
 import com.tiket.model.Summary;
+import com.tiket.report.TestCountTracker;
 import com.tiket.service.ExtentReportUrl;
 
 import java.util.Map;
+
+import static com.tiket.testbase.BaseTest.NON_WORKING_APIS;
 
 public final class SlackSummaryFormatter {
 
@@ -35,6 +38,13 @@ public final class SlackSummaryFormatter {
         });
 
         sb.append("```\n");
+        sb.append("Total links verified: ").append(TestCountTracker.getTestsCompleted()).append("\n");
+        if(!NON_WORKING_APIS.isEmpty()) {
+            sb.append("Non Working APIs: ").append("\n");
+            for(String api : NON_WORKING_APIS) {
+                sb.append(api).append("\n");
+            }
+        }
         sb.append("📊 Extent: ").append(ExtentReportUrl.get());
 
         return sb.toString();

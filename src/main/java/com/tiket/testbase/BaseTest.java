@@ -27,7 +27,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static com.tiket.testng.TestListener.THREAD_LOCAL_COUNT;
@@ -37,7 +36,8 @@ public class BaseTest {
 
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
-    public static final List<VerifyUrls.UrlVerificationResult> failedResults = new CopyOnWriteArrayList<>();
+    public static final List<VerifyUrls.UrlVerificationResult> FAILED_RESULTS = new CopyOnWriteArrayList<>();
+    public static final List<String> NON_WORKING_APIS = new CopyOnWriteArrayList<>();
     protected Environment env;
     protected static String baseUrl;
     protected static String accessToken;
@@ -119,7 +119,7 @@ public class BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        if(!result.ok()) failedResults.add(result);
+        if(!result.ok()) FAILED_RESULTS.add(result);
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
     }
 
@@ -143,7 +143,7 @@ public class BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        if(!result.ok()) failedResults.add(result);
+        if(!result.ok()) FAILED_RESULTS.add(result);
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
     }
 

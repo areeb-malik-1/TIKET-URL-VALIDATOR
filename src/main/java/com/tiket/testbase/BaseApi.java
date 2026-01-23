@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.http.HttpResponse;
 
+import static com.tiket.testbase.BaseTest.NON_WORKING_APIS;
+
 public interface BaseApi {
 
     Logger logger = org.apache.logging.log4j.LogManager.getLogger(BaseApi.class);
@@ -17,6 +19,7 @@ public interface BaseApi {
         boolean ok = statusCode >= 200 && statusCode < 300;
         if(!ok || data == null) {
             logger.debug("Base Api Failed, Response Status Code: {}, for API: {}, requestUrl: {}", statusCode, this.getClass().getSimpleName(), response.request().uri());
+            NON_WORKING_APIS.add(this.getClass().getSimpleName());
         }
         assert ok && data != null;
     }
