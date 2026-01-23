@@ -7,13 +7,14 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ExtentTestManager {
 
     private static final Logger logger = LogManager.getLogger(ExtentTestManager.class);
     private static final ExtentReports extentReports = ExtentReportManager.getReports();
-    private static final Map<Long, String> threadToExtentTestMap = new HashMap<>();
-    private static final Map<String, ExtentTest> nameToTestMap = new HashMap<>();
+    private static final Map<Long, String> threadToExtentTestMap = new ConcurrentHashMap<>();
+    private static final Map<String, ExtentTest> nameToTestMap = new ConcurrentHashMap<>();
 
     public synchronized static ExtentTest getTest(String testName, String testDescription, long timestamp) {
         String name = testName + "_" + timestamp;
