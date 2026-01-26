@@ -3,6 +3,7 @@ package com.tiket.api.vilasandapt;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tiket.model.ApiResult;
+import com.tiket.service.headers.CommonProdHeaders;
 import com.tiket.testbase.BaseApi;
 
 import java.net.URI;
@@ -30,10 +31,9 @@ public class VilasAndApt1 implements BaseApi {
         String url = baseUrl + endpoint;
         String fullUrl = url + "?accommodationType=NHA";
 
-        HttpRequest request = HttpRequest.newBuilder()
+        HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .header("authorization", "Bearer " + this.accessToken)
-                .header("Cookie", "__cf_bm=bHyc7V0.W428cHfATM5vNr6pbjUkku0bKEYILvm_TPM-1767873365-1.0.1.1-fKK8JJVihcLWHnbZReOVsUZhwO3WqR5sqf4nenioZw.xS4hGy_lLaCHRjfx5WMnH6LVkRcBLficdLwrUC4qXNtLfo2C4YqxT9sS4i3IW0rII9Dpw5.kD4rmUtWFSzrUS; _cfuvid=z7gRF834XbUD6MB2gE6ex8mX_KDmHCZtfKc9AF8FBi0-1767873365186-0.0.1.1-604800000")
+                .header("Cookie", "")
                 .header("containername", "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity")
                 .header("screenname", "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity")
                 .header("x-correlation-id", "f9df70e3-688b-4228-bf5a-3ca93420692a|1767874540699")
@@ -53,8 +53,10 @@ public class VilasAndApt1 implements BaseApi {
                 .header("language", "en")
                 .header("content-type", "application/json")
                 .header("channelid", "ANDROID")
-                .GET()
-                .build();
+                .GET();
+
+        CommonProdHeaders.getHeaders(this.accessToken, "ANDROID").forEach(builder::header);
+        HttpRequest request = builder.build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
