@@ -33,26 +33,6 @@ public class VilasAndApt1 implements BaseApi {
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .header("Cookie", "")
-                .header("containername", "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity")
-                .header("screenname", "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity")
-                .header("x-correlation-id", "f9df70e3-688b-4228-bf5a-3ca93420692a|1767874540699")
-                .header("deviceid", "179dd086888c94ec")
-                .header("devicemodel", "Xiaomi+23108RN04Y")
-                .header("osversion", "14")
-                .header("appversion", "5.9.1-uat-HEAD")
-                .header("tiketsessionid", "f9df70e3-688b-4228-bf5a-3ca93420692a")
-                .header("platform", "ANDROID")
-                .header("user-agent", "Mozilla/5.0 (Linux; Android 14; 23108RN04Y Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/143.0.7499.146 Mobile Safari/537.36")
-                .header("tiket-user-agent", "tiketcom/android-version (twh:20296642) - v5.9.1-uat-HEAD")
-                .header("lang", "en")
-                .header("currency", "USD")
-                .header("accept-language", "en")
-                .header("x-currency", "USD")
-                .header("x-country-code", "IDN")
-                .header("language", "en")
-                .header("content-type", "application/json")
-                .header("channelid", "ANDROID")
                 .GET();
 
         CommonProdHeaders.getHeaders(this.accessToken, "ANDROID").forEach(builder::header);
