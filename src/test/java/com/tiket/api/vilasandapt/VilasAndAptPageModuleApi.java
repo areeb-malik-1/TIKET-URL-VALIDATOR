@@ -3,6 +3,7 @@ package com.tiket.api.vilasandapt;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tiket.model.ApiResult;
+import com.tiket.service.headers.CommonProdHeaders;
 import com.tiket.testbase.BaseApi;
 
 import java.net.URI;
@@ -38,39 +39,12 @@ public class VilasAndAptPageModuleApi implements BaseApi {
 
         System.out.println("Hotel full url: " + accessToken);
 
-        HttpRequest request = HttpRequest.newBuilder()
+        var builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .GET()
-                .header("authorization", "Bearer " + this.accessToken)
-                .header("Cookie",
-                        "__cf_bm=bHyc7V0.W428cHfATM5vNr6pbjUkku0bKEYILvm_TPM-1767873365-1.0.1.1-fKK8JJVihcLWHnbZReOVsUZhwO3WqR5sqf4nenioZw.xS4hGy_lLaCHRjfx5WMnH6LVkRcBLficdLwrUC4qXNtLfo2C4YqxT9sS4i3IW0rII9Dpw5.kD4rmUtWFSzrUS; "
-                                + "_cfuvid=z7gRF834XbUD6MB2gE6ex8mX_KDmHCZtfKc9AF8FBi0-1767873365186-0.0.1.1-604800000")
-                .header("containername",
-                        "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity")
-                .header("screenname",
-                        "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity")
-                .header("x-correlation-id",
-                        "f9df70e3-688b-4228-bf5a-3ca93420692a|1767874540972")
-                .header("deviceid", "179dd086888c94ec")
-                .header("devicemodel", "Xiaomi+23108RN04Y")
-                .header("osversion", "14")
-                .header("appversion", "5.9.1-uat-HEAD")
-                .header("tiketsessionid", "f9df70e3-688b-4228-bf5a-3ca93420692a")
-                .header("platform", "ANDROID")
-                .header("user-agent",
-                        "Mozilla/5.0 (Linux; Android 14; 23108RN04Y Build/UP1A.231005.007; wv)")
-                .header("tiket-user-agent",
-                        "tiketcom/android-version (twh:20296642) - v5.9.1-uat-HEAD")
-                .header("lang", "en")
-                .header("currency", "USD")
-                .header("accept-language", "en")
-                .header("x-currency", "USD")
-                .header("x-country-code", "IDN")
-                .header("language", "en")
-                .header("content-type", "application/json")
-                .header("channelid", "ANDROID")
-                .build();
+                .GET();
 
+        CommonProdHeaders.getHeaders(this.accessToken, "ANDROID").forEach(builder::header);
+        HttpRequest request = builder.build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println("\n=== Vilas and Apt. API Response ===");
