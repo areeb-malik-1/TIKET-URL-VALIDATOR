@@ -47,7 +47,7 @@ public class Mapping {
                     new String[]{"clickUrl", "actionUrl"})),
             // homepage
             Map.entry(TestHome.class.getName(), new Data(
-                    new String[]{"icon", "active", "inactive", "backgroundImage", "globalSearchImage", "iconUrl", "supergraphicImage", "backgroundUrl", "url", "mobileUrl", "airlineIcon", "image"},
+                    new String[]{"icon", "active", "inactive", "backgroundImage", "globalSearchImage", "iconUrl", "supergraphicImage", "backgroundUrl", "mobileUrl", "airlineIcon", "image"},
                     new String[]{"url", "linkUrl", "clickUrl", "buttonUrl", "actionUrl", "link", "linkInactive"})),
             Map.entry(TestNavbar.class.getName(), new Data(
                     new String[]{"active", "inactive"},
