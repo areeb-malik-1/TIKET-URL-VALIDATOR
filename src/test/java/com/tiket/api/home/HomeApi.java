@@ -3,6 +3,7 @@ package com.tiket.api.home;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tiket.model.ApiResult;
+import com.tiket.service.headers.CommonProdHeaders;
 import com.tiket.testbase.BaseApi;
 
 import java.net.URI;
@@ -13,14 +14,12 @@ import java.net.http.HttpResponse;
 public class HomeApi implements BaseApi {
 
     private final String accessToken;
-    private final String platform;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public HomeApi(String accessToken, String platform, String baseUrl) {
+    public HomeApi(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
-        this.platform = platform;
         this.baseUrl = baseUrl;
     }
 
@@ -30,21 +29,16 @@ public class HomeApi implements BaseApi {
         String url = baseUrl + endpoint;
         String fullUrl = url + "?availablePlatforms=ANDROID&isNotificationActive=true&pageModuleCode=HOME_V2&verticalIconVariant=control&variant=HOME_V2&vertical=HOME&headerVariant=newhome&platform=MOBILE";
 
-        System.out.println("Homepage full url: " + baseUrl);
 
-        HttpRequest request = HttpRequest.newBuilder()
+
+        HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .GET()
-                .header("authorization", "Bearer " + this.accessToken)
-                .header("X-Country-Code", "IDN")
                 .header("Accept", "application/json")
                 .header("X-Account-Id", "asdad")
-                .header("X-Channel-Id", "ANDROID")
-                .header("X-Request-Id", "23123123")
-                .header("currency", "IDR")
-                .header("Accept-Language", "en")
-                .header("User-Agent", "tiketcom/android-version (twh:20296642) - v5.4.0")
-                .build();
+                .GET();
+
+        CommonProdHeaders.getHeaders(this.accessToken).forEach(builder::header);
+        HttpRequest request = builder.build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 

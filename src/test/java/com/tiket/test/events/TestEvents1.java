@@ -20,7 +20,7 @@ public class TestEvents1 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        EventsApi eventsApi = new EventsApi(accessToken, "ANDROID", baseUrl);
+        EventsApi eventsApi = new EventsApi(accessToken, baseUrl);
         apiResult = eventsApi.hitApi();
     }
 

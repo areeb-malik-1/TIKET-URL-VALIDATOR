@@ -1,15 +1,19 @@
 package com.tiket.service.headers;
 
+import com.tiket.model.Platform;
+
 import java.util.Map;
 
 public class CommonProdHeaders {
 
-    public static Map<String, String> getHeaders(String accessToken, String platform) {
+    private static final Platform PLATFORM = Platform.parse(System.getProperty("platform"));
+
+    public static Map<String, String> getHeaders(String accessToken) {
         return Map.ofEntries(
                 Map.entry("authorization", "Bearer " + accessToken),
                 Map.entry("accept-language", "en"),
                 Map.entry("appversion", "5.9.1-uat-HEAD"),
-                Map.entry("channelid", platform),
+                Map.entry("channelid", PLATFORM.name()),
                 Map.entry("containername", "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity"),
                 Map.entry("container-type", "application/json"),
                 Map.entry("Cookie", "__cf_bm=bHyc7V0.W428cHfATM5vNr6pbjUkku0bKEYILvm_TPM-1767873365-1.0.1.1-fKK8JJVihcLWHnbZReOVsUZhwO3WqR5sqf4nenioZw.xS4hGy_lLaCHRjfx5WMnH6LVkRcBLficdLwrUC4qXNtLfo2C4YqxT9sS4i3IW0rII9Dpw5.kD4rmUtWFSzrUS; _cfuvid=z7gRF834XbUD6MB2gE6ex8mX_KDmHCZtfKc9AF8FBi0-1767873365186-0.0.1.1-604800000"),
@@ -19,7 +23,7 @@ public class CommonProdHeaders {
                 Map.entry("lang", "en"),
                 Map.entry("language", "en"),
                 Map.entry("osversion", "14"),
-                Map.entry("platform", platform),
+                Map.entry("platform", PLATFORM.name()),
                 Map.entry("screenname", "com.tiket.android.hotelv2.nha.presentation.landing.pagemodule.NhaLandingPageModuleActivity"),
                 Map.entry("tiket-user-agent", "tiketcom/android-version (twh:20296642) - v5.9.1-uat-HEAD"),
                 Map.entry("tiketsessionid", "f9df70e3-688b-4228-bf5a-3ca93420692a"),

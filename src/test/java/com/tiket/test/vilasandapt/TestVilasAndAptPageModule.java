@@ -22,7 +22,7 @@ public class TestVilasAndAptPageModule extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        VilasAndAptPageModuleApi vilasAndAptPageModuleApi = new VilasAndAptPageModuleApi(accessToken, "ANDROID", baseUrl);
+        VilasAndAptPageModuleApi vilasAndAptPageModuleApi = new VilasAndAptPageModuleApi(accessToken, baseUrl);
         apiResult = vilasAndAptPageModuleApi.hitApi();
     }
 

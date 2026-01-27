@@ -14,14 +14,12 @@ import java.net.http.HttpResponse;
 public class VilasAndApt1 implements BaseApi {
 
     private final String accessToken;
-    private final String platform;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public VilasAndApt1(String accessToken, String platform, String baseUrl) {
+    public VilasAndApt1(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
-        this.platform = platform;
         this.baseUrl = baseUrl;
     }
 
@@ -35,7 +33,7 @@ public class VilasAndApt1 implements BaseApi {
                 .uri(URI.create(fullUrl))
                 .GET();
 
-        CommonProdHeaders.getHeaders(this.accessToken, "ANDROID").forEach(builder::header);
+        CommonProdHeaders.getHeaders(this.accessToken).forEach(builder::header);
         HttpRequest request = builder.build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

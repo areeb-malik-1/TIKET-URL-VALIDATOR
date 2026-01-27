@@ -20,7 +20,7 @@ public class TestSetting extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        SettingsApi settingsApi = new SettingsApi(accessToken, "ANDROID", baseUrl);
+        SettingsApi settingsApi = new SettingsApi(accessToken, baseUrl);
         apiResult = settingsApi.hitApi();
     }
 

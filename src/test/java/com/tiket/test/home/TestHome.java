@@ -20,7 +20,7 @@ public class TestHome extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        HomeApi homeApi = new HomeApi(accessToken, "ANDROID", baseUrl);
+        HomeApi homeApi = new HomeApi(accessToken, baseUrl);
         apiResult = homeApi.hitApi();
     }
 

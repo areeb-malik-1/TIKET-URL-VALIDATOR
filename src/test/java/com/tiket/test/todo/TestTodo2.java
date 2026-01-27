@@ -20,7 +20,7 @@ public class TestTodo2 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        Todo2Api todo2Api = new Todo2Api(accessToken, "ANDROID", baseUrl);
+        Todo2Api todo2Api = new Todo2Api(accessToken, baseUrl);
         apiResult = todo2Api.hitApi();
     }
 

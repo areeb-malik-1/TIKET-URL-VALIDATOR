@@ -22,7 +22,7 @@ public class TestHotel extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        HotelApi hotelApi = new HotelApi(accessToken, "ANDROID", baseUrl);
+        HotelApi hotelApi = new HotelApi(accessToken, baseUrl);
         apiResult = hotelApi.hitApi();
     }
 

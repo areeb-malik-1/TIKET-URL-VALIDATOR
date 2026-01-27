@@ -20,7 +20,7 @@ public class TestTrainAndWoosh extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        TrainAndWooshApi trainAndWooshApi = new TrainAndWooshApi(accessToken, "ANDROID", baseUrl);
+        TrainAndWooshApi trainAndWooshApi = new TrainAndWooshApi(accessToken, baseUrl);
         apiResult = trainAndWooshApi.hitApi();
     }
 

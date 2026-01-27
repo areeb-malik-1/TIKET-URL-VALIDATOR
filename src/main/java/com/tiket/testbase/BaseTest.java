@@ -8,6 +8,7 @@ import com.tiket.logging.Log4JLogger;
 import com.tiket.logging.MainLogger;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Environment;
+import com.tiket.model.Platform;
 import com.tiket.page.auth.LoginPage;
 import com.tiket.page.auth.ServiceTiket;
 import com.tiket.page.auth.VerifyPage;
@@ -35,6 +36,7 @@ import static org.hamcrest.core.Is.is;
 public class BaseTest {
 
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
+    protected Platform platform = Platform.parse(System.getProperty("platform"));
     public static final List<VerifyUrls.UrlVerificationResult> FAILED_RESULTS = new CopyOnWriteArrayList<>();
     public static final List<String> NON_WORKING_APIS = new CopyOnWriteArrayList<>();
     protected Environment env;

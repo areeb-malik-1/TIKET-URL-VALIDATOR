@@ -20,7 +20,7 @@ public class TestBusAndShuttle2 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        BusAndShuttle2Api busAndShuttle2Api = new BusAndShuttle2Api(accessToken, "ANDROID", baseUrl);
+        BusAndShuttle2Api busAndShuttle2Api = new BusAndShuttle2Api(accessToken, baseUrl);
         apiResult = busAndShuttle2Api.hitApi();
     }
 

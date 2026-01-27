@@ -20,7 +20,7 @@ public class TestFlightPageModule extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        FlightPageModuleApi flightPageModuleApi = new FlightPageModuleApi(accessToken, "ANDROID", baseUrl);
+        FlightPageModuleApi flightPageModuleApi = new FlightPageModuleApi(accessToken, baseUrl);
         apiResult = flightPageModuleApi.hitApi();
     }
 

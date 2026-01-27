@@ -2,6 +2,7 @@ package com.tiket.testbase;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tiket.model.ApiResult;
+import com.tiket.model.Platform;
 import org.apache.logging.log4j.Logger;
 
 import java.net.http.HttpResponse;
@@ -11,6 +12,7 @@ import static com.tiket.testbase.BaseTest.NON_WORKING_APIS;
 public interface BaseApi {
 
     Logger logger = org.apache.logging.log4j.LogManager.getLogger(BaseApi.class);
+    Platform platform = Platform.parse(System.getProperty("platform"));
 
     ApiResult hitApi() throws Exception;
 

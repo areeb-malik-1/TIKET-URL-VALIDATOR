@@ -13,14 +13,12 @@ import java.net.http.HttpResponse;
 public class NavbarApi implements BaseApi {
 
     private final String accessToken;
-    private final String platform;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public NavbarApi(String accessToken, String platform, String baseUrl) {
+    public NavbarApi(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
-        this.platform = platform;
         this.baseUrl = baseUrl;
     }
 

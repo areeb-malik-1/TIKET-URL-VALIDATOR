@@ -20,7 +20,7 @@ public class TestNavbar  extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        NavbarApi navbarApi = new NavbarApi(accessToken, "ANDROID", baseUrl);
+        NavbarApi navbarApi = new NavbarApi(accessToken, baseUrl);
         apiResult = navbarApi.hitApi();
     }
 

@@ -20,7 +20,7 @@ public class TestVilasAndApt1 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        VilasAndApt1 vilasAndApt1 = new VilasAndApt1(accessToken, "ANDROID", baseUrl);
+        VilasAndApt1 vilasAndApt1 = new VilasAndApt1(accessToken, baseUrl);
         apiResult = vilasAndApt1.hitApi();
     }
 

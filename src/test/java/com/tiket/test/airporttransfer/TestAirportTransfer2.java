@@ -20,7 +20,7 @@ public class TestAirportTransfer2 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        AirportTransfer2Api airportTransfer2Api = new AirportTransfer2Api(accessToken, "ANDROID", baseUrl);
+        AirportTransfer2Api airportTransfer2Api = new AirportTransfer2Api(accessToken, baseUrl);
         apiResult = airportTransfer2Api.hitApi();
     }
 

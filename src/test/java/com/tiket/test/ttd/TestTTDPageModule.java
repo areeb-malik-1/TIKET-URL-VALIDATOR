@@ -20,7 +20,7 @@ public class TestTTDPageModule extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        TTDPageModuleApi ttdPageModuleApi = new TTDPageModuleApi(accessToken, "ANDROID", baseUrl);
+        TTDPageModuleApi ttdPageModuleApi = new TTDPageModuleApi(accessToken, baseUrl);
         apiResult = ttdPageModuleApi.hitApi();
     }
 

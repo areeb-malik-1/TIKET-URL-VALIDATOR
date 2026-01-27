@@ -20,7 +20,7 @@ public class TestTour1 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        Tour1Api tour1Api = new Tour1Api(accessToken, "ANDROID", baseUrl);
+        Tour1Api tour1Api = new Tour1Api(accessToken, baseUrl);
         apiResult = tour1Api.hitApi();
     }
 

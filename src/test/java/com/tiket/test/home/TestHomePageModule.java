@@ -20,7 +20,7 @@ public class TestHomePageModule extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        HomePageModuleApi homePageModuleApi = new HomePageModuleApi(accessToken, "ANDROID", baseUrl);
+        HomePageModuleApi homePageModuleApi = new HomePageModuleApi(accessToken, baseUrl);
         apiResult = homePageModuleApi.hitApi();
     }
 
