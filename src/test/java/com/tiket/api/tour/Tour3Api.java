@@ -31,6 +31,7 @@ public class Tour3Api implements BaseApi {
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("useragent", "tiketcom/android-version (twh:20296642)")
                 .GET();
 
         CommonProdHeaders.getHeaders(this.accessToken).forEach(builder::header);
