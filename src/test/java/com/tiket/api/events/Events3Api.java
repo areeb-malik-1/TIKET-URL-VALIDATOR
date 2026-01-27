@@ -3,6 +3,7 @@ package com.tiket.api.events;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tiket.model.ApiResult;
+import com.tiket.model.Platform;
 import com.tiket.service.headers.CommonProdHeaders;
 import com.tiket.testbase.BaseApi;
 
@@ -31,10 +32,13 @@ public class Events3Api implements BaseApi {
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .header("if-modified-since", "Thu, 08 Jan 2026 12:07:23 GMT")
+                //.header("if-modified-since", "Thu, 08 Jan 2026 12:07:23 GMT")
                 .GET();
 
         CommonProdHeaders.getHeaders(this.accessToken).forEach(builder::header);
+        if(platform == Platform.ANDROID) {
+            builder.header("useragent", "tiketcom/android-version (twh:20296642)");
+        }
         HttpRequest request = builder.build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
