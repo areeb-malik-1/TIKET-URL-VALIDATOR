@@ -51,7 +51,7 @@ public class SettingsApi implements BaseApi {
     }
 
     public static void main(String[] args) throws Exception {
-        SettingsApi api = new SettingsApi("your_access_token", "ANDROID", "https://api.tiket.com");
+        SettingsApi api = new SettingsApi("your_access_token", "https://api.tiket.com");
         api.hitApi();
     }
 }
