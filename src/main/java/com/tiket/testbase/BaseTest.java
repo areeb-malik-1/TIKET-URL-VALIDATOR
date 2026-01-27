@@ -37,12 +37,14 @@ public class BaseTest {
 
     private static final Logger logger = LogManager.getLogger(BaseTest.class);
     protected Platform platform = Platform.parse(System.getProperty("platform"));
-    public static final List<VerifyUrls.UrlVerificationResult> FAILED_RESULTS = new CopyOnWriteArrayList<>();
+    public static final List<FailureInfo> FAILED_RESULTS = new CopyOnWriteArrayList<>();
     public static final List<String> NON_WORKING_APIS = new CopyOnWriteArrayList<>();
     protected Environment env;
     protected static String baseUrl;
     protected static String accessToken;
     public static final AtomicLong testCount = new AtomicLong(0);
+
+    public record FailureInfo(String url, String path, VerifyUrls.UrlVerificationResult result) {}
 
     @BeforeSuite
     public void beforeSuite(ITestContext context) throws Exception {
@@ -115,7 +117,7 @@ public class BaseTest {
         step("Verifying Url");
         log("Verifying: " + urlItem);
         log("Result: " + result);
-        if(!result.ok()) FAILED_RESULTS.add(result);
+        if(!result.ok()) FAILED_RESULTS.add(new FailureInfo(urlItem.url(), urlItem.path(), result));
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
     }
 
@@ -139,7 +141,7 @@ public class BaseTest {
         step("Verifying Endpoint");
         log("Verifying: " + endpointItem);
         log("Result: " + result);
-        if(!result.ok()) FAILED_RESULTS.add(result);
+        if(!result.ok()) FAILED_RESULTS.add(new FailureInfo(endpointItem.endpoint(), endpointItem.path(), result));
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
     }
 
