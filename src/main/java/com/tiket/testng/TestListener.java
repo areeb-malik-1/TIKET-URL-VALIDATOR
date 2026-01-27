@@ -37,7 +37,8 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
 
-        String testName = result.getMethod().getMethodName() + "_" + TestCountTracker.getTestsStarted();
+        //String testName = result.getMethod().getMethodName() + "_" + TestCountTracker.getTestsStarted();
+        String testName = result.getMethod().getMethodName() + "_" + System.currentTimeMillis();
         String msg = "Test start: " + testName;
         testNameThreadLocal.set(testName);
         ExtentTest test = ExtentTestManager.createTest(testName);
