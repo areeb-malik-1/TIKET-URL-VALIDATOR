@@ -18,7 +18,7 @@ public class Slack {
     private static final HttpClient client = HttpClient.newHttpClient();
 
     public static void send(Object msg) {
-        if (SLACK_WEBHOOK_URL == null || SLACK_WEBHOOK_URL.isEmpty()) {
+        if (SLACK_WEBHOOK_URL == null || SLACK_WEBHOOK_URL.isBlank()) {
             logger.debug("Slack webhook URL not configured, skipping notification");
             return;
         }

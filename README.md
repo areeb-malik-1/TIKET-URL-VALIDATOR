@@ -78,7 +78,7 @@ src/
 - Slack notifications (optional)
 
 ### Test Execution
-- Parallel test execution (configurable thread count: 20)
+- Parallel test execution with configurable thread count (currently set to 20)
 - Data-driven testing with TestNG DataProviders
 - Test categorization with custom annotations
 - Comprehensive logging with Log4j2
