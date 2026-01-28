@@ -8,6 +8,7 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -36,3 +37,18 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Test Reports and Logs ###
+extent-reports/
+log/
+*.log
+
+### Environment and Credentials ###
+.env
+.env.local
+*.properties.local
+
+### Temporary Files ###
+*.tmp
+*.swp
+*~
