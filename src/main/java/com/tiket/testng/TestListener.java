@@ -37,16 +37,16 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsStarted(result.getMethod().getMethodName());
 
-        String testName = result.getMethod().getMethodName() + "_" + System.currentTimeMillis() + "_" + TestCountTracker.getTestsStarted();
-        String msg = "Test start: " + testName;
-        testNameThreadLocal.set(testName);
-        ExtentTest test = ExtentTestManager.createTest(testName);
-
-        mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
-        logger.info(msg);
-        test.info(msg);
-        setAnnotations(result, test);
-
+        synchronized (this) {
+            String testName = result.getMethod().getMethodName() + "_" + System.currentTimeMillis() + "_" + TestCountTracker.getTestsStarted();
+            String msg = "Test start: " + testName;
+            testNameThreadLocal.set(testName);
+            ExtentTest test = ExtentTestManager.createTest(testName);
+            mainLogger.set(new MainLogger(new ExtentLogger(test), new Log4JLogger()));
+            logger.info(msg);
+            test.info(msg);
+            setAnnotations(result, test);
+        }
     }
 
     @Override
