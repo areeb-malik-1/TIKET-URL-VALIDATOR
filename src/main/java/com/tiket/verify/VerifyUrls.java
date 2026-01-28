@@ -1,6 +1,7 @@
 package com.tiket.verify;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tiket.testbase.Assertion;
 import com.tiket.testbase.Ignored;
 import org.testng.SkipException;
 
@@ -153,7 +154,7 @@ public class VerifyUrls {
                 if (location != null) {
                     String redirectedUrl = resolveRedirect(urlStr, location);
                     if(Ignored.getLinks().contains(redirectedUrl)) {
-                        throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
+                        Assertion.skip("Redirected URL should be ignored: " + redirectedUrl);
                     }
                     return followRedirect(baseResult, redirectedUrl, timeoutMillis);
                 }
@@ -210,7 +211,7 @@ public class VerifyUrls {
                 if (location != null) {
                     String redirectedUrl = resolveRedirect(url, location);
                     if(Ignored.getLinks().contains(redirectedUrl)) {
-                        throw new SkipException("Redirected URL should be ignored: " + redirectedUrl);
+                        Assertion.skip("Redirected URL should be ignored: " + redirectedUrl);
                     }
                     return followRedirectHead(baseResult, redirectedUrl, timeoutMillis);
                 }
@@ -413,7 +414,7 @@ public class VerifyUrls {
     public static UrlVerificationResult verifyFullUrl(UrlItem item) {
         System.out.println("Verifying url: " + item.url);
         if(Ignored.getLinks().contains(item.url)) {
-            throw new SkipException("URL should be ignored");
+            Assertion.skip("URL should be ignored: " + item.url);
         }
         var res = verifyUrl(item.url());
         if (!res.ok()) {
@@ -439,7 +440,7 @@ public class VerifyUrls {
         String fullUrl = item.endpoint();
         System.out.println("Verifying endpoint: " + item.endpoint);
         if(Ignored.getLinks().contains(item.endpoint)) {
-            throw new SkipException("URL should be ignored");
+            Assertion.skip("Endpoint should be ignored: " + item.endpoint);
         }
         if(!fullUrl.startsWith("http")) {
             fullUrl = baseUrl + (fullUrl.startsWith("/") ? "" : "/") + fullUrl;
