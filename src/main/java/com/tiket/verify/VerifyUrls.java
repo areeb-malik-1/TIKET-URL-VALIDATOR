@@ -415,7 +415,8 @@ public class VerifyUrls {
     }
 
     public static UrlVerificationResult verifyFullUrl(UrlItem item) {
-        TestListener.mainLogger.get().step("Hitting url: " + item.url);
+        TestListener.mainLogger.get().step("Hitting url: " + shorten(item.url));
+        TestListener.mainLogger.get().log("Hitting url: " + item.url);
         if(Ignored.getLinks().contains(item.url)) {
             Assertion.skip("URL should be ignored: " + item.url);
         }
@@ -440,7 +441,8 @@ public class VerifyUrls {
     }
 
     public static UrlVerificationResult verifyEndpoint(EndpointItem item, String baseUrl) {
-        TestListener.mainLogger.get().step("Hitting endpoint: " + item.endpoint);
+        TestListener.mainLogger.get().step("Hitting endpoint: " + shorten(item.endpoint));
+        TestListener.mainLogger.get().log("Hitting endpoint: " + item.endpoint);
         String fullUrl = item.endpoint();
         if(Ignored.getLinks().contains(item.endpoint)) {
             Assertion.skip("Endpoint should be ignored: " + item.endpoint);
@@ -458,5 +460,12 @@ public class VerifyUrls {
             System.out.print(".");
         }
         return res;
+    }
+
+    private static String shorten(String s) {
+        if(s.length() > 60) {
+            return s.substring(0, 59) + "..." + s.substring(s.length() - 59);
+        }
+        return s;
     }
 }
