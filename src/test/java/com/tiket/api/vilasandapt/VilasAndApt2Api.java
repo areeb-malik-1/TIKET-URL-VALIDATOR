@@ -26,7 +26,7 @@ public class VilasAndApt2Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-hotel-home-api/landing_page/v2/modules?type=NHA";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String requestBody = "{\"templateCodes\":[\"HERO_BANNER\"]}";
 
         var builder = HttpRequest.newBuilder()

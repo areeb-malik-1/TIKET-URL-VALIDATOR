@@ -26,7 +26,7 @@ public class TrainAndWooshApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-train-search-v2/v4/landing-page";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(url))

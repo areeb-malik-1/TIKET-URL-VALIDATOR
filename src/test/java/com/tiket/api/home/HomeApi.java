@@ -26,7 +26,7 @@ public class HomeApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-home/v2/home-pages";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?availablePlatforms=ANDROID&isNotificationActive=true&pageModuleCode=HOME_V2&verticalIconVariant=control&variant=HOME_V2&vertical=HOME&headerVariant=newhome&platform=MOBILE";
 
 

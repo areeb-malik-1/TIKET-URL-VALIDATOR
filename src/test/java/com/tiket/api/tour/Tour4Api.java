@@ -26,7 +26,7 @@ public class Tour4Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-events-v2-search/v3/product-cards";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?pageSize=8&sortField=popularityScore&sortDirection=DESC&productAllCategoryCodes=TOUR&ff-ttde-popularity-score-automation=true&ff-ttde-enter-search-improvement=true&excludeSubcategoryGroup=true";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

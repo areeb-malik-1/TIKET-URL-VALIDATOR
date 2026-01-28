@@ -26,7 +26,7 @@ public class TTDPageModuleApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-home/v2/page-modules-full";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?pageModuleCode=TTDHOMEPAGE&isNotificationActive=false&accommPriceBeforeTax=true&recommendationVersion=";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

@@ -27,7 +27,7 @@ public class Todo2Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-events-v2-inventory/v1/page-config";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?code=LANDING_PAGE&isIncludeArea=false";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

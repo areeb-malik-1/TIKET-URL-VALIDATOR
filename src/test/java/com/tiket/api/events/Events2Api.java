@@ -27,7 +27,7 @@ public class Events2Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-events-v2-inventory/v1/productSubcategories";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?sortAttributes=popularityScore&sortDirection=DESC&pageNumber=1&pageSize=100&excludeSubcategoryGroup=true";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

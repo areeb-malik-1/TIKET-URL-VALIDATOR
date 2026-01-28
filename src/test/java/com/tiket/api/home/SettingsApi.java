@@ -26,7 +26,7 @@ public class SettingsApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-general-config/settings";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?language=en";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

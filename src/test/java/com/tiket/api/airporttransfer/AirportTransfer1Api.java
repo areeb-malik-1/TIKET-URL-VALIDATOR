@@ -26,7 +26,7 @@ public class AirportTransfer1Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-airport-transfer-location/v3/suggestions";
-        String url = baseUrl.replace("api.", "www.") + endpoint;
+        String url = baseUrl + endpoint;
         String fullUrl = url + "?locationType=AIRPORT&type=OUT&pos=&keyword=";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

@@ -26,7 +26,7 @@ public class FlightApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-flight-master-discovery/general-content-search/v3/find";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "";
         String jsonBody = """
             {

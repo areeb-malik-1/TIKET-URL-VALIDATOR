@@ -26,7 +26,7 @@ public class HotelPageModuleApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-home/v2/page-modules-full";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?pageModuleCode=hotel_LP"
                 + "&variant=hotel_LP"
                 + "&taxDisplay=abt"

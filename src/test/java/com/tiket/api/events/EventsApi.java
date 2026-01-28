@@ -27,7 +27,7 @@ public class EventsApi implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-events-v2-inventory/v1/products/additional-labels";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?ids=693fc3abc130446a1234257b&ids=6912a58a8f652a24e740b637&ids=6915928434e44e428f865117&ids=60794832fdf6074422b397b4&ids=6916a6854455e57413d86cf2&ids=607562c4d11a426d01c5e45f&ids=6914361a9e870c719931beeb&ids=6790700afe7e2d5c0462709c&funnel=SRP";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

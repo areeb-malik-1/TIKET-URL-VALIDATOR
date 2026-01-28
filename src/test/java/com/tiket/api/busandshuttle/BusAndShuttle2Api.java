@@ -26,7 +26,7 @@ public class BusAndShuttle2Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-bus-demand/v1/landing-pages";
-        String url = baseUrl.replace("api.", "www.") + endpoint;
+        String url = baseUrl + endpoint;
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(url))

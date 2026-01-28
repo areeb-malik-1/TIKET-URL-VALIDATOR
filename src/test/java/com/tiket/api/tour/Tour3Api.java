@@ -27,7 +27,7 @@ public class Tour3Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-events-v2-inventory/v2/product-categories";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?displayPlacement=SEARCH_RESULT_PAGE";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

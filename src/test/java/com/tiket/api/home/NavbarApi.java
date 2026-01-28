@@ -26,7 +26,7 @@ public class NavbarApi implements BaseApi {
     public ApiResult hitApi() throws Exception {
 
         String endpoint = "/ms-gateway/tix-home/v2/navbars";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?platform=ANDROID";
 
         System.out.println("full url in navbar api: " + fullUrl);

@@ -26,7 +26,7 @@ public class VilasAndApt1 implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-hotel-home-api/longstay";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?accommodationType=NHA";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

@@ -27,7 +27,7 @@ public class Todo1Api implements BaseApi {
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-events-v2-search/v3/product-cards";
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?pageSize=15&sortField=popularityScore&sortDirection=DESC&ff-ttde-popularity-score-automation=true&ff-ttde-enter-search-improvement=true";
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()

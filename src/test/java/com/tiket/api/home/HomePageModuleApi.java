@@ -26,7 +26,7 @@ public class HomePageModuleApi implements BaseApi {
     public ApiResult hitApi() throws Exception {
 
         String endpoint = "/ms-gateway/tix-home/v2/page-modules/688b70ef8c681124d54c211c";;
-        String url = baseUrl + endpoint;
+        String url = baseUrl.replace("www", "api") + endpoint;
         String fullUrl = url + "?gvVariant=oldUI"
                 + "&isNotificationActive=false"
                 + "&accommPriceBeforeTax=true"
