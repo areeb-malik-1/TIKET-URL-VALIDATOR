@@ -6,7 +6,7 @@ public class BaseUrl {
     public static String get(Environment environment) {
         return switch (environment) {
             case GK -> "https://gatotkaca.tiket.com";
-            case PROD -> "https://www.tiket.com";
+            case PROD -> "https://api.tiket.com";
             case PREPROD -> "https://preprod.tiket.com";
         };
     }
