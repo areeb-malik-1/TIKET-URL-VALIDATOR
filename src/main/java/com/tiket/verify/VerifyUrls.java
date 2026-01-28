@@ -3,6 +3,7 @@ package com.tiket.verify;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tiket.testbase.Assertion;
 import com.tiket.testbase.Ignored;
+import com.tiket.testng.TestListener;
 import org.testng.SkipException;
 
 import java.net.URI;
@@ -153,6 +154,7 @@ public class VerifyUrls {
 
                 if (location != null) {
                     String redirectedUrl = resolveRedirect(urlStr, location);
+                    TestListener.mainLogger.get().log("URL redirected to: " + redirectedUrl);
                     if(Ignored.getLinks().contains(redirectedUrl)) {
                         Assertion.skip("Redirected URL should be ignored: " + redirectedUrl);
                     }
@@ -210,6 +212,7 @@ public class VerifyUrls {
 
                 if (location != null) {
                     String redirectedUrl = resolveRedirect(url, location);
+                    TestListener.mainLogger.get().log("URL redirected to: " + redirectedUrl);
                     if(Ignored.getLinks().contains(redirectedUrl)) {
                         Assertion.skip("Redirected URL should be ignored: " + redirectedUrl);
                     }
@@ -412,14 +415,14 @@ public class VerifyUrls {
     }
 
     public static UrlVerificationResult verifyFullUrl(UrlItem item) {
-        System.out.println("Verifying url: " + item.url);
+        TestListener.mainLogger.get().step("Hitting url: " + item.url);
         if(Ignored.getLinks().contains(item.url)) {
             Assertion.skip("URL should be ignored: " + item.url);
         }
         var res = verifyUrl(item.url());
         if (!res.ok()) {
-            System.out.println("Failed: " + item.url() + " (" + (res.error() != null ? res.error() : res.status()) + ")");
-            System.out.println("Failed: " + res);
+            TestListener.mainLogger.get().log("Failed: " + item.url() + " (" + (res.error() != null ? res.error() : res.status()) + ")");
+            TestListener.mainLogger.get().log("Failed: " + res);
         } else {
             System.out.print(".");
         }
@@ -437,8 +440,8 @@ public class VerifyUrls {
     }
 
     public static UrlVerificationResult verifyEndpoint(EndpointItem item, String baseUrl) {
+        TestListener.mainLogger.get().step("Hitting endpoint: " + item.endpoint);
         String fullUrl = item.endpoint();
-        System.out.println("Verifying endpoint: " + item.endpoint);
         if(Ignored.getLinks().contains(item.endpoint)) {
             Assertion.skip("Endpoint should be ignored: " + item.endpoint);
         }
@@ -446,6 +449,7 @@ public class VerifyUrls {
             fullUrl = baseUrl + (fullUrl.startsWith("/") ? "" : "/") + fullUrl;
         }
 
+        TestListener.mainLogger.get().log("Verifying full url for endpoint: " + fullUrl);
         var res = verifyUrlWithHead(fullUrl);
         if (!res.ok()) {
             System.out.println("Failed: " + fullUrl);

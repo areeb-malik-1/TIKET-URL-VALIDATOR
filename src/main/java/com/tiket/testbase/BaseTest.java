@@ -114,8 +114,8 @@ public class BaseTest {
     }
 
     protected void verifyFullUrl(VerifyUrls.UrlVerificationResult result, VerifyUrls.UrlItem urlItem) {
-        step("Verifying Url");
-        log("Verifying: " + urlItem);
+        step("Verifying Url response");
+        log("Verifying response for url: " + urlItem);
         log("Result: " + result);
         if(!result.ok()) FAILED_RESULTS.add(new FailureInfo(urlItem.url(), urlItem.path(), result));
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
@@ -138,8 +138,8 @@ public class BaseTest {
     }
 
     protected void verifyEndpoint(VerifyUrls.UrlVerificationResult result, VerifyUrls.EndpointItem endpointItem) {
-        step("Verifying Endpoint");
-        log("Verifying: " + endpointItem);
+        step("Verifying Endpoint response");
+        log("Verifying response for endpoint: " + endpointItem);
         log("Result: " + result);
         if(!result.ok()) FAILED_RESULTS.add(new FailureInfo(endpointItem.endpoint(), endpointItem.path(), result));
         Assertion.assertThat("Status: " + result.status(), result.ok(), is(true));
