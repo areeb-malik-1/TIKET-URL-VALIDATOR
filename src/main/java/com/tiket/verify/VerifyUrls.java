@@ -464,7 +464,7 @@ public class VerifyUrls {
 
     private static String shorten(String s) {
         if(s.length() > 60) {
-            return s.substring(0, 59) + "..." + s.substring(s.length() - 59);
+            return s.substring(0, 59) + "...";
         }
         return s;
     }
