@@ -52,7 +52,7 @@ public class HotelPageModuleApi implements BaseApi {
         if (response.headers().firstValue("content-type").orElse("").contains("application/json")) {
             data = mapper.readTree(response.body());
             System.out.println("Response: " + data.toPrettyString());
-            Path path = Path.of("/logs/hotel_page_module_response.json");
+            Path path = Path.of("./logs/hotel_page_module_response.json");
             mapper.writerWithDefaultPrettyPrinter().writeValue(path.toFile(), data);
         }
 
