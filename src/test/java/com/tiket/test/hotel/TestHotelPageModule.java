@@ -17,8 +17,8 @@ import org.testng.annotations.Test;
 public class TestHotelPageModule extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = Mapping.mapping.get(this.getClass().getName()).urls();
-    String[] endpointKeys = Mapping.mapping.get(this.getClass().getName()).endpoints();
+    String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {

@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 public class TestFlight extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = Mapping.mapping.get(TestFlight.class.getName()).urls();
-    String[] endpointKeys = Mapping.mapping.get(TestFlight.class.getName()).urls();
+    String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {

@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 public class TestNavbar  extends BaseTest {
 
     ApiResult apiResult;
-    String[] urlKeys = Mapping.mapping.get(TestNavbar.class.getName()).urls();
-    String[] endpointKeys = Mapping.mapping.get(TestNavbar.class.getName()).endpoints();
+    String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
+    String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {
