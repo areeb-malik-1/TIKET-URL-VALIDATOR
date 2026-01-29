@@ -115,9 +115,7 @@ public class TestListener implements ITestListener {
         ITestListener.super.onFinish(context);
 
         logger.debug("Failed cases: ");
-        BaseTest.FAILED_RESULTS.stream()
-                .sorted()
-                .forEach(logger::debug);
+        BaseTest.FAILED_RESULTS.forEach(logger::debug);
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
