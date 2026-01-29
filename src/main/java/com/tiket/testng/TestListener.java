@@ -115,7 +115,9 @@ public class TestListener implements ITestListener {
         ITestListener.super.onFinish(context);
 
         logger.debug("Failed cases: ");
-        BaseTest.FAILED_RESULTS.forEach(logger::debug);
+        BaseTest.FAILED_RESULTS.stream()
+                .sorted()
+                .forEach(logger::debug);
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
@@ -129,7 +131,7 @@ public class TestListener implements ITestListener {
 
     private void setApiAnnotation(ITestResult result, ExtentTest test) {
         try {
-            String apiName = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Api.class).name();
+            String apiName = getApiName(result);
             test.assignAuthor(apiName);
         } catch (Exception e) {
             logger.warn(ExceptionUtils.getStackTrace(e));
@@ -145,6 +147,10 @@ public class TestListener implements ITestListener {
             logger.warn(ExceptionUtils.getStackTrace(e));
             test.warning(ExceptionUtils.getStackTrace(e));
         }
+    }
+
+    private String getApiName(ITestResult result) {
+        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Api.class).name();
     }
 
     private String getModuleName(ITestResult result) {
