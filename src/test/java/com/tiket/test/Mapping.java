@@ -2,10 +2,7 @@ package com.tiket.test;
 
 import com.tiket.test.flight.TestFlight;
 import com.tiket.test.flight.TestFlightPageModule;
-import com.tiket.test.home.TestHome;
-import com.tiket.test.home.TestNavbar;
-import com.tiket.test.home.TestHomePageModule;
-import com.tiket.test.home.TestSetting;
+import com.tiket.test.home.*;
 import com.tiket.test.hotel.TestHotel;
 import com.tiket.test.hotel.TestHotelPageModule;
 import com.tiket.test.trainandwoosh.TestTrainAndWoosh;
@@ -144,7 +141,10 @@ public class Mapping {
                     new String[]{"url"})),
             Map.entry(TestTodo2.class.getName(), new Data(
                     new String[]{"urlSmall", "urlMedium", "urlLarge"},
-                    new String[]{}))
+                    new String[]{})),
 
+            Map.entry(TestHomePageModuledWeb.class.getName(), new Data(
+                    new String[]{"imageUrl"},
+                    new String[]{"ctaUrl"}))
     );
 }

@@ -3,7 +3,7 @@ package com.tiket.test.trainandwoosh;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.trainandwoosh.TrainAndWooshPageModule1Api;
+import com.tiket.api.app.trainandwoosh.TrainAndWooshPageModule1Api;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;

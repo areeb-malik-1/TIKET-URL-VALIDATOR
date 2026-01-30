@@ -3,7 +3,7 @@ package com.tiket.test.carrental;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.carrental.CarRental1Api;
+import com.tiket.api.app.carrental.CarRental1Api;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;

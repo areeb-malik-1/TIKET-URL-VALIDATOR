@@ -3,7 +3,7 @@ package com.tiket.test.home;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.home.HomePageModuleApi;
+import com.tiket.api.app.home.HomePageModuleApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;

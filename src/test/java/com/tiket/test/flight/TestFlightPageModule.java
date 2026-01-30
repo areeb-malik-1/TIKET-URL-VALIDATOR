@@ -3,7 +3,7 @@ package com.tiket.test.flight;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.flight.FlightPageModuleApi;
+import com.tiket.api.app.flight.FlightPageModuleApi;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;

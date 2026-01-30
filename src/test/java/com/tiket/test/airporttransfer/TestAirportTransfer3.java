@@ -3,7 +3,7 @@ package com.tiket.test.airporttransfer;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.airporttransfer.AirportTransfer3Api;
+import com.tiket.api.app.airporttransfer.AirportTransfer3Api;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;

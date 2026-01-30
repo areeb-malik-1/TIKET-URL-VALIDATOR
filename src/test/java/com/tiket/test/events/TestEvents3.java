@@ -3,7 +3,7 @@ package com.tiket.test.events;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.events.Events3Api;
+import com.tiket.api.app.events.Events3Api;
 import com.tiket.model.ApiResult;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
