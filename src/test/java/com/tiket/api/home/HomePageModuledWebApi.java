@@ -27,6 +27,8 @@ public class HomePageModuledWebApi implements BaseApi {
         String endpoint = "/ms-gateway/tix-home/v2/page-modules/68faf618cd4ab978ad1554ab";
         String fullUrl = baseUrl + endpoint + "?";
 
+        System.out.println("full url in dWeb home page module api: " + fullUrl);
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
                 .header("referer", baseUrl + "/en-id")
@@ -62,9 +64,13 @@ public class HomePageModuledWebApi implements BaseApi {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
+        System.out.println("\n=== dWeb Home Page Module API Response ===");
+        System.out.println("Status: " + response.statusCode());
+
         JsonNode data = null;
         if (response.headers().firstValue("content-type").orElse("").contains("application/json")) {
             data = mapper.readTree(response.body());
+            System.out.println("Response: " + data.toPrettyString());
         }
 
         isSuccess(response, data);
