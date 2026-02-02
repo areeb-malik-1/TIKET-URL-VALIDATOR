@@ -1,6 +1,7 @@
 package com.tiket.io;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tiket.testbase.Config;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -20,7 +21,7 @@ public class Slack {
             var blocks = List.of(
                     Map.of(
                             "type", "header",
-                            "text", Map.of("type", "plain_text", "text", "Urls Test Result")
+                            "text", Map.of("type", "plain_text", "text", "Broken link tests for: " + Config.PLATFORM)
                     ),
                     Map.of(
                             "type", "section",
