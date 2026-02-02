@@ -72,7 +72,7 @@
                                 <name>listener</name>
                                 <value>
                                     com.tiket.testng.TestListener,
-                                    com.tiket.testng.AnnotationsTransformer
+                                    com.tiket.testng.AnnotationTransformer
                                 </value>
                             </property>
                         </properties>
