@@ -2,9 +2,11 @@ package com.tiket.test.dWeb.home;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
+import com.tiket.annotation.Scope;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.home.HomePageModuledWebApi;
+import com.tiket.api.dWeb.home.HomePageModuleWebApi;
 import com.tiket.model.ApiResult;
+import com.tiket.model.Platform;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -20,22 +22,24 @@ public class TestHomePageModuledWeb extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        HomePageModuledWebApi api = new HomePageModuledWebApi(accessToken, baseUrl);
+        HomePageModuleWebApi api = new HomePageModuleWebApi(accessToken, baseUrl);
         apiResult = api.hitApi();
     }
 
-    @Api(name = "HomePageModuledWebApi")
+    @Api(name = "HomePageModuleWebApi")
     @Module(name = "Home")
     @Vertical(name = "Accommodation")
+    @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testHomePageModuledWebUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "HomePageModuledWebApi")
+    @Api(name = "HomePageModuleWebApi")
     @Module(name = "Home")
     @Vertical(name = "Accommodation")
+    @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testHomePageModuledWebEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);

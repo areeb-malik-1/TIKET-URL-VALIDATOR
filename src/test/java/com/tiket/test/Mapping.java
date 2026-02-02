@@ -33,6 +33,9 @@ import com.tiket.test.app.todo.TestTodo2;
 import com.tiket.test.app.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.app.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.app.vilasandapt.TestVilasAndAptPageModule;
+import com.tiket.test.dWeb.home.TestHomePageModuledWeb;
+import com.tiket.test.dWeb.todo.TestTodoPdp3;
+import com.tiket.test.dWeb.todo.TestTodoPdp4;
 
 import java.util.Map;
 
@@ -149,6 +152,16 @@ public class Mapping {
 
             Map.entry(TestHomePageModuledWeb.class.getName(), new Data(
                     new String[]{"imageUrl"},
-                    new String[]{"ctaUrl"}))
+                    new String[]{"ctaUrl"})),
+            // dWeb TODO tests
+            Map.entry(com.tiket.test.dWeb.todo.TestTodoPdp2.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{"url"})),
+            Map.entry(TestTodoPdp3.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{"url"})),
+            Map.entry(TestTodoPdp4.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{"url"}))
     );
 }

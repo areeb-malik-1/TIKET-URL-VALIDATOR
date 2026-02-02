@@ -31,6 +31,7 @@ public class HomePageModuleApi implements BaseApi {
         String fullUrl = url + "?gvVariant=oldUI"
                 + "&isNotificationActive=false"
                 + "&accommPriceBeforeTax=true"
+                + "&plaftorm=" + platform.name()
                 + "&recommendationVersion=";
 
         System.out.println("full url in page module api: " + fullUrl);

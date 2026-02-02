@@ -1,4 +1,4 @@
-package com.tiket.api.home;
+package com.tiket.api.dWeb.flight;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,33 +10,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class HomePageModuledWebApi implements BaseApi {
+public class FlightLandingPageApi implements BaseApi {
 
     private final String accessToken;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public HomePageModuledWebApi(String accessToken, String baseUrl) {
+    public FlightLandingPageApi(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
     }
 
     @Override
     public ApiResult hitApi() throws Exception {
-        String endpoint = "/ms-gateway/tix-home/v2/page-modules/68faf618cd4ab978ad1554ab";
-        String fullUrl = baseUrl + endpoint + "?";
+        String endpoint = "/ms-gateway/tix-flight-master-discovery/general-content-search/v3/find";
+        String fullUrl = baseUrl + endpoint;
 
-        System.out.println("full url in dWeb home page module api: " + fullUrl);
+        System.out.println("full url in web flight landing page module api: " + fullUrl);
+
+        String body = "{\"page\":\"LANDING_PAGE\",\"origin\":\"\",\"destination\":\"\",\"departureDate\":\"\"}";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .header("referer", baseUrl + "/en-id")
+                .header("origin", baseUrl)
+                .header("referer", baseUrl + "/en-id/pesawat")
                 .header("accept", "*/*")
                 .header("accept-language", "en")
                 .header("cache-control", "no-cache")
-                // cookies from curl (for web flows)
-                .header("Cookie", "__cf_bm=NJ.jNNU2Sja1SsAS9Nr4SQhC7PO_DbOCuSRvn8aPPvA-1769672619-1.0.1.1-eYgKSLylk0YYo_XOaDc5ODU.bTu7hwICYmWdW2P_LlArMibyqW4uTNR0EYJJn5qKvyfKgkOjic1SSaDdYOqNDad32gVuzGteBgoBIlBXyIPasmRL5XjDzFKM8g4u8tZd; _cfuvid=u1cZyfq.qrI98zneEA8pBrnXTTlCyRxbL_b5wHGkHhM-1769672619820-0.0.1.1-604800000; app_logger_correlation_id=21f4dbf0-b3ec-44b4-9635-b52f4f7ddf76; device_id=e2972c8e-c56d-445a-af65-242f36455ee2; session_access_token=" + this.accessToken + "; session_refresh_token=eyJraWQiOiJzc1NMVjZDdl9VQ291aEJOMzVRUi1HU3JHYXJRd0FHbSJ9.eyJhdWQiOiJ0aWtldC5jb20vcnQiLCJzdWIiOiI2OTdiMGZhYjUyZGIzYzJkNzNjZjZiN2QiLCJuYmYiOjE3Njk2NzI2MTksImlzcyI6Imh0dHBzOi8vd3d3LnRpa2V0LmNvbSIsImV4cCI6MTgwMTIzMjYxOX0.YvrI9CMVUTB0lsbojQjU18T-BzcjS1Hc5K0PqHXJ6b4S7JxlwcEl6GaFKa9xwLFX")
+                .header("content-type", "text/plain;charset=UTF-8")
+                .header("Cookie", "device_id=e2972c8e-c56d-445a-af65-242f36455ee2; session_access_token=" + this.accessToken + "; session_refresh_token=eyJraWQiOiJzc1NMVjZDdl9VQ291aEJOMzVRUi1HU3JHYXJRd0FHbSJ9.eyJhdWQiOiJ0aWtldC5jb20vcnQiLCJzdWIiOiI2OTdiMGZhYjUyZGIzYzJkNzNjZjZiN2QiLCJuYmYiOjE3Njk2NzI2MTksImlzcyI6Imh0dHBzOi8vd3d3LnRpa2V0LmNvbSIsImV4cCI6MTgwMTIzMjYxOX0.YvrI9CMVUTB0lsbojQjU18T-BzcjS1Hc5K0PqHXJ6b4S7JxlwcEl6GaFKa9xwLFX; cf_clearance=w.477cT.NBlVGD0GlKjmKNa9gvOIdnb0pglqIsPa4Zs-1769672621-1.2.1.1-lqM2_JeL7BT06VJW5Qu870rj.t0igcA8bq82FNw_IKbBmORRnd7EznE79gQ5_7o3FB2mvqon4txcSb5aTPg.frUSzOc8mmNAlvkebmPw4Sz1_I8MfuU6stMA6lbdGPmo_AcniuZgauXfC4EyYqzKFNa04WUnNGNwbr936Bo6oIahLEbjRnKo0RfQBrDsn7iUYXFcy5q6CN5BxAlvQkBGqMEfveWtOp4hUhEop48ye9A; _gcl_au=1.1.2024533154.1769672621; _ga=GA1.1.191515909.1769672622; __cf_bm=FIHB_ZPdPRR24Nq6M0HOgDLvNxoHvZXNfDI1twQnx7I-1769672621-1.0.1.1-MM7I0auTmQk2PpMZ.kn5J6qPDHgO9FCgtOexAe4yUrhEYcgbyCvKvmQEV1joa4XbxjIrEsPIODRNMx0AdjDFxxRcecJbyupGM2ULr7BKLPKDMo_F6c8A.pQWGwf8nSFu; _cfuvid=SjLKuKJiekfbjnqVUMetF5vAQnl_YnLVqid65xrWy4w-1769672621816-0.0.1.1-604800000; _fbp=fb.1.1769672622720.284665705305062351; _tt_enable_cookie=1; _ttp=01KG4BAGW1KE27BJ2EC3963AXZ_.tt.1; app_logger_correlation_id=bddb8c3d-41c2-40e8-a2b3-90eba5c71b6a; app_is_webview=false; app_is_desktop=false")
                 .header("countrycode", "id")
                 .header("currency", "IDR")
                 .header("deviceid", "e2972c8e-c56d-445a-af65-242f36455ee2")
@@ -47,24 +50,18 @@ public class HomePageModuledWebApi implements BaseApi {
                 .header("sec-fetch-mode", "cors")
                 .header("sec-fetch-site", "same-origin")
                 .header("user-agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1")
-                .header("x-account-id", "0")
                 .header("x-audience", "tiket.com")
-                .header("x-channel-id", "DESKTOP")
                 .header("x-cookie-session-v2", "true")
                 .header("x-country-code", "id")
                 .header("x-country-id", "id")
                 .header("x-currency", "IDR")
-                .header("x-loyalty-level", "LV0")
-                .header("x-request-id", "63672a80-0993-4dc1-91fa-076bf9dd8695")
-                .header("x-service-id", "gateway")
-                .header("x-store-id", "TIKETCOM")
-                .header("x-username", "")
-                .GET()
+                .header("x-request-id", "bddb8c3d-41c2-40e8-a2b3-90eba5c71b6a")
+                .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("\n=== dWeb Home Page Module API Response ===");
+        System.out.println("\n=== Web Flight Landing Page API Response ===");
         System.out.println("Status: " + response.statusCode());
 
         JsonNode data = null;
