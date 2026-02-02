@@ -4,7 +4,7 @@ import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Scope;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.dWeb.flight.FlightSrpDomesting3Api;
+import com.tiket.api.dWeb.flight.FlightSrpDomestic3Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
 import com.tiket.test.Mapping;
@@ -22,11 +22,11 @@ public class TestFlightSrpDomestic3 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        FlightSrpDomesting3Api api = new FlightSrpDomesting3Api(accessToken, baseUrl);
+        FlightSrpDomestic3Api api = new FlightSrpDomestic3Api(accessToken, baseUrl);
         apiResult = api.hitApi();
     }
 
-    @Api(name = "FlightSrpDomesting3Api")
+    @Api(name = "FlightSrpDomestic3Api")
     @Module(name = "Flight")
     @Vertical(name = "Air")
     @Scope(platforms = {Platform.DWEB})
@@ -36,7 +36,7 @@ public class TestFlightSrpDomestic3 extends BaseTest {
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "FlightSrpDomesting3Api")
+    @Api(name = "FlightSrpDomestic3Api")
     @Module(name = "Flight")
     @Vertical(name = "Air")
     @Scope(platforms = {Platform.DWEB})
