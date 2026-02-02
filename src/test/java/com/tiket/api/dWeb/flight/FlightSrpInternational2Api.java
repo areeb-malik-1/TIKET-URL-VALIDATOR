@@ -29,14 +29,7 @@ public class FlightSrpInternational2Api implements BaseApi {
 
         System.out.println("full url in " + getClass().getName() + ": " + fullUrl);
 
-        String body = """
-                {
-                  "page": "SEARCH_LIST",
-                  "origin": "JKTC",
-                  "destination": "KULC",
-                  "departureDate": "2026-02-09"
-                }
-                """;
+        String body = "{\"page\":\"SEARCH_LIST\",\"origin\":\"JKTC\",\"destination\":\"KULC\",\"departureDate\":\"2026-02-09\"}";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))

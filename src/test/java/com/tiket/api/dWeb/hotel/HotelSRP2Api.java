@@ -29,16 +29,7 @@ public class HotelSRP2Api implements BaseApi {
 
         System.out.println("full url in " + getClass().getName() + ": " + fullUrl);
 
-        String body = """
-                {
-                  "accommodationType": "hotel",
-                  "adult": 2,
-                  "childAges": [],
-                  "searchType": "REGION",
-                  "searchValue": "bali-108001534490276212",
-                  "startDate": "2026-02-07"
-                }
-                """;
+        String body = "{\"accommodationType\":\"hotel\",\"adult\":2,\"childAges\":[],\"searchType\":\"REGION\",\"searchValue\":\"bali-108001534490276212\",\"startDate\":\"2026-02-07\"}";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))

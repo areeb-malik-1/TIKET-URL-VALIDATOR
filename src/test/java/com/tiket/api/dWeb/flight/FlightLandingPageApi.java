@@ -29,14 +29,7 @@ public class FlightLandingPageApi implements BaseApi {
 
         System.out.println("full url in web flight landing page module api: " + fullUrl);
 
-        String body = """
-                {
-                "page":"LANDING_PAGE",
-                "origin":"Jakarta",
-                "destination":"Bali",
-                "departureDate":"2026-02-09"
-                }
-                """;
+        String body = "{\"page\":\"LANDING_PAGE\",\"origin\":\"\",\"destination\":\"\",\"departureDate\":\"\"}";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
