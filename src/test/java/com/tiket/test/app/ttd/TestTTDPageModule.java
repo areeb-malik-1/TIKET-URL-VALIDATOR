@@ -2,9 +2,11 @@ package com.tiket.test.app.ttd;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
+import com.tiket.annotation.Scope;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.app.ttd.TTDPageModuleApi;
 import com.tiket.model.ApiResult;
+import com.tiket.model.Platform;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -27,6 +29,7 @@ public class TestTTDPageModule extends BaseTest {
     @Api(name = "TTDPageModuleApi")
     @Module(name = "Todo")
     @Vertical(name = "TTD")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
     public void testTTDPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
@@ -36,6 +39,7 @@ public class TestTTDPageModule extends BaseTest {
     @Api(name = "TTDPageModuleApi")
     @Module(name = "Todo")
     @Vertical(name = "TTD")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")
     public void testTTDPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);

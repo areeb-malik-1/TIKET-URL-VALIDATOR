@@ -2,9 +2,11 @@ package com.tiket.test.app.hotel;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
+import com.tiket.annotation.Scope;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.app.hotel.HotelPageModuleApi;
 import com.tiket.model.ApiResult;
+import com.tiket.model.Platform;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -27,6 +29,7 @@ public class TestHotelPageModule extends BaseTest {
     @Api(name = "HotelPageModuleApi")
     @Module(name = "Hotel")
     @Vertical(name = "Accommodation")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
     public void testHotelPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
@@ -36,6 +39,7 @@ public class TestHotelPageModule extends BaseTest {
     @Api(name = "HotelPageModuleApi")
     @Module(name = "Hotel")
     @Vertical(name = "Accommodation")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")
     public void testHotelPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);

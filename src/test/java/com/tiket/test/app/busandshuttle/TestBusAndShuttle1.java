@@ -2,9 +2,11 @@ package com.tiket.test.app.busandshuttle;
 
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
+import com.tiket.annotation.Scope;
 import com.tiket.annotation.Vertical;
 import com.tiket.api.app.busandshuttle.BusAndShuttle1Api;
 import com.tiket.model.ApiResult;
+import com.tiket.model.Platform;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -27,6 +29,7 @@ public class TestBusAndShuttle1 extends BaseTest {
     @Api(name = "BusAndShuttle1Api")
     @Module(name = "BUS")
     @Vertical(name = "NFT")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
     public void testBusAndShuttle1Url(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
@@ -36,6 +39,7 @@ public class TestBusAndShuttle1 extends BaseTest {
     @Api(name = "BusAndShuttle1Api")
     @Module(name = "BUS")
     @Vertical(name = "NFT")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")
     public void testBusAndShuttle1Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
