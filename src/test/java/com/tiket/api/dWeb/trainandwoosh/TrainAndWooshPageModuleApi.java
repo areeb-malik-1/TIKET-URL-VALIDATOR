@@ -31,6 +31,7 @@ public class TrainAndWooshPageModuleApi implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("Authorization", "Bearer " + this.accessToken)
                 .header("X-Request-Id", "92f5935f-28a5-4b09-81bc-b00a439db55c")
                 .header("lang", "en")
                 .header("X-Currency", "IDR")
