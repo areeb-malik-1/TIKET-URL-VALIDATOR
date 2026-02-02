@@ -5,6 +5,8 @@ import com.tiket.test.app.home.TestHomePageModule;
 import com.tiket.test.app.home.TestNavbar;
 import com.tiket.test.app.home.TestSetting;
 import com.tiket.test.dWeb.airporttransfer.TestAirportTransfer;
+import com.tiket.test.dWeb.carrental.TestCarRental;
+import com.tiket.test.dWeb.flight.*;
 import com.tiket.test.dWeb.home.TestHomePageModuledWeb;
 import com.tiket.test.app.flight.TestFlight;
 import com.tiket.test.app.flight.TestFlightPageModule;
@@ -35,8 +37,15 @@ import com.tiket.test.app.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.app.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.app.vilasandapt.TestVilasAndAptPageModule;
 import com.tiket.test.dWeb.home.TestHomePageModuledWeb;
+import com.tiket.test.dWeb.hotel.TestHotelLandingPage;
+import com.tiket.test.dWeb.hotel.TestHotelSRP1;
+import com.tiket.test.dWeb.hotel.TestHotelSRP2;
+import com.tiket.test.dWeb.todo.TestTodoPdp1;
+import com.tiket.test.dWeb.todo.TestTodoPdp2;
 import com.tiket.test.dWeb.todo.TestTodoPdp3;
 import com.tiket.test.dWeb.todo.TestTodoPdp4;
+import com.tiket.test.dWeb.trainandwoosh.TestTrainAndWooshPageModule;
+import com.tiket.test.dWeb.vilasandapt.TestVilasAndApt;
 
 import java.util.Map;
 
@@ -157,6 +166,102 @@ public class Mapping {
                     new String[]{"ctaUrl"})),
             Map.entry(TestAirportTransfer.class.getName(), new Data(
                     new String[]{"iconUrl"},
+                    new String[]{})),
+            Map.entry(TestCarRental.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.events.TestEvents1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.events.TestEvents2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.events.TestEvents3.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightLandingPage.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpDomesting1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpDomesting2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpDomesting3.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpDomesting4.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpDomesting5.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpInternational1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpInternational2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpInternational3.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpInternational4.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestFlightSrpInternational5.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestHotelLandingPage.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.hotel.TestHotelPageModule.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestHotelSRP1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestHotelSRP2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.todo.TestTodo1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.todo.TestTodo2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestTodoPdp1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestTodoPdp2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestTodoPdp3.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestTodoPdp4.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.tour.TestTour1.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.tour.TestTour2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.tour.TestTour3.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.tour.TestTour4.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestTrainAndWooshPageModule.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(com.tiket.test.dWeb.ttd.TestTTDPageModule.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{})),
+            Map.entry(TestVilasAndApt.class.getName(), new Data(
+                    new String[]{},
                     new String[]{}))
     );
 }
