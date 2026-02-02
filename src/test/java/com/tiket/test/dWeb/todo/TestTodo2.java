@@ -27,8 +27,8 @@ public class TestTodo2 extends BaseTest {
     }
 
     @Api(name = "Todo2Api")
-    @Module(name = "To-Do")
-    @Vertical(name = "Grand")
+    @Module(name = "Todo")
+    @Vertical(name = "TTD")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testTodo2Url(VerifyUrls.UrlItem urlItem) {
@@ -37,8 +37,8 @@ public class TestTodo2 extends BaseTest {
     }
 
     @Api(name = "Todo2Api")
-    @Module(name = "To-Do")
-    @Vertical(name = "Grand")
+    @Module(name = "Todo")
+    @Vertical(name = "TTD")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testTodo2Endpoint(VerifyUrls.EndpointItem endpointItem) {

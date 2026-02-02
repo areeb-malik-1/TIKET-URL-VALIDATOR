@@ -28,7 +28,7 @@ public class TestHomePageModuledWeb extends BaseTest {
 
     @Api(name = "HomePageModuleWebApi")
     @Module(name = "Home")
-    @Vertical(name = "Accommodation")
+    @Vertical(name = "Grand")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testHomePageModuledWebUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +38,7 @@ public class TestHomePageModuledWeb extends BaseTest {
 
     @Api(name = "HomePageModuleWebApi")
     @Module(name = "Home")
-    @Vertical(name = "Accommodation")
+    @Vertical(name = "Grand")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testHomePageModuledWebEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

@@ -27,8 +27,8 @@ public class TestFlightLandingPage extends BaseTest {
     }
 
     @Api(name = "FlightLandingPageApi")
+    @Vertical(name = "Flight")
     @Module(name = "Flight")
-    @Vertical(name = "Air")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testFlightLandingPageUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -37,8 +37,8 @@ public class TestFlightLandingPage extends BaseTest {
     }
 
     @Api(name = "FlightLandingPageApi")
+    @Vertical(name = "Flight")
     @Module(name = "Flight")
-    @Vertical(name = "Air")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testFlightLandingPageEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

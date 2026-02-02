@@ -28,7 +28,7 @@ public class TestCarRental extends BaseTest {
 
     @Api(name = "CarRentalApi")
     @Module(name = "CarRental")
-    @Vertical(name = "Transport")
+    @Vertical(name = "NFT")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testCarRentalUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +38,7 @@ public class TestCarRental extends BaseTest {
 
     @Api(name = "CarRentalApi")
     @Module(name = "CarRental")
-    @Vertical(name = "Transport")
+    @Vertical(name = "NFT")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testCarRentalEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

@@ -27,7 +27,7 @@ public class TestVilasAndApt extends BaseTest {
     }
 
     @Api(name = "VilasAndAptApi")
-    @Module(name = "Homes")
+    @Module(name = "NHA")
     @Vertical(name = "Accommodation")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
@@ -37,7 +37,7 @@ public class TestVilasAndApt extends BaseTest {
     }
 
     @Api(name = "VilasAndAptApi")
-    @Module(name = "Homes")
+    @Module(name = "NHA")
     @Vertical(name = "Accommodation")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")

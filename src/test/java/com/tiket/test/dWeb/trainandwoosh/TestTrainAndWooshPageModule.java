@@ -27,8 +27,8 @@ public class TestTrainAndWooshPageModule extends BaseTest {
     }
 
     @Api(name = "TrainAndWooshPageModuleApi")
-    @Module(name = "TrainAndWoosh")
-    @Vertical(name = "Transport")
+    @Module(name = "Train")
+    @Vertical(name = "NFT")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testTrainAndWooshPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -37,8 +37,8 @@ public class TestTrainAndWooshPageModule extends BaseTest {
     }
 
     @Api(name = "TrainAndWooshPageModuleApi")
-    @Module(name = "TrainAndWoosh")
-    @Vertical(name = "Transport")
+    @Module(name = "Train")
+    @Vertical(name = "NFT")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testTrainAndWooshPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
