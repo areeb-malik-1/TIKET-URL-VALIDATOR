@@ -31,6 +31,7 @@ public class FlightSrpInternational1Api implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("authorization", "Bearer " + accessToken)
                 .header("accept", "*/*")
                 .header("accept-language", "en")
                 .header("cache-control", "no-cache")

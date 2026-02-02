@@ -31,6 +31,7 @@ public class HotelPageModuleApi implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("authorization", "Bearer " + accessToken)
                 .header("X-Request-Id", "62ff8b23-96dc-4f1b-93be-aedd6e54de03")
                 .header("sec-ch-ua-platform", "\"macOS\"")
                 .header("lang", "en")

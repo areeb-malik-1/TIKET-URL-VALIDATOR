@@ -10,14 +10,14 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class FlightSrpDomesting2Api implements BaseApi {
+public class FlightSrpDomestic2Api implements BaseApi {
 
     private final String accessToken;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public FlightSrpDomesting2Api(String accessToken, String baseUrl) {
+    public FlightSrpDomestic2Api(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
     }

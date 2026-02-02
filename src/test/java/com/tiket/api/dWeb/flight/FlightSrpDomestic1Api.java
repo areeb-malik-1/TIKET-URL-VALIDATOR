@@ -10,14 +10,14 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class FlightSrpDomesting1Api implements BaseApi {
+public class FlightSrpDomestic1Api implements BaseApi {
 
     private final String accessToken;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public FlightSrpDomesting1Api(String accessToken, String baseUrl) {
+    public FlightSrpDomestic1Api(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
     }
@@ -31,6 +31,7 @@ public class FlightSrpDomesting1Api implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("authorization", "Bearer " + accessToken)
                 .header("accept", "*/*")
                 .header("accept-language", "en")
                 .header("cache-control", "no-cache")

@@ -32,6 +32,7 @@ public class FlightSrpInternational4Api implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("authorization", "Bearer " + accessToken)
                 .header("X-Request-Id", "0c87522f-79b8-4bf2-ad03-d1964873ad11")
                 .header("sec-ch-ua-platform", "\"macOS\"")
                 .header("lang", "en")

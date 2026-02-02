@@ -10,14 +10,14 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class FlightSrpDomesting4Api implements BaseApi {
+public class FlightSrpDomestic4Api implements BaseApi {
 
     private final String accessToken;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public FlightSrpDomesting4Api(String accessToken, String baseUrl) {
+    public FlightSrpDomestic4Api(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
     }
@@ -32,6 +32,7 @@ public class FlightSrpDomesting4Api implements BaseApi {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
+                .header("authorization", "Bearer " + accessToken)
                 .header("Referer", baseUrl + "/en-id/pesawat/search?d=JKTC&a=DPSC&date=2026-02-09&adult=1&child=0&infant=0&class=economy&dType=CITY&aType=CITY&dLabel=Jakarta&aLabel=Denpasar-Bali&type=depart&flexiFare=true")
                 .header("X-Request-Id", "57ea5483-8edc-4b2e-9876-221be07c3d05")
                 .header("sec-ch-ua-platform", "\"macOS\"")
