@@ -36,7 +36,6 @@ import com.tiket.test.app.todo.TestTodo2;
 import com.tiket.test.app.vilasandapt.TestVilasAndApt1;
 import com.tiket.test.app.vilasandapt.TestVilasAndApt2;
 import com.tiket.test.app.vilasandapt.TestVilasAndAptPageModule;
-import com.tiket.test.dWeb.home.TestHomePageModuledWeb;
 import com.tiket.test.dWeb.hotel.TestHotelLandingPage;
 import com.tiket.test.dWeb.hotel.TestHotelSRP1;
 import com.tiket.test.dWeb.hotel.TestHotelSRP2;
@@ -168,100 +167,100 @@ public class Mapping {
                     new String[]{"iconUrl"},
                     new String[]{})),
             Map.entry(TestCarRental.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"iconUrl"},
+                    new String[]{"url"})),
             Map.entry(com.tiket.test.dWeb.events.TestEvents1.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.events.TestEvents2.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.events.TestEvents3.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(TestFlightLandingPage.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"icon"},
+                    new String[]{"link"})),
+            Map.entry(TestFlightSrpDomestic1.class.getName(), new Data(
+                    new String[]{"totalPriceIcon", "icon", "backgroundImage"},
                     new String[]{})),
-            Map.entry(TestFlightSrpDomesting1.class.getName(), new Data(
-                    new String[]{},
+            Map.entry(TestFlightSrpDomestic2.class.getName(), new Data(
+                    new String[]{"icon"},
+                    new String[]{"link"})),
+            Map.entry(TestFlightSrpDomestic3.class.getName(), new Data(
+                    new String[]{"icon", "detailIcon"},
                     new String[]{})),
-            Map.entry(TestFlightSrpDomesting2.class.getName(), new Data(
-                    new String[]{},
+            Map.entry(TestFlightSrpDomestic4.class.getName(), new Data(
+                    new String[]{"icon"},
                     new String[]{})),
-            Map.entry(TestFlightSrpDomesting3.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
-            Map.entry(TestFlightSrpDomesting4.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
-            Map.entry(TestFlightSrpDomesting5.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+            Map.entry(TestFlightSrpDomestic5.class.getName(), new Data(
+                    new String[]{"icon", "urlIcon"},
+                    new String[]{"link"})),
             Map.entry(TestFlightSrpInternational1.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"totalPriceIcon", "icon", "backgroundImage"},
                     new String[]{})),
             Map.entry(TestFlightSrpInternational2.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"icon"},
+                    new String[]{"link"})),
             Map.entry(TestFlightSrpInternational3.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"icon", "detailIcon"},
                     new String[]{})),
             Map.entry(TestFlightSrpInternational4.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"icon"},
                     new String[]{})),
             Map.entry(TestFlightSrpInternational5.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"icon", "urlIcon"},
+                    new String[]{"link"})),
             Map.entry(TestHotelLandingPage.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"image", "iconUrl"},
+                    new String[]{"url"})),
             Map.entry(com.tiket.test.dWeb.hotel.TestHotelPageModule.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"icon", "url", "mobileUrl", "imageUrl"},
+                    new String[]{"actionUrl"})),
             Map.entry(TestHotelSRP1.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"imageUrl", "originUrl", "url", "mobileUrl", "iconUrl"},
                     new String[]{})),
             Map.entry(TestHotelSRP2.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"iconUrl"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.todo.TestTodo1.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{"url"})),
             Map.entry(com.tiket.test.dWeb.todo.TestTodo2.class.getName(), new Data(
                     new String[]{},
-                    new String[]{})),
+                    new String[]{"promoURL"})),
             Map.entry(TestTodoPdp1.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"imageUrl"},
                     new String[]{})),
             Map.entry(TestTodoPdp2.class.getName(), new Data(
                     new String[]{},
-                    new String[]{})),
+                    new String[]{"path"})),
             Map.entry(TestTodoPdp3.class.getName(), new Data(
                     new String[]{},
-                    new String[]{})),
+                    new String[]{"promoUrl"})),
             Map.entry(TestTodoPdp4.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.tour.TestTour1.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.tour.TestTour2.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.tour.TestTour3.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(com.tiket.test.dWeb.tour.TestTour4.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
             Map.entry(TestTrainAndWooshPageModule.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"imageUrl"},
+                    new String[]{"clickUrl"})),
             Map.entry(com.tiket.test.dWeb.ttd.TestTTDPageModule.class.getName(), new Data(
-                    new String[]{},
-                    new String[]{})),
+                    new String[]{"url", "mobileUrl"},
+                    new String[]{"actionUrl"})),
             Map.entry(TestVilasAndApt.class.getName(), new Data(
-                    new String[]{},
+                    new String[]{"image", "iconUrl"},
                     new String[]{}))
     );
 }

@@ -4,7 +4,7 @@ import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Scope;
 import com.tiket.annotation.Vertical;
-import com.tiket.api.dWeb.flight.FlightSrpDomesting4Api;
+import com.tiket.api.dWeb.flight.FlightSrpDomesting5Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
 import com.tiket.test.Mapping;
@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestFlightSrpDomesting4 extends BaseTest {
+public class TestFlightSrpDomestic5 extends BaseTest {
 
     ApiResult apiResult;
     String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
@@ -22,26 +22,26 @@ public class TestFlightSrpDomesting4 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        FlightSrpDomesting4Api api = new FlightSrpDomesting4Api(accessToken, baseUrl);
+        FlightSrpDomesting5Api api = new FlightSrpDomesting5Api(accessToken, baseUrl);
         apiResult = api.hitApi();
     }
 
-    @Api(name = "FlightSrpDomesting4Api")
+    @Api(name = "FlightSrpDomesting5Api")
     @Module(name = "Flight")
     @Vertical(name = "Air")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
-    public void testFlightSrpDomesting4Url(VerifyUrls.UrlItem urlItem) throws Exception {
+    public void testFlightSrpDomesting5Url(VerifyUrls.UrlItem urlItem) throws Exception {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "FlightSrpDomesting4Api")
+    @Api(name = "FlightSrpDomesting5Api")
     @Module(name = "Flight")
     @Vertical(name = "Air")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
-    public void testFlightSrpDomesting4Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
+    public void testFlightSrpDomesting5Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }

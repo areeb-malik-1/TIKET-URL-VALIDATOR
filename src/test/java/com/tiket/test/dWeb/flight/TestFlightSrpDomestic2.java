@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestFlightSrpDomesting2 extends BaseTest {
+public class TestFlightSrpDomestic2 extends BaseTest {
 
     ApiResult apiResult;
     String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
