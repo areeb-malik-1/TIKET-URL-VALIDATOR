@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Ignored {
     private static List<String> list = List.of(
-            "https://www.tiket.com"
+            //"https://www.tiket.com"
     );
 
     public static Set<String> getLinks() {
