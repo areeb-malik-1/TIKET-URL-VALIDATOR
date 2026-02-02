@@ -23,6 +23,8 @@ public class AnnotationTransformer implements IAnnotationTransformer {
                 if (platform == Config.PLATFORM) {
                     annotation.setEnabled(true);
                     return;
+                } else {
+                    annotation.setEnabled(false);
                 }
             }
         } catch (Exception e) {
