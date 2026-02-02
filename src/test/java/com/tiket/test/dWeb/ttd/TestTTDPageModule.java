@@ -27,8 +27,8 @@ public class TestTTDPageModule extends BaseTest {
     }
 
     @Api(name = "TTDPageModuleApi")
-    @Module(name = "To-Do")
-    @Vertical(name = "Grand")
+    @Module(name = "Todo")
+    @Vertical(name = "TTD")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testTTDPageModuleUrl(VerifyUrls.UrlItem urlItem) {
@@ -37,8 +37,8 @@ public class TestTTDPageModule extends BaseTest {
     }
 
     @Api(name = "TTDPageModuleApi")
-    @Module(name = "To-Do")
-    @Vertical(name = "Grand")
+    @Module(name = "Todo")
+    @Vertical(name = "TTD")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testTTDPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) {

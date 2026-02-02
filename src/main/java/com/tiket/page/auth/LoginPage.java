@@ -1,7 +1,9 @@
 package com.tiket.page.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tiket.model.Endpoint;
 import com.tiket.model.Environment;
+import com.tiket.model.Url;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -13,8 +15,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginPage {
-    private static final String URL_PREPROD = "https://sandbox.bliblitiket.com/gateway/gks-unm-go-be/api/v1/auth/login";
-    private static final String URL_PROD = "https://account.bliblitiket.com/gateway/gks-unm-go-be/api/v1/auth/login";
 
     private final String identity;
     private final String secret;
@@ -32,18 +32,21 @@ public class LoginPage {
 
     public LoginResult hitApi() throws Exception {
 
-//        String baseUrl = switch (env) {
-//            case GK -> null;
-//            case PROD -> "https://www.tiket.com";
-//            case PREPROD -> "https://preprod.tiket.com";
-//        };
-//        String url = switch (env) {
-//            case GK -> null;
-//            case PROD -> "https://account.bliblitiket.com/gateway/gks-unm-go-be/api/v1/auth/login";
-//            case PREPROD -> "https://sandbox.bliblitiket.com/gateway/gks-unm-go-be/api/v1/auth/login";
-//        };
-        String baseUrl = "https://www.tiket.com";
-        String url = "https://account.bliblitiket.com/gateway/gks-unm-go-be/api/v1/auth/login";
+        String baseUrl = switch (env) {
+            case GK -> null;
+            case PROD -> "https://www.tiket.com";
+            case PREPROD -> "https://preprod.tiket.com";
+        };
+
+        Url loginUrl = new Url(
+                null,
+                "https://sandbox.bliblitiket.com",
+                "https://account.bliblitiket.com"
+        );
+
+        Endpoint endpoint = new Endpoint("/gateway/gks-unm-go-be/api/v1/auth/login");
+
+        String url = loginUrl.get(env) + endpoint.get(env);
 
         // Headers setup
         var headersBuilder = HttpRequest.newBuilder().uri(URI.create(url));
