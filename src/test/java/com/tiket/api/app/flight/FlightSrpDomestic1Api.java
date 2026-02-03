@@ -36,8 +36,8 @@ public class FlightSrpDomestic1Api implements BaseApi {
 
         String jsonBody = "{" +
                 "\"departureDate\":\"2026-02-09\"," +
-                "\"destination\": " + destination + "," +
-                "\"origin\": " + origin + "," +
+                "\"destination\": \"" + destination + "\"," +
+                "\"origin\": \"" + origin + "\"," +
                 "\"page\":\"SEARCH_LIST\"" +
                 "}";
 
