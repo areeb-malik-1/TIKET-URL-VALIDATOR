@@ -39,7 +39,6 @@ public class FlightSrpDomestic1Api implements BaseApi {
 
         var builder = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))
-                .header("authorization", "Bearer " + this.accessToken)
                 .POST(HttpRequest.BodyPublishers.ofString(jsonBody));
 
         CommonProdHeaders.getHeaders(this.accessToken).forEach(builder::header);
