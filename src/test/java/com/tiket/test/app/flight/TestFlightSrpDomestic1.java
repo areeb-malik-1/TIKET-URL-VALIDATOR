@@ -33,8 +33,15 @@ public class TestFlightSrpDomestic1 extends BaseTest {
     }
 
     @BeforeClass
-    public void beforeClass(Route route) throws Exception {
-        FlightSrpDomestic1Api api = new FlightSrpDomestic1Api(accessToken, baseUrl, route.origin, route.destination);
+    public void beforeClass() throws Exception {
+        FlightSrpDomestic1Api api =
+                new FlightSrpDomestic1Api(
+                        accessToken,
+                        baseUrl,
+                        route.origin(),
+                        route.destination()
+                );
+
         apiResult = api.hitApi();
     }
 
@@ -53,8 +60,10 @@ public class TestFlightSrpDomestic1 extends BaseTest {
     @Module(name = "Flight")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")
-    public void testFlightSrpDomestic1Endpoint(VerifyUrls.EndpointItem endpointItem) {
-        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
+    public void testFlightSrpDomestic1Endpoint(
+            VerifyUrls.EndpointItem endpointItem) {
+        var result =
+                VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
 
@@ -72,14 +81,13 @@ public class TestFlightSrpDomestic1 extends BaseTest {
         };
     }
 
-    @DataProvider(name = "urlDataProvider", parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] urlDataProvider() {
         return getFullUrls(apiResult, urlKeys);
     }
 
-    @DataProvider(name = "endpointDataProvider", parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] endpointDataProvider() {
         return getEndpoints(apiResult, endpointKeys);
     }
 }
-
