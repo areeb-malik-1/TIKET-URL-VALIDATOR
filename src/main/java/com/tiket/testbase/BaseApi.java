@@ -20,7 +20,7 @@ public interface BaseApi {
         int statusCode = response.statusCode();
         boolean ok = statusCode >= 200 && statusCode < 300;
         if(!ok || data == null) {
-            logger.debug("Base Api Failed, Response Status Code: {}, for API: {}, requestUrl: {}", statusCode, this.getClass().getSimpleName(), response.request().uri());
+            logger.debug("Base Api Failed, Response Status Code: {}, for API: {}, requestUrl: {}, is data null?: {}", statusCode, this.getClass().getSimpleName(), response.request().uri(), data == null);
             NON_WORKING_APIS.add(this.getClass().getSimpleName());
         }
         assert ok && data != null;
