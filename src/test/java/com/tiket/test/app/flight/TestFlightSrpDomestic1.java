@@ -17,13 +17,21 @@ import org.testng.annotations.Test;
 
 public class TestFlightSrpDomestic1 extends BaseTest {
 
+    private final Route route;
     private ApiResult apiResult;
-    private final String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
-    private final String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
+
+    private final String[] urlKeys =
+            Mapping.mapping.get(getClass().getName()).urls();
+    private final String[] endpointKeys =
+            Mapping.mapping.get(getClass().getName()).endpoints();
 
     private record Route(String origin, String destination) {}
 
     @Factory(dataProvider = "apiDataProvider")
+    public TestFlightSrpDomestic1(Route route) {
+        this.route = route;
+    }
+
     @BeforeClass
     public void beforeClass(Route route) throws Exception {
         FlightSrpDomestic1Api api = new FlightSrpDomestic1Api(accessToken, baseUrl, route.origin, route.destination);
