@@ -68,4 +68,85 @@ public class CommonProdHeaders {
             default -> throw new IllegalStateException("Unexpected value: " + PLATFORM);
         }
     }
+
+    public static Map<String, String> getWebviewHeaders(String accessToken) {
+        Map<String, String> webHeaders = new HashMap<>();
+        switch (PLATFORM) {
+            case ANDROID -> {
+                webHeaders.put("authorization", "Bearer " + accessToken);
+                webHeaders.put("devicemodel", "Samsung SM-A515F");
+                webHeaders.put("language", "EN");
+                webHeaders.put("x-request-id", "3c4dfaf1-0359-47c9-8e11-dae2ba58e4c9");
+                webHeaders.put("sec-ch-ua-platform", "\"Android\"");
+                webHeaders.put("useragent", "Mozilla/5.0 (Linux; Android 13; SM-A515F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/144.0.7559.59 Mobile Safari/537.36");
+                webHeaders.put("lang", "en");
+                webHeaders.put("x-platform-v2", PLATFORM.name());
+                webHeaders.put("sec-ch-ua", "\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Android WebView\";v=\"144\"");
+                webHeaders.put("storeid", "TIKETCOM");
+                webHeaders.put("sec-ch-ua-mobile", "?1");
+                webHeaders.put("x-currency", "IDR");
+                webHeaders.put("deviceid", "77ad0f71f1c359c4");
+                webHeaders.put("appversion", "5.10.1");
+                webHeaders.put("tiketsessionid", "5427a0d2-4f99-4fcd-a3d8-7946387f7b05");
+                webHeaders.put("countrycode", "IDN");
+                webHeaders.put("requestid", "NONE");
+                webHeaders.put("x-country-code", "IDN");
+                webHeaders.put("x-country-id", "id");
+                webHeaders.put("platform", "WEB");
+                webHeaders.put("x-cookie-session-v2", "true");
+                webHeaders.put("accept-language", "en");
+                webHeaders.put("osversion", "13");
+                webHeaders.put("currency", "IDR");
+                webHeaders.put("x-audience", "tiket.com");
+                webHeaders.put("user-agent", "Mozilla/5.0 (Linux; Android 13; SM-A515F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/144.0.7559.59 Mobile Safari/537.36");
+                webHeaders.put("channelid", "WEB");
+                webHeaders.put("x-channel-id-v2", "WEB");
+                webHeaders.put("serviceid", "GATEWAY");
+                webHeaders.put("accept", "*/*");
+                webHeaders.put("x-requested-with", "com.tiket.gits");
+                webHeaders.put("sec-fetch-site", "same-origin");
+                webHeaders.put("sec-fetch-mode", "cors");
+                webHeaders.put("sec-fetch-dest", "empty");
+                webHeaders.put("referer", "https://m.tiket.com");
+                webHeaders.put("priority", "u=1, i");
+                return webHeaders;
+            }
+
+            case IOS -> {
+                webHeaders.put("authorization", "Bearer " + accessToken);
+                webHeaders.put("devicemodel", "iPhone 12");
+                webHeaders.put("language", "EN");
+                webHeaders.put("x-request-id", "1d99f79d-755b-4543-9b9e-3d6e0988d323");
+                webHeaders.put("useragent", "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148");
+                webHeaders.put("lang", "en");
+                webHeaders.put("x-platform-v2", PLATFORM.name());
+                webHeaders.put("storeid", "TIKETCOM");
+                webHeaders.put("x-currency", "IDR");
+                webHeaders.put("deviceid", "EEF3DBF3-11FA-494B-8F9A-1B1DD80A0C0F");
+                webHeaders.put("appversion", "5.10.1");
+                webHeaders.put("tiketsessionid", "B9488B49-77DB-4809-82CD-0FD720C7CC02");
+                webHeaders.put("countrycode", "IDN");
+                webHeaders.put("requestid", "NONE");
+                webHeaders.put("x-country-code", "IDN");
+                webHeaders.put("x-country-id", "id");
+                webHeaders.put("platform", "WEB");
+                webHeaders.put("x-cookie-session-v2", "true");
+                webHeaders.put("accept-language", "en");
+                webHeaders.put("osversion", "13");
+                webHeaders.put("currency", "IDR");
+                webHeaders.put("x-audience", "tiket.com");
+                webHeaders.put("user-agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148");
+                webHeaders.put("channelid", "WEB");
+                webHeaders.put("x-channel-id-v2", "WEB");
+                webHeaders.put("serviceid", "GATEWAY");
+                webHeaders.put("accept", "*/*");
+                webHeaders.put("sec-fetch-mode", "cors");
+                webHeaders.put("sec-fetch-dest", "empty");
+                webHeaders.put("referer", "https://m.tiket.com");
+                return webHeaders;
+            }
+
+            default -> throw new IllegalStateException("Unexpected value: " + PLATFORM);
+        }
+    }
 }
