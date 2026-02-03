@@ -48,7 +48,7 @@ public class CommonProdHeaders {
                 return appHeaders;
             }
             case IOS -> {
-                appHeaders.put("appversion", "5.10.0");
+                appHeaders.put("appversion", "5.9.1-uat-HEAD");
                 appHeaders.put("deviceid", "EEF3DBF3-11FA-494B-8F9A-1B1DD80A0C0F");
                 appHeaders.put("osversion", "18.7.3");
                 appHeaders.put("devicemodel", "iPhone 12");
