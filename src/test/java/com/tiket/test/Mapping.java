@@ -197,16 +197,16 @@ public class Mapping {
             Map.entry(TestTodo2.class.getName(), new Data(
                     new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
-            Map.entry(TestTodoPdp1.class.getName(), new Data(
+            Map.entry(com.tiket.test.app.todo.TestTodoPdp1.class.getName(), new Data(
                     new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{"url"})),
-            Map.entry(TestTodoPdp2.class.getName(), new Data(
+            Map.entry(com.tiket.test.app.todo.TestTodoPdp2.class.getName(), new Data(
                     new String[]{},
                     new String[]{"path"})),
-            Map.entry(TestTodoPdp3.class.getName(), new Data(
+            Map.entry(com.tiket.test.app.todo.TestTodoPdp3.class.getName(), new Data(
                     new String[]{"imageUrl"},
                     new String[]{})),
-            Map.entry(TestTodoPdp4.class.getName(), new Data(
+            Map.entry(com.tiket.test.app.todo.TestTodoPdp4.class.getName(), new Data(
                     new String[]{},
                     new String[]{"promoURL"})),
             Map.entry(TestTodoPdp5.class.getName(), new Data(
