@@ -51,7 +51,7 @@ public class HotelSrp2Api implements BaseApi {
             System.out.println("Response: " + (data != null ? data.toPrettyString() : response.body()));
         }
 
-        isSuccess(response, data);
+        isSuccess(request, response, data);
         return new ApiResult(data, response.statusCode());
     }
 }

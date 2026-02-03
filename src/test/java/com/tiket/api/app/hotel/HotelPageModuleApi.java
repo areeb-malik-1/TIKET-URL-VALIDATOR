@@ -56,7 +56,7 @@ public class HotelPageModuleApi implements BaseApi {
             mapper.writerWithDefaultPrettyPrinter().writeValue(path.toFile(), data);
         }
 
-        isSuccess(response, data);
+        isSuccess(request, response, data);
 
         return new ApiResult(data, response.statusCode());
     }

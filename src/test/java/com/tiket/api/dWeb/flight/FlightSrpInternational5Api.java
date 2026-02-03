@@ -102,7 +102,7 @@ public class FlightSrpInternational5Api implements BaseApi {
             System.out.println("Response: " + data.toPrettyString());
         }
 
-        isSuccess(response, data);
+        isSuccess(request, response, data);
         return new ApiResult(data, response.statusCode());
     }
 }

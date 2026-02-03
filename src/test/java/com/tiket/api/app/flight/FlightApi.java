@@ -52,7 +52,7 @@ public class FlightApi implements BaseApi {
             data = mapper.readTree(response.body());
             System.out.println("Response: " + data.toPrettyString());
         }
-        isSuccess(response, data);
+        isSuccess(request, response, data, jsonBody);
         return new ApiResult(data, response.statusCode());
     }
 }

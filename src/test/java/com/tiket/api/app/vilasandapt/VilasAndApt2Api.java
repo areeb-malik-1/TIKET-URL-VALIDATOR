@@ -46,7 +46,7 @@ public class VilasAndApt2Api implements BaseApi {
             System.out.println("Response: " + data.toPrettyString());
         }
 
-        isSuccess(response, data);
+        isSuccess(request, response, data, requestBody);
 
         return new ApiResult(data, response.statusCode());
     }
