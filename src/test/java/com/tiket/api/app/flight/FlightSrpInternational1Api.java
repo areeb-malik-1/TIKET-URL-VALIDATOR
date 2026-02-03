@@ -14,26 +14,24 @@ import java.net.http.HttpResponse;
 public class FlightSrpInternational1Api implements BaseApi {
 
     private final String accessToken;
-    private final String platform;
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public FlightSrpInternational1Api(String accessToken, String platform, String baseUrl) {
+    public FlightSrpInternational1Api(String accessToken, String baseUrl) {
         this.accessToken = accessToken;
-        this.platform = platform;
         this.baseUrl = baseUrl;
     }
 
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-flight-master-discovery/v2/search-layout";
-        String url = baseUrl + endpoint;
+        String fullUrl = baseUrl + endpoint;
 
-        System.out.println("full url in " + getClass().getName() + ": " + url);
+        System.out.println("full url in " + getClass().getName() + ": " + fullUrl);
 
         var builder = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(fullUrl))
                 .GET();
 
         CommonProdHeaders.getHeaders(this.accessToken).forEach(builder::header);
