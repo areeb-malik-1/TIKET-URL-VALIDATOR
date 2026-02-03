@@ -4,6 +4,8 @@ import com.tiket.test.app.home.TestHome;
 import com.tiket.test.app.home.TestHomePageModule;
 import com.tiket.test.app.home.TestNavbar;
 import com.tiket.test.app.home.TestSetting;
+import com.tiket.test.app.hotel.TestHotelSrpPageModule;
+import com.tiket.test.app.todo.TestTodoPdp5;
 import com.tiket.test.dWeb.airporttransfer.TestAirportTransfer;
 import com.tiket.test.dWeb.carrental.TestCarRental;
 import com.tiket.test.dWeb.flight.*;
@@ -58,6 +60,36 @@ public class Mapping {
             Map.entry(TestFlightPageModule.class.getName(), new Data(
                     new String[]{"icon", "url", "mobileUrl", "airlineIcon", "imageUrl"},
                     new String[]{"clickUrl", "actionUrl"})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpDomestic1.class.getName(), new Data(
+                    new String[]{"icon"},
+                    new String[]{"link"})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpDomestic2.class.getName(), new Data(
+                    new String[]{"icon", "detailIcon"},
+                    new String[]{})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpDomestic3.class.getName(), new Data(
+                    new String[]{"totalPriceIcon", "icon", "backgroundImage"},
+                    new String[]{})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpDomestic4.class.getName(), new Data(
+                    new String[]{"icon"},
+                    new String[]{})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpDomestic5.class.getName(), new Data(
+                    new String[]{"icon", "urlIcon"},
+                    new String[]{"link"})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpInternational1.class.getName(), new Data(
+                    new String[]{"icon"},
+                    new String[]{"link"})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpInternational2.class.getName(), new Data(
+                    new String[]{"icon", "detailIcon"},
+                    new String[]{})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpInternational3.class.getName(), new Data(
+                    new String[]{"totalPriceIcon", "icon", "backgroundImage"},
+                    new String[]{})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpInternational4.class.getName(), new Data(
+                    new String[]{"icon"},
+                    new String[]{})),
+            Map.entry(com.tiket.test.app.flight.TestFlightSrpInternational5.class.getName(), new Data(
+                    new String[]{"icon", "urlIcon"},
+                    new String[]{"link"})),
             // homepage
             Map.entry(TestHome.class.getName(), new Data(
                     new String[]{"icon", "active", "inactive", "backgroundImage", "globalSearchImage", "iconUrl", "supergraphicImage", "backgroundUrl", "mobileUrl", "airlineIcon", "image"},
@@ -78,6 +110,15 @@ public class Mapping {
             Map.entry(TestHotelPageModule.class.getName(), new Data(
                     new String[]{"icon", "imageUrl", "supergraphicImage", "mobileUrl", "url"},
                     new String[]{"clickUrl", "buttonUrl", "actionUrl"})),
+            Map.entry(TestHotelSrpPageModule.class.getName(), new Data(
+                    new String[]{"icon", "url", "mobileUrl", "imageUrl"},
+                    new String[]{})),
+            Map.entry(TestHotelSRP1.class.getName(), new Data(
+                    new String[]{"imageUrl", "originUrl", "url", "mobileUrl", "iconUrl"},
+                    new String[]{})),
+            Map.entry(TestHotelSRP2.class.getName(), new Data(
+                    new String[]{"iconUrl"},
+                    new String[]{})),
             // Vilas and Apt.
             Map.entry(TestVilasAndAptPageModule.class.getName(), new Data(
                     new String[]{"icon", "mobileUrl", "url", "imageUrl", "supergraphicImage"},
@@ -158,6 +199,22 @@ public class Mapping {
             Map.entry(TestTodo2.class.getName(), new Data(
                     new String[]{"urlSmall", "urlMedium", "urlLarge"},
                     new String[]{})),
+            Map.entry(TestTodoPdp1.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{"url"})),
+            Map.entry(TestTodoPdp2.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{"path"})),
+            Map.entry(TestTodoPdp3.class.getName(), new Data(
+                    new String[]{"imageUrl"},
+                    new String[]{})),
+            Map.entry(TestTodoPdp4.class.getName(), new Data(
+                    new String[]{},
+                    new String[]{"promoURL"})),
+            Map.entry(TestTodoPdp5.class.getName(), new Data(
+                    new String[]{"urlSmall", "urlMedium", "urlLarge"},
+                    new String[]{})),
+
 
             // Web
             Map.entry(TestHomePageModuledWeb.class.getName(), new Data(
