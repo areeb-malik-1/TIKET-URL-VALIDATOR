@@ -12,6 +12,7 @@ import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
 public class TestFlightSrpDomestic1 extends BaseTest {
@@ -20,9 +21,12 @@ public class TestFlightSrpDomestic1 extends BaseTest {
     private final String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
     private final String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 
+    private record Route(String origin, String destination) {}
+
+    @Factory(dataProvider = "apiDataProvider")
     @BeforeClass
-    public void beforeClass() throws Exception {
-        FlightSrpDomestic1Api api = new FlightSrpDomestic1Api(accessToken, baseUrl);
+    public void beforeClass(Route route) throws Exception {
+        FlightSrpDomestic1Api api = new FlightSrpDomestic1Api(accessToken, baseUrl, route.origin, route.destination);
         apiResult = api.hitApi();
     }
 
@@ -44,6 +48,20 @@ public class TestFlightSrpDomestic1 extends BaseTest {
     public void testFlightSrpDomestic1Endpoint(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
+    }
+
+    @DataProvider
+    public static Object[][] apiDataProvider() {
+        return new Object[][]{
+                {new Route("KNO", "CJG")},
+                {new Route("CGK", "DPS")},
+                {new Route("CGK", "PDG")},
+                {new Route("CGK", "PGK")},
+                {new Route("CGK", "PKU")},
+                {new Route("CGK", "SUB")},
+                {new Route("DTB", "CGK")},
+                {new Route("CGK", "PNK")}
+        };
     }
 
     @DataProvider(name = "urlDataProvider", parallel = true)
