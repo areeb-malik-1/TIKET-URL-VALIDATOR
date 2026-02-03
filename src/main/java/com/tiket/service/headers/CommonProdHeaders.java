@@ -59,7 +59,7 @@ public class CommonProdHeaders {
                 appHeaders.put("x-correlation-id", "YmMEnA");
                 appHeaders.put("iscritical", "0");
                 appHeaders.put("iswebapi", "0");
-                appHeaders.put("Cookie", "_cfuvid=9SujpV7HL37W67He30hkHHfjM6Hk70PSuLGA6H6T3QE-1769671627309-0.0.1.1-604800000; __cf_bm=Fb6.5Dv5y_U3AfSV9GZZ8CQNAblyAQ1hRYWqgI21qx8-1769671627-1.0.1.1-dKDktDru2z0BP8vzUQ09yCPaIvGbcDONFwJ0hERSfQFpC6Kvn9LT30Dttu30CWc6C5dDMQN83_nRCv6dfKvoe.f1x2lK0X3L5DsjTX_1Q41_XEYb.245fSG317wy_atS");
+                //appHeaders.put("Cookie", "_cfuvid=9SujpV7HL37W67He30hkHHfjM6Hk70PSuLGA6H6T3QE-1769671627309-0.0.1.1-604800000; __cf_bm=Fb6.5Dv5y_U3AfSV9GZZ8CQNAblyAQ1hRYWqgI21qx8-1769671627-1.0.1.1-dKDktDru2z0BP8vzUQ09yCPaIvGbcDONFwJ0hERSfQFpC6Kvn9LT30Dttu30CWc6C5dDMQN83_nRCv6dfKvoe.f1x2lK0X3L5DsjTX_1Q41_XEYb.245fSG317wy_atS");
                 return appHeaders;
             }
 
