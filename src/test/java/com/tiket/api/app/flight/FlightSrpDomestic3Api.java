@@ -43,9 +43,12 @@ public class FlightSrpDomestic3Api implements BaseApi {
         System.out.println("Status: " + response.statusCode());
 
         JsonNode data = null;
-        if (response.headers().firstValue("content-type").orElse("").contains("application/json")) {
+        try {
             data = mapper.readTree(response.body());
             System.out.println("Response: " + (data != null ? data.toPrettyString() : response.body()));
+        } catch (Exception e) {
+            System.out.println("Failed to parse response body as JSON: " + e.getMessage());
+            System.out.println("Raw Response Body: " + response.body());
         }
 
         isSuccess(request, response, data);
