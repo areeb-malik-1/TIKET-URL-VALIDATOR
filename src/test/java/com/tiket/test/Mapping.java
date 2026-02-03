@@ -4,7 +4,7 @@ import com.tiket.test.app.home.TestHome;
 import com.tiket.test.app.home.TestHomePageModule;
 import com.tiket.test.app.home.TestNavbar;
 import com.tiket.test.app.home.TestSetting;
-import com.tiket.test.app.hotel.TestHotelSrpPageModule;
+import com.tiket.test.app.hotel.*;
 import com.tiket.test.app.todo.TestTodoPdp5;
 import com.tiket.test.dWeb.airporttransfer.TestAirportTransfer;
 import com.tiket.test.dWeb.carrental.TestCarRental;
@@ -12,8 +12,6 @@ import com.tiket.test.dWeb.flight.*;
 import com.tiket.test.dWeb.home.TestHomePageModuledWeb;
 import com.tiket.test.app.flight.TestFlight;
 import com.tiket.test.app.flight.TestFlightPageModule;
-import com.tiket.test.app.hotel.TestHotel;
-import com.tiket.test.app.hotel.TestHotelPageModule;
 import com.tiket.test.app.trainandwoosh.TestTrainAndWoosh;
 import com.tiket.test.app.trainandwoosh.TestTrainAndWooshPageModule1;
 import com.tiket.test.app.trainandwoosh.TestTrainAndWooshPageModule2;
@@ -113,10 +111,10 @@ public class Mapping {
             Map.entry(TestHotelSrpPageModule.class.getName(), new Data(
                     new String[]{"icon", "url", "mobileUrl", "imageUrl"},
                     new String[]{})),
-            Map.entry(TestHotelSRP1.class.getName(), new Data(
+            Map.entry(TestHotelSrp1.class.getName(), new Data(
                     new String[]{"imageUrl", "originUrl", "url", "mobileUrl", "iconUrl"},
                     new String[]{})),
-            Map.entry(TestHotelSRP2.class.getName(), new Data(
+            Map.entry(TestHotelSrp2.class.getName(), new Data(
                     new String[]{"iconUrl"},
                     new String[]{})),
             // Vilas and Apt.
