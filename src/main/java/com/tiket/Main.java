@@ -29,9 +29,9 @@ public class Main {
                 updateFail(module);
             }
         });
-//        String slackMessage = SlackSummaryFormatter.toSlackMessage(summaryMap);
-//        System.out.println(slackMessage);
-//        Slack.send(slackMessage);
+        String slackMessage = SlackSummaryFormatter.toSlackMessage(summaryMap);
+        System.out.println(slackMessage);
+        Slack.send(slackMessage);
     }
 
     private static void updatePass(String name) {
