@@ -23,14 +23,15 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        FlightSrpDomestic1Api api1 = new FlightSrpDomestic1Api(accessToken, baseUrl, "KNO", "CJG");
-        FlightSrpDomestic1Api api2 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "DPS");
-        FlightSrpDomestic1Api api3 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PDG");
-        FlightSrpDomestic1Api api4 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PGK");
-        FlightSrpDomestic1Api api5 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PKU");
-        FlightSrpDomestic1Api api6 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "SUB");
-        FlightSrpDomestic1Api api7 = new FlightSrpDomestic1Api(accessToken, baseUrl, "DTB", "CGK");
-        FlightSrpDomestic1Api api8 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PNK");
+        String date = "2026-02-09";
+        FlightSrpDomestic1Api api1 = new FlightSrpDomestic1Api(accessToken, baseUrl, "KNO", "CJG", date);
+        FlightSrpDomestic1Api api2 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "DPS", date);
+        FlightSrpDomestic1Api api3 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PDG", date);
+        FlightSrpDomestic1Api api4 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PGK", date);
+        FlightSrpDomestic1Api api5 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PKU", date);
+        FlightSrpDomestic1Api api6 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "SUB", date);
+        FlightSrpDomestic1Api api7 = new FlightSrpDomestic1Api(accessToken, baseUrl, "DTB", "CGK", date);
+        FlightSrpDomestic1Api api8 = new FlightSrpDomestic1Api(accessToken, baseUrl, "CGK", "PNK", date);
 
         apiResults[0] = api1.hitApi();
         apiResults[1] = api2.hitApi();
@@ -44,7 +45,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-KNO-CJG")
+    @Module(name = "Flight-SRP1-Dom-KNO-CJG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider1")
     public void testFlightSrpDomestic1Url1(VerifyUrls.UrlItem urlItem) {
@@ -54,7 +55,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-KNO-CJG")
+    @Module(name = "Flight-SRP1-Dom-KNO-CJG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider1")
     public void testFlightSrpDomestic1Endpoint1(VerifyUrls.EndpointItem endpointItem) {
@@ -74,7 +75,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-DPS")
+    @Module(name = "Flight-SRP1-Dom-CGK-DPS")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider2")
     public void testFlightSrpDomestic1Url2(VerifyUrls.UrlItem urlItem) {
@@ -84,7 +85,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-DPS")
+    @Module(name = "Flight-SRP1-Dom-CGK-DPS")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider2")
     public void testFlightSrpDomestic1Endpoint2(VerifyUrls.EndpointItem endpointItem) {
@@ -104,7 +105,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PDG")
+    @Module(name = "Flight-SRP1-Dom-CGK-PDG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider3")
     public void testFlightSrpDomestic1Url3(VerifyUrls.UrlItem urlItem) {
@@ -114,7 +115,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PDG")
+    @Module(name = "Flight-SRP1-Dom-CGK-PDG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider3")
     public void testFlightSrpDomestic1Endpoint3(VerifyUrls.EndpointItem endpointItem) {
@@ -134,7 +135,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PGK")
+    @Module(name = "Flight-SRP1-Dom-CGK-PGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider4")
     public void testFlightSrpDomestic1Url4(VerifyUrls.UrlItem urlItem) {
@@ -144,7 +145,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PGK")
+    @Module(name = "Flight-SRP1-Dom-CGK-PGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider4")
     public void testFlightSrpDomestic1Endpoint4(VerifyUrls.EndpointItem endpointItem) {
@@ -164,7 +165,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PKU")
+    @Module(name = "Flight-SRP1-Dom-CGK-PKU")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider5")
     public void testFlightSrpDomestic1Url5(VerifyUrls.UrlItem urlItem) {
@@ -174,7 +175,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PKU")
+    @Module(name = "Flight-SRP1-Dom-CGK-PKU")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider5")
     public void testFlightSrpDomestic1Endpoint5(VerifyUrls.EndpointItem endpointItem) {
@@ -194,7 +195,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-SUB")
+    @Module(name = "Flight-SRP1-Dom-CGK-SUB")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider6")
     public void testFlightSrpDomestic1Url6(VerifyUrls.UrlItem urlItem) {
@@ -204,7 +205,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-SUB")
+    @Module(name = "Flight-SRP1-Dom-CGK-SUB")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider6")
     public void testFlightSrpDomestic1Endpoint6(VerifyUrls.EndpointItem endpointItem) {
@@ -224,7 +225,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-DTB-CGK")
+    @Module(name = "Flight-SRP1-Dom-DTB-CGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider7")
     public void testFlightSrpDomestic1Url7(VerifyUrls.UrlItem urlItem) {
@@ -234,7 +235,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-DTB-CGK")
+    @Module(name = "Flight-SRP1-Dom-DTB-CGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider7")
     public void testFlightSrpDomestic1Endpoint7(VerifyUrls.EndpointItem endpointItem) {
@@ -254,7 +255,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PNK")
+    @Module(name = "Flight-SRP1-Dom-CGK-PNK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider8")
     public void testFlightSrpDomestic1Url8(VerifyUrls.UrlItem urlItem) {
@@ -264,7 +265,7 @@ public class TestFlightSrpDomestic1 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic1Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight-SRP-Dom-CGK-PNK")
+    @Module(name = "Flight-SRP1-Dom-CGK-PNK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider8")
     public void testFlightSrpDomestic1Endpoint8(VerifyUrls.EndpointItem endpointItem) {

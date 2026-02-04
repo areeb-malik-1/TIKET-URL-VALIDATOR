@@ -19,12 +19,14 @@ public class FlightSrpDomestic1Api implements BaseApi {
     private final HttpClient client = HttpClient.newHttpClient();
     private String origin;
     private String destination;
+    private String date;
 
-    public FlightSrpDomestic1Api(String accessToken, String baseUrl, String origin, String destination) {
+    public FlightSrpDomestic1Api(String accessToken, String baseUrl, String origin, String destination, String date) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
         this.origin = origin;
         this.destination = destination;
+        this.date = date;
     }
 
     @Override
@@ -35,7 +37,7 @@ public class FlightSrpDomestic1Api implements BaseApi {
         System.out.println("full url in " + getClass().getName() + ": " + fullUrl);
 
         String jsonBody = "{" +
-                "\"departureDate\":\"2026-02-09\"," +
+                "\"departureDate\":\"" + date + "\"," +
                 "\"destination\": \"" + destination + "\"," +
                 "\"origin\": \"" + origin + "\"," +
                 "\"page\":\"SEARCH_LIST\"" +

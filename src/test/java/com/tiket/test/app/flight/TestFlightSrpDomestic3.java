@@ -28,7 +28,7 @@ public class TestFlightSrpDomestic3 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic3Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight")
+    @Module(name = "Flight-SRP3-Dom")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
     public void testFlightSrpDomestic3Url(VerifyUrls.UrlItem urlItem) {
@@ -38,7 +38,7 @@ public class TestFlightSrpDomestic3 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic3Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight")
+    @Module(name = "Flight-SRP3-Dom")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")
     public void testFlightSrpDomestic3Endpoint(VerifyUrls.EndpointItem endpointItem) {

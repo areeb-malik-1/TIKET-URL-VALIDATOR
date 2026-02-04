@@ -16,44 +16,77 @@ import org.testng.annotations.Test;
 
 public class TestFlightSrpInternational2 extends BaseTest {
 
-    private ApiResult apiResult;
+    private ApiResult[] apiResults;
     private final String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
     private final String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        FlightSrpInternational2Api api = new FlightSrpInternational2Api(accessToken, baseUrl);
-        apiResult = api.hitApi();
+        String date = "2026-02-09";
+        FlightSrpInternational2Api api1 = new FlightSrpInternational2Api(accessToken, baseUrl, "CGK", "SIN", date);
+        FlightSrpInternational2Api api2 = new FlightSrpInternational2Api(accessToken, baseUrl, "CGK", "KU", date);
+        apiResults[0] = api1.hitApi();
+        apiResults[1] = api2.hitApi();
     }
 
     @Api(name = "FlightSrpInternational2Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight")
+    @Module(name = "Flight-SRP2-Int-CGK-SIN")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
-    @Test(dataProvider = "urlDataProvider")
-    public void testFlightSrpInternational2Url(VerifyUrls.UrlItem urlItem) {
+    @Test(dataProvider = "urlDataProvider1")
+    public void testFlightSrpInternational2Url1(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
 
-    @Api(name = "FlightSrpInternational2Api")
+    @Api(name = "FlightSrpInternational2Api1")
     @Vertical(name = "Flight")
-    @Module(name = "Flight")
+    @Module(name = "Flight-SRP2-Int-CGK-SIN")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
-    @Test(dataProvider = "endpointDataProvider")
-    public void testFlightSrpInternational2Endpoint(VerifyUrls.EndpointItem endpointItem) {
+    @Test(dataProvider = "endpointDataProvider1")
+    public void testFlightSrpInternational2Endpoint1(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
 
-    @DataProvider(name = "urlDataProvider", parallel = true)
-    public Object[][] urlDataProvider() {
-        return getFullUrls(apiResult, urlKeys);
+    @DataProvider(parallel = true)
+    public Object[][] urlDataProvider1() {
+        return getFullUrls(apiResults[0], urlKeys);
     }
 
-    @DataProvider(name = "endpointDataProvider", parallel = true)
-    public Object[][] endpointDataProvider() {
-        return getEndpoints(apiResult, endpointKeys);
+    @DataProvider(parallel = true)
+    public Object[][] endpointDataProvider1() {
+        return getEndpoints(apiResults[0], endpointKeys);
+    }
+
+    @Api(name = "FlightSrpInternational2Api")
+    @Vertical(name = "Flight")
+    @Module(name = "Flight-SRP2-Int-CGK-KU")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
+    @Test(dataProvider = "urlDataProvider2")
+    public void testFlightSrpInternational2Url2(VerifyUrls.UrlItem urlItem) {
+        var result = VerifyUrls.verifyFullUrl(urlItem);
+        verifyFullUrl(result, urlItem);
+    }
+
+    @Api(name = "FlightSrpInternational2Api1")
+    @Vertical(name = "Flight")
+    @Module(name = "Flight-SRP2-Int-CGK-KU")
+    @Scope(platforms = {Platform.ANDROID, Platform.IOS})
+    @Test(dataProvider = "endpointDataProvider2")
+    public void testFlightSrpInternational2Endpoint2(VerifyUrls.EndpointItem endpointItem) {
+        var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
+        verifyEndpoint(result, endpointItem);
+    }
+
+    @DataProvider(parallel = true)
+    public Object[][] urlDataProvider2() {
+        return getFullUrls(apiResults[1], urlKeys);
+    }
+
+    @DataProvider(parallel = true)
+    public Object[][] endpointDataProvider2() {
+        return getEndpoints(apiResults[1], endpointKeys);
     }
 }
 
