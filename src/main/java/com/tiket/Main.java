@@ -4,6 +4,7 @@ import com.tiket.core.SlackSummaryFormatter;
 import com.tiket.io.FailureDB;
 import com.tiket.io.Slack;
 import com.tiket.io.sqlite.SQLiteFailureDB;
+import com.tiket.model.Platform;
 import com.tiket.model.Summary;
 
 import java.nio.file.Path;
@@ -21,7 +22,10 @@ public class Main {
         Set<FailureDB.Failure> failures = db.getFailures(Duration.ofDays(7));
         failures.forEach(failure -> {
             String module = failure.module();
-            updateFail(module);
+            String platform = failure.platform();
+            if(Platform.parse(System.getProperty("platform")) == Platform.parse(platform)) {
+                updateFail(module);
+            }
         });
         String slackMessage = SlackSummaryFormatter.toSlackMessage(summaryMap);
         System.out.println(slackMessage);
