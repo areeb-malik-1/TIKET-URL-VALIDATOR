@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         FailureDB db = new SQLiteFailureDB(Path.of("./db/failure.sqlite"));
         Set<FailureDB.Failure> failures = db.getFailures(Duration.ofDays(7));
+        System.out.println("Failures in the last 7 days:");
         failures.forEach(failure -> {
             System.out.println(failure);
             String module = failure.module();
