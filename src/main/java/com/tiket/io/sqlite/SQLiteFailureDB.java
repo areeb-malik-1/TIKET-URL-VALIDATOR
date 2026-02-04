@@ -23,7 +23,8 @@ import java.util.Set;
  *   link TEXT,
  *   api TEXT,
  *   module TEXT,
- *   vertical TEXT
+ *   vertical TEXT,
+ *   platform TEXT
  * )
  * </pre>
  */
@@ -36,14 +37,20 @@ public class SQLiteFailureDB implements FailureDB {
     private Connection singleConnection;
 
     public SQLiteFailureDB() {
-        Path dbFilePath = Path.of("/var/lib/jenkins/jobs/minesweeper/db/failures.sqlite");
+        Path dbFilePath =
+                Path.of("/var/lib/jenkins/jobs/minesweeper/db/failures.sqlite");
         Objects.requireNonNull(dbFilePath, "dbFilePath");
+
         try {
             Path parent = dbFilePath.toAbsolutePath().getParent();
-            if (parent != null) Files.createDirectories(parent);
+            if (parent != null) {
+                Files.createDirectories(parent);
+            }
         } catch (Exception e) {
-            throw new IllegalStateException("Failed to create directory for DB file: " + dbFilePath, e);
+            throw new IllegalStateException(
+                    "Failed to create directory for DB file: " + dbFilePath, e);
         }
+
         this.jdbcUrl = "jdbc:sqlite:" + dbFilePath.toAbsolutePath();
         this.keepSingleConnection = false;
         init();
@@ -89,31 +96,49 @@ public class SQLiteFailureDB implements FailureDB {
         try {
             conn = getConnection();
             st = conn.createStatement();
-            st.execute("CREATE TABLE IF NOT EXISTS failures (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "ts_ms INTEGER NOT NULL," +
-                    "link TEXT," +
-                    "api TEXT," +
-                    "module TEXT," +
-                    "vertical TEXT" +
-                    ")");
-            st.execute("CREATE INDEX IF NOT EXISTS idx_failures_ts ON failures(ts_ms)");
+
+            st.execute("""
+                CREATE TABLE IF NOT EXISTS failures (
+                  id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  ts_ms INTEGER NOT NULL,
+                  link TEXT,
+                  api TEXT,
+                  module TEXT,
+                  vertical TEXT,
+                  platform TEXT
+                )
+            """);
+
+            st.execute("""
+                CREATE INDEX IF NOT EXISTS idx_failures_ts
+                ON failures(ts_ms)
+            """);
+
         } catch (SQLException e) {
-            throw new IllegalStateException("Failed to initialize SQLiteFailureDB", e);
+            throw new IllegalStateException(
+                    "Failed to initialize SQLiteFailureDB", e);
         } finally {
             if (st != null) {
                 try { st.close(); } catch (Exception ignored) {}
             }
-            if (!keepSingleConnection) closeQuietly(conn);
+            if (!keepSingleConnection) {
+                closeQuietly(conn);
+            }
         }
     }
 
     @Override
     public boolean insertFailure(DBFailure dbFailure) {
         Objects.requireNonNull(dbFailure, "dbFailure");
-        Failure f = Objects.requireNonNull(dbFailure.failure(), "dbFailure.failure");
+        Failure f =
+                Objects.requireNonNull(dbFailure.failure(),
+                        "dbFailure.failure");
 
-        String sql = "INSERT INTO failures (ts_ms, link, api, module, vertical, platform) VALUES (?,?,?,?,?,?)";
+        String sql = """
+            INSERT INTO failures
+              (ts_ms, link, api, module, vertical, platform)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """;
 
         Connection conn = null;
         try {
@@ -125,26 +150,34 @@ public class SQLiteFailureDB implements FailureDB {
                 ps.setString(4, f.module());
                 ps.setString(5, f.vertical());
                 ps.setString(6, f.platform());
-                int updated = ps.executeUpdate();
-                return updated == 1;
+                return ps.executeUpdate() == 1;
             }
         } catch (SQLException e) {
             logger.warn("Failed to insert failure into DB", e);
             return false;
         } finally {
-            if (!keepSingleConnection) closeQuietly(conn);
+            if (!keepSingleConnection) {
+                closeQuietly(conn);
+            }
         }
     }
 
     @Override
     public Set<Failure> getFailures(Duration duration) {
         Objects.requireNonNull(duration, "duration");
-        long cutoff = System.currentTimeMillis() - duration.toMillis();
 
-        String sql = "SELECT link, api, module, vertical FROM failures WHERE ts_ms >= ?";
+        long cutoff =
+                System.currentTimeMillis() - duration.toMillis();
+
+        String sql = """
+            SELECT link, api, module, vertical, platform
+            FROM failures
+            WHERE ts_ms >= ?
+        """;
+
         Set<Failure> out = new HashSet<>();
-
         Connection conn = null;
+
         try {
             conn = getConnection();
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -164,7 +197,9 @@ public class SQLiteFailureDB implements FailureDB {
         } catch (SQLException e) {
             logger.warn("Failed to read failures from DB", e);
         } finally {
-            if (!keepSingleConnection) closeQuietly(conn);
+            if (!keepSingleConnection) {
+                closeQuietly(conn);
+            }
         }
 
         return out;
