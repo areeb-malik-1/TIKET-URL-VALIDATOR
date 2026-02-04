@@ -35,7 +35,8 @@ public class SQLiteFailureDB implements FailureDB {
     private final boolean keepSingleConnection;
     private Connection singleConnection;
 
-    public SQLiteFailureDB(Path dbFilePath) {
+    public SQLiteFailureDB() {
+        Path dbFilePath = Path.of("/var/lib/jenkins/jobs/minesweeper/db/failures.sqlite");
         Objects.requireNonNull(dbFilePath, "dbFilePath");
         try {
             Path parent = dbFilePath.toAbsolutePath().getParent();

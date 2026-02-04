@@ -36,7 +36,7 @@ public class TestListener implements ITestListener {
     private static final Map<String, Summary> summaryMap = new ConcurrentHashMap<>();
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     private static final ThreadLocal<String> testNameThreadLocal = new ThreadLocal<>();
-    private static final SQLiteFailureDB failureDB = new SQLiteFailureDB(Path.of("./db/failure.sqlite"));
+    private static final SQLiteFailureDB failureDB = new SQLiteFailureDB();
 
     @Override
     public void onTestStart(ITestResult result) {

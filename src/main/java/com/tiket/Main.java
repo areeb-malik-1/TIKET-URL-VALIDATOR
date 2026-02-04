@@ -18,7 +18,7 @@ public class Main {
     private final static Map<String, Summary> summaryMap = new HashMap<>();
 
     public static void main(String[] args) {
-        FailureDB db = new SQLiteFailureDB(Path.of("./db/failure.sqlite"));
+        FailureDB db = new SQLiteFailureDB();
         Set<FailureDB.Failure> failures = db.getFailures(Duration.ofDays(7));
         System.out.println("Failures in the last 7 days:");
         failures.forEach(failure -> {
