@@ -16,16 +16,24 @@ public class FlightSrpDomestic4Api implements BaseApi {
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
+    private final String date;
+    private final String origin;
+    private final String destination;
 
-    public FlightSrpDomestic4Api(String accessToken, String baseUrl) {
+    public FlightSrpDomestic4Api(String accessToken, String baseUrl, String origin, String destination, String date) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
+        this.origin = origin;
+        this.destination = destination;
+        this.date = date;
     }
 
     @Override
     public ApiResult hitApi() throws Exception {
         String endpoint = "/ms-gateway/tix-flight-search/v3/search" +
-                "?origin=JKTC&originType=CITY&destination=DPSC&destinationType=CITY&adult=1&child=0&infant=0&cabinClass=ECONOMY&departureDate=2026-02-09&flexiFare=true&resultType=DEPARTURE&searchType=ONE_WAY&enableVI=true&dcVar=true";
+                "?origin=" + origin + "&originType=CITY" +
+                "&destination=" + destination + "&destinationType=CITY&adult=1&child=0&infant=0&cabinClass=ECONOMY" +
+                "&departureDate=" + date + "&flexiFare=true&resultType=DEPARTURE&searchType=ONE_WAY&enableVI=true&dcVar=true";
         String fullUrl = baseUrl + endpoint;
 
         System.out.println("full url in " + getClass().getName() + ": " + fullUrl);

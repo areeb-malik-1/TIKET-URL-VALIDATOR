@@ -16,10 +16,16 @@ public class FlightSrpDomestic2Api implements BaseApi {
     private final String baseUrl;
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
+    private final String origin;
+    private final String destination;
+    private final String date;
 
-    public FlightSrpDomestic2Api(String accessToken, String baseUrl) {
+    public FlightSrpDomestic2Api(String accessToken, String baseUrl, String origin, String destination, String date) {
         this.accessToken = accessToken;
         this.baseUrl = baseUrl;
+        this.origin = origin;
+        this.destination = destination;
+        this.date = date;
     }
 
     @Override
@@ -32,11 +38,11 @@ public class FlightSrpDomestic2Api implements BaseApi {
         String body = """
                 {
                   "page": "SEARCH_LIST",
-                  "origin": "JKTC",
-                  "destination": "DPSC",
-                  "departureDate": "2026-02-09"
+                  "origin": "%s}",
+                  "destination": "%s",
+                  "departureDate": "%s"
                 }
-                """;
+                """.formatted(origin, destination, date);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))

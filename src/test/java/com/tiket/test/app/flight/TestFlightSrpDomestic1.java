@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 public class TestFlightSrpDomestic1 extends BaseTest {
 
-    private ApiResult[] apiResults = new ApiResult[8];
+    private final ApiResult[] apiResults = new ApiResult[8];
     private final String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
     private final String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 

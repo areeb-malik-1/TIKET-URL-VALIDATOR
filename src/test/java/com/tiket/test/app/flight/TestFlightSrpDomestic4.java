@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 public class TestFlightSrpDomestic4 extends BaseTest {
 
-    private ApiResult[] apiResults;
+    private final ApiResult[] apiResults = new ApiResult[8];
     private final String[] urlKeys = Mapping.mapping.get(getClass().getName()).urls();
     private final String[] endpointKeys = Mapping.mapping.get(getClass().getName()).endpoints();
 
@@ -46,7 +46,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-KNO-CJG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider1")
-    public void testFlightSrpDomestic1Url1(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url1(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -56,7 +56,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-KNO-CJG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider1")
-    public void testFlightSrpDomestic1Endpoint1(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint1(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -76,7 +76,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-DPS")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider2")
-    public void testFlightSrpDomestic1Url2(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url2(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -86,7 +86,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-DPS")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider2")
-    public void testFlightSrpDomestic1Endpoint2(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint2(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -106,7 +106,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PDG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider3")
-    public void testFlightSrpDomestic1Url3(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url3(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -116,7 +116,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PDG")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider3")
-    public void testFlightSrpDomestic1Endpoint3(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint3(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -136,7 +136,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider4")
-    public void testFlightSrpDomestic1Url4(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url4(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -146,7 +146,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider4")
-    public void testFlightSrpDomestic1Endpoint4(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint4(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -166,7 +166,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PKU")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider5")
-    public void testFlightSrpDomestic1Url5(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url5(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -176,7 +176,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PKU")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider5")
-    public void testFlightSrpDomestic1Endpoint5(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint5(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -196,7 +196,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-SUB")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider6")
-    public void testFlightSrpDomestic1Url6(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url6(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -206,7 +206,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-SUB")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider6")
-    public void testFlightSrpDomestic1Endpoint6(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint6(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -226,7 +226,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-DTB-CGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider7")
-    public void testFlightSrpDomestic1Url7(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url7(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -236,7 +236,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-DTB-CGK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider7")
-    public void testFlightSrpDomestic1Endpoint7(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint7(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }
@@ -256,7 +256,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PNK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider8")
-    public void testFlightSrpDomestic1Url8(VerifyUrls.UrlItem urlItem) {
+    public void testFlightSrpDomestic4Url8(VerifyUrls.UrlItem urlItem) {
         var result = VerifyUrls.verifyFullUrl(urlItem);
         verifyFullUrl(result, urlItem);
     }
@@ -266,7 +266,7 @@ public class TestFlightSrpDomestic4 extends BaseTest {
     @Module(name = "Flight-SRP4-Dom-CGK-PNK")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider8")
-    public void testFlightSrpDomestic1Endpoint8(VerifyUrls.EndpointItem endpointItem) {
+    public void testFlightSrpDomestic4Endpoint8(VerifyUrls.EndpointItem endpointItem) {
         var result = VerifyUrls.verifyEndpoint(endpointItem, baseUrl);
         verifyEndpoint(result, endpointItem);
     }

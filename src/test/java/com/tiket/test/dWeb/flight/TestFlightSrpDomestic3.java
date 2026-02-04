@@ -28,7 +28,7 @@ public class TestFlightSrpDomestic3 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic3Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight")
+    @Module(name = "Flight-SRP3-Dom")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testFlightSrpDomesting3Url(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +38,7 @@ public class TestFlightSrpDomestic3 extends BaseTest {
 
     @Api(name = "FlightSrpDomestic3Api")
     @Vertical(name = "Flight")
-    @Module(name = "Flight")
+    @Module(name = "Flight-SRP3-Dom")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testFlightSrpDomesting3Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
