@@ -21,6 +21,7 @@ public class Main {
         FailureDB db = new SQLiteFailureDB(Path.of("./db/failure.sqlite"));
         Set<FailureDB.Failure> failures = db.getFailures(Duration.ofDays(7));
         failures.forEach(failure -> {
+            System.out.println(failure);
             String module = failure.module();
             String platform = failure.platform();
             if(Platform.parse(System.getProperty("platform")) == Platform.parse(platform)) {
