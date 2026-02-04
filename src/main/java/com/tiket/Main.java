@@ -16,6 +16,7 @@ import java.util.Set;
 public class Main {
 
     private final static Map<String, Summary> summaryMap = new HashMap<>();
+    private final static Map<String, Set<String>> moduleFailures = new HashMap<>();
 
     public static void main(String[] args) {
         FailureDB db = new SQLiteFailureDB();
@@ -26,8 +27,16 @@ public class Main {
             String module = failure.module();
             String platform = failure.platform();
             if(Platform.parse(System.getProperty("platform")) == Platform.parse(platform)) {
-                updateFail(module);
+                moduleFailures.putIfAbsent(module, new java.util.HashSet<>());
+                moduleFailures.get(module).add(failure.link());
             }
+        });
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Weekly unique failures report:\n");
+        moduleFailures.forEach((module, links) -> {
+            sb.append(module).append(": ").append(links.size()).append("\n");
+            summaryMap.put(module, new Summary(0, links.size(), 0));
         });
         String slackMessage = SlackSummaryFormatter.toSlackMessage(summaryMap);
         System.out.println(slackMessage);
