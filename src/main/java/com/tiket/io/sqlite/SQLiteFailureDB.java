@@ -112,7 +112,7 @@ public class SQLiteFailureDB implements FailureDB {
         Objects.requireNonNull(dbFailure, "dbFailure");
         Failure f = Objects.requireNonNull(dbFailure.failure(), "dbFailure.failure");
 
-        String sql = "INSERT INTO failures (ts_ms, link, api, module, vertical) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO failures (ts_ms, link, api, module, vertical, platform) VALUES (?,?,?,?,?,?)";
 
         Connection conn = null;
         try {
@@ -123,6 +123,7 @@ public class SQLiteFailureDB implements FailureDB {
                 ps.setString(3, f.api());
                 ps.setString(4, f.module());
                 ps.setString(5, f.vertical());
+                ps.setString(6, f.platform());
                 int updated = ps.executeUpdate();
                 return updated == 1;
             }
