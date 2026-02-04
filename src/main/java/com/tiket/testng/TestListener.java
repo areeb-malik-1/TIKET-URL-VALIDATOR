@@ -4,8 +4,11 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
+import com.tiket.annotation.Vertical;
 import com.tiket.core.SlackSummaryFormatter;
+import com.tiket.io.FailureDB;
 import com.tiket.io.Slack;
+import com.tiket.io.sqlite.SQLiteFailureDB;
 import com.tiket.logging.ExtentLogger;
 import com.tiket.logging.ILogger;
 import com.tiket.logging.Log4JLogger;
@@ -14,6 +17,8 @@ import com.tiket.model.Summary;
 import com.tiket.report.ExtentTestManager;
 import com.tiket.report.TestCountTracker;
 import com.tiket.testbase.BaseTest;
+import com.tiket.testbase.Config;
+import com.tiket.verify.VerifyUrls;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +26,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,6 +36,7 @@ public class TestListener implements ITestListener {
     private static final Map<String, Summary> summaryMap = new ConcurrentHashMap<>();
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     private static final ThreadLocal<String> testNameThreadLocal = new ThreadLocal<>();
+    private static final SQLiteFailureDB failureDB = new SQLiteFailureDB(Path.of("./db/failure.sqlite"));
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -59,6 +66,13 @@ public class TestListener implements ITestListener {
 
         TestCountTracker.incrementTestsCompleted(result.getMethod().getMethodName(), "PASS");
         updatePass(result);
+        Object parameter = result.getParameters()[0];
+        if(parameter instanceof VerifyUrls.UrlItem urlItem) {
+            failureDB.insertFailure(new FailureDB.DBFailure(new FailureDB.Failure(urlItem.url(), getApiName(result), getModuleName(result), getVerticalName(result), Config.PLATFORM.name()), System.currentTimeMillis()));
+        } else if (parameter instanceof VerifyUrls.EndpointItem endpointItem) {
+            failureDB.insertFailure(new FailureDB.DBFailure(new FailureDB.Failure(endpointItem.endpoint(), getApiName(result), getModuleName(result), getVerticalName(result), Config.PLATFORM.name()), System.currentTimeMillis()));
+        }
+
     }
 
     @Override
@@ -153,6 +167,10 @@ public class TestListener implements ITestListener {
 
     private String getModuleName(ITestResult result) {
         return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Module.class).name();
+    }
+
+    private String getVerticalName(ITestResult result) {
+        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Vertical.class).name();
     }
 
     private void updatePass(ITestResult result) {
