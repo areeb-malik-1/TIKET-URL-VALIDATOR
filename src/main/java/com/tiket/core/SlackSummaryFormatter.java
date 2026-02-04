@@ -24,17 +24,18 @@ public final class SlackSummaryFormatter {
         summaryMap.forEach((module, s) -> {
             int total = s.total();
             int passPct = total == 0 ? 0 : (int) Math.round(s.pass() * 100.0 / total);
-
-            sb.append(String.format(
-                    "%-12s %4d %4d %4d %4d %3d%n",
-                    //shortName(module),
-                    module,
-                    total,
-                    s.pass(),
-                    s.fail(),
-                    s.skip(),
-                    passPct
-            ));
+            if(s.fail() > 0) {
+                sb.append(String.format(
+                        "%-12s %4d %4d %4d %4d %3d%n",
+                        //shortName(module),
+                        module,
+                        total,
+                        s.pass(),
+                        s.fail(),
+                        s.skip(),
+                        passPct
+                ));
+            }
         });
 
         sb.append("```\n");
