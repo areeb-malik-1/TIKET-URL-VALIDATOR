@@ -24,7 +24,7 @@ public class SlackWeeklySummaryFormatter {
         summaryMap.forEach((module, s) -> {
             if(s.fail() > 0) {
                 sb.append(String.format(
-                        "%-36s %4d%n",
+                        "%-30s %4d%n",
                         //shortName(module),
                         module,
                         s.fail()
