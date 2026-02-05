@@ -53,7 +53,7 @@ public class FlightSrpDomestic5Api implements BaseApi {
             System.out.println("Response: " + (data != null ? data.toPrettyString() : response.body()));
         }
 
-        isSuccess(request, response, data);
+        isSuccess(request, response, data, jsonBody);
         return new ApiResult(data, response.statusCode());
     }
 }
