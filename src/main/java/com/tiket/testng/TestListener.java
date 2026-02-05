@@ -5,7 +5,7 @@ import com.aventstack.extentreports.Status;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
-import com.tiket.core.SlackSummaryFormatter;
+import com.tiket.core.SlackDailySummaryFormatter;
 import com.tiket.io.FailureDB;
 import com.tiket.io.Slack;
 import com.tiket.io.sqlite.SQLiteFailureDB;
@@ -26,7 +26,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -133,7 +132,7 @@ public class TestListener implements ITestListener {
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
-        Slack.send(SlackSummaryFormatter.toSlackMessage(summaryMap));
+        Slack.send(SlackDailySummaryFormatter.toSlackMessage(summaryMap));
     }
 
     private void setAnnotations(ITestResult result, ExtentTest test) {

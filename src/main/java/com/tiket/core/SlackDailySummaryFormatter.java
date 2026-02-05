@@ -8,9 +8,9 @@ import java.util.Map;
 
 import static com.tiket.testbase.BaseTest.NON_WORKING_APIS;
 
-public final class SlackSummaryFormatter {
+public final class SlackDailySummaryFormatter {
 
-    private SlackSummaryFormatter() {
+    private SlackDailySummaryFormatter() {
         // utility class
     }
 

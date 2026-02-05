@@ -1,13 +1,13 @@
 package com.tiket;
 
-import com.tiket.core.SlackSummaryFormatter;
+import com.tiket.core.SlackDailySummaryFormatter;
+import com.tiket.core.SlackWeeklySummaryFormatter;
 import com.tiket.io.FailureDB;
 import com.tiket.io.Slack;
 import com.tiket.io.sqlite.SQLiteFailureDB;
 import com.tiket.model.Platform;
 import com.tiket.model.Summary;
 
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +38,7 @@ public class Main {
             sb.append(module).append(": ").append(links.size()).append("\n");
             summaryMap.put(module, new Summary(0, links.size(), 0));
         });
-        String slackMessage = SlackSummaryFormatter.toSlackMessage(summaryMap);
+        String slackMessage = SlackWeeklySummaryFormatter.toSlackMessage(summaryMap);
         System.out.println(slackMessage);
         Slack.send(slackMessage);
     }
