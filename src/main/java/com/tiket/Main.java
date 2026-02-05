@@ -24,11 +24,12 @@ public class Main {
         System.out.println("Failures in the last 7 days:");
         failures.forEach(failure -> {
             System.out.println(failure);
-            String module = failure.module();
+            //String module = failure.module();
+            String vertical = failure.vertical();
             String platform = failure.platform();
             if(Platform.parse(System.getProperty("platform")) == Platform.parse(platform)) {
-                moduleFailures.putIfAbsent(module, new java.util.HashSet<>());
-                moduleFailures.get(module).add(failure.link());
+                moduleFailures.putIfAbsent(vertical, new java.util.HashSet<>());
+                moduleFailures.get(vertical).add(failure.link());
             }
         });
 
