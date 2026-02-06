@@ -1,4 +1,4 @@
-package com.tiket.io;
+package com.tiket.io.db;
 
 import java.time.Duration;
 import java.util.Set;

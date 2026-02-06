@@ -1,6 +1,6 @@
-package com.tiket.io.sqlite;
+package com.tiket.io.db.sqlite;
 
-import com.tiket.io.FailureDB;
+import com.tiket.io.db.FailureDB;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
