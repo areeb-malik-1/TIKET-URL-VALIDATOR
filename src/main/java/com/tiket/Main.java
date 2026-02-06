@@ -1,10 +1,9 @@
 package com.tiket;
 
-import com.tiket.core.SlackDailySummaryFormatter;
 import com.tiket.core.SlackWeeklySummaryFormatter;
-import com.tiket.io.FailureDB;
+import com.tiket.io.db.FailureDB;
 import com.tiket.io.Slack;
-import com.tiket.io.sqlite.SQLiteFailureDB;
+import com.tiket.io.db.sqlite.SQLiteFailureDB;
 import com.tiket.model.Platform;
 import com.tiket.model.Summary;
 
