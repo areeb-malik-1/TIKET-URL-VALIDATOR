@@ -25,6 +25,7 @@ public interface BaseApi {
     default void isSuccess(HttpRequest request, HttpResponse<?> response, JsonNode data, String requestBody) {
         int statusCode = response.statusCode();
         boolean ok = statusCode >= 200 && statusCode < 300;
+        logger.debug("Curl for API: {}, is: {}", this.getClass().getSimpleName(), CurlBuilder.toCurl(request, response, requestBody));
         if(!ok || data == null) {
             logger.debug("Base Api Failed, Response Status Code: {}, for API: {}, requestUrl: {}, is data null?: {}, curl: {}, response: {}", statusCode, this.getClass().getSimpleName(), response.request().uri(), data == null, CurlBuilder.toCurl(request, response, requestBody), response.body());
             NON_WORKING_APIS.add(this.getClass().getSimpleName());
