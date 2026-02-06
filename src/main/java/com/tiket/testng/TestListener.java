@@ -6,14 +6,15 @@ import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.core.SlackDailySummaryFormatter;
-import com.tiket.io.FailureDB;
+import com.tiket.io.db.FailureDB;
 import com.tiket.io.Slack;
-import com.tiket.io.sqlite.SQLiteFailureDB;
+import com.tiket.io.db.sqlite.SQLiteFailureDB;
 import com.tiket.logging.ExtentLogger;
 import com.tiket.logging.ILogger;
 import com.tiket.logging.Log4JLogger;
 import com.tiket.logging.MainLogger;
 import com.tiket.model.Summary;
+import com.tiket.report.ExtentReportManager;
 import com.tiket.report.ExtentTestManager;
 import com.tiket.report.TestCountTracker;
 import com.tiket.testbase.BaseTest;
@@ -133,6 +134,9 @@ public class TestListener implements ITestListener {
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
         Slack.send(SlackDailySummaryFormatter.toSlackMessage(summaryMap));
+
+        ExtentReportManager.getReports().getReport().getTestList().removeIf(test -> test.getStatus() == Status.PASS);
+        ExtentTestManager.flushReports();
     }
 
     private void setAnnotations(ITestResult result, ExtentTest test) {
