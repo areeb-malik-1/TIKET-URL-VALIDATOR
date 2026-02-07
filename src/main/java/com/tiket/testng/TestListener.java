@@ -2,17 +2,22 @@ package com.tiket.testng;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.influxdb.client.WriteApi;
+import com.influxdb.client.domain.WritePrecision;
+import com.influxdb.client.write.Point;
 import com.tiket.annotation.Api;
 import com.tiket.annotation.Module;
 import com.tiket.annotation.Vertical;
 import com.tiket.core.SlackDailySummaryFormatter;
 import com.tiket.io.db.FailureDB;
 import com.tiket.io.Slack;
+import com.tiket.io.db.influx.InfluxFailureDB;
 import com.tiket.io.db.sqlite.SQLiteFailureDB;
 import com.tiket.logging.ExtentLogger;
 import com.tiket.logging.ILogger;
 import com.tiket.logging.Log4JLogger;
 import com.tiket.logging.MainLogger;
+import com.tiket.model.FailureSummary;
 import com.tiket.model.Summary;
 import com.tiket.report.ExtentReportManager;
 import com.tiket.report.ExtentTestManager;
@@ -27,8 +32,14 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static com.tiket.testbase.Config.PLATFORM;
 
 public class TestListener implements ITestListener {
 
@@ -81,9 +92,9 @@ public class TestListener implements ITestListener {
 
         Object parameter = result.getParameters()[0];
         if(parameter instanceof VerifyUrls.UrlItem urlItem) {
-            failureDB.insertFailure(new FailureDB.DBFailure(new FailureDB.Failure(urlItem.url(), getApiName(result), getModuleName(result), getVerticalName(result), Config.PLATFORM.name()), System.currentTimeMillis()));
+            failureDB.insertFailure(new FailureDB.DBFailure(new FailureDB.Failure(urlItem.url(), getApiName(result), getModuleName(result), getVerticalName(result), PLATFORM.name()), System.currentTimeMillis()));
         } else if (parameter instanceof VerifyUrls.EndpointItem endpointItem) {
-            failureDB.insertFailure(new FailureDB.DBFailure(new FailureDB.Failure(endpointItem.endpoint(), getApiName(result), getModuleName(result), getVerticalName(result), Config.PLATFORM.name()), System.currentTimeMillis()));
+            failureDB.insertFailure(new FailureDB.DBFailure(new FailureDB.Failure(endpointItem.endpoint(), getApiName(result), getModuleName(result), getVerticalName(result), PLATFORM.name()), System.currentTimeMillis()));
         }
     }
 
@@ -137,6 +148,10 @@ public class TestListener implements ITestListener {
 
         ExtentReportManager.getReports().getReport().getTestList().removeIf(test -> test.getStatus() == Status.PASS);
         ExtentTestManager.flushReports();
+
+        // Write failure summaries to InfluxDB
+        List<FailureSummary> summaries = buildFailureSummaries(summaryMap);
+        writeSummaries(summaries);
     }
 
     private void setAnnotations(ITestResult result, ExtentTest test) {
@@ -212,6 +227,50 @@ public class TestListener implements ITestListener {
                     currentSummary.fail(),
                     currentSummary.skip() + 1
             ));
+        }
+    }
+
+    private static List<FailureSummary> buildFailureSummaries(
+            Map<String, Summary> summaryMap
+    ) {
+        long timestamp = System.currentTimeMillis();
+        List<FailureSummary> result = new ArrayList<>();
+
+        summaryMap.forEach((vertical, summary) -> {
+            result.add(new FailureSummary(
+                    Config.ENV.name(),
+                    PLATFORM.name(),
+                    vertical,
+                    summary.total(),
+                    summary.pass(),
+                    summary.fail(),
+                    summary.skip(),
+                    timestamp
+            ));
+        });
+
+        return result;
+    }
+
+    private static void writeSummaries(
+            List<FailureSummary> summaries
+    ) {
+        WriteApi writeApi = InfluxFailureDB.getInstance().getWriteApi();
+        Objects.requireNonNull(summaries, "summaries");
+
+        for (FailureSummary s : summaries) {
+            Point point = Point
+                    .measurement("failure_summary")
+                    .addTag("env", s.env())
+                    .addTag("platform", s.platform())
+                    .addTag("vertical", s.vertical())
+                    .addField("total", s.total())
+                    .addField("passed", s.passed())
+                    .addField("failed", s.failed())
+                    .addField("skipped", s.skipped())
+                    .time(Instant.ofEpochMilli(s.timestamp()), WritePrecision.MS);
+
+            writeApi.writePoint(point);
         }
     }
 }

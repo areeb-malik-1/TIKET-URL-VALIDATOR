@@ -9,3 +9,4 @@ public record Summary(
         return pass + fail + skip;
     }
 }
+
