@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.app.hotel.HotelSrp1Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -27,7 +28,7 @@ public class TestHotelSrp1 extends BaseTest {
     }
 
     @Api(name = "HotelSrp1Api")
-    @Vertical(name = "Hotel")
+    @Vertical(name = VerticalEnum.ACCOMMODATION)
     @Module(name = "Hotel")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
@@ -37,7 +38,7 @@ public class TestHotelSrp1 extends BaseTest {
     }
 
     @Api(name = "HotelSrp1Api")
-    @Vertical(name = "Hotel")
+    @Vertical(name = VerticalEnum.ACCOMMODATION)
     @Module(name = "Hotel")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")

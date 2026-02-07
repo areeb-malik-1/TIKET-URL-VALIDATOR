@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.home.HomePageModuleWebApi;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestHomePageModuledWeb extends BaseTest {
 
     @Api(name = "HomePageModuleWebApi")
     @Module(name = "Home")
-    @Vertical(name = "Grand")
+    @Vertical(name = VerticalEnum.HOMEPAGE)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testHomePageModuledWebUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestHomePageModuledWeb extends BaseTest {
 
     @Api(name = "HomePageModuleWebApi")
     @Module(name = "Home")
-    @Vertical(name = "Grand")
+    @Vertical(name = VerticalEnum.HOMEPAGE)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testHomePageModuledWebEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

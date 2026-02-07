@@ -188,7 +188,7 @@ public class TestListener implements ITestListener {
     }
 
     private String getVerticalName(ITestResult result) {
-        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Vertical.class).name();
+        return result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Vertical.class).toString();
     }
 
     private void updatePass(ITestResult result) {

@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.app.flight.FlightSrpInternational4Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -30,7 +31,7 @@ public class TestFlightSrpInternational4 extends BaseTest {
     }
 
     @Api(name = "FlightSrpInternational4Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP4-Int-CGK-SIN")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider1")
@@ -40,7 +41,7 @@ public class TestFlightSrpInternational4 extends BaseTest {
     }
 
     @Api(name = "FlightSrpInternational4Api1")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP4-Int-CGK-SIN")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider1")
@@ -60,7 +61,7 @@ public class TestFlightSrpInternational4 extends BaseTest {
     }
 
     @Api(name = "FlightSrpInternational4Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP4-Int-CGK-KU")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider2")
@@ -70,7 +71,7 @@ public class TestFlightSrpInternational4 extends BaseTest {
     }
 
     @Api(name = "FlightSrpInternational4Api1")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP4-Int-CGK-KU")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider2")

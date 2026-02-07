@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.app.flight.FlightApi;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -27,7 +28,7 @@ public class TestFlight extends BaseTest {
     }
 
     @Api(name = "FlightApi")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
@@ -37,7 +38,7 @@ public class TestFlight extends BaseTest {
     }
 
     @Api(name = "FlightApi")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")

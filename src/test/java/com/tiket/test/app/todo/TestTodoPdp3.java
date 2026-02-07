@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.app.todo.TodoPdp3Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -27,7 +28,7 @@ public class TestTodoPdp3 extends BaseTest {
     }
 
     @Api(name = "TodoPdp3Api")
-    @Vertical(name = "Todo")
+    @Vertical(name = VerticalEnum.TTD)
     @Module(name = "Todo")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
@@ -37,7 +38,7 @@ public class TestTodoPdp3 extends BaseTest {
     }
 
     @Api(name = "TodoPdp3Api")
-    @Vertical(name = "Todo")
+    @Vertical(name = VerticalEnum.TTD)
     @Module(name = "Todo")
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")

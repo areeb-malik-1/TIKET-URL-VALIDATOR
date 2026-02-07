@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.trainandwoosh.TrainAndWooshPageModuleApi;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestTrainAndWooshPageModule extends BaseTest {
 
     @Api(name = "TrainAndWooshPageModuleApi")
     @Module(name = "Train")
-    @Vertical(name = "NFT")
+    @Vertical(name = VerticalEnum.TRAIN_WHOOSH)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testTrainAndWooshPageModuleUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestTrainAndWooshPageModule extends BaseTest {
 
     @Api(name = "TrainAndWooshPageModuleApi")
     @Module(name = "Train")
-    @Vertical(name = "NFT")
+    @Vertical(name = VerticalEnum.TRAIN_WHOOSH)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testTrainAndWooshPageModuleEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

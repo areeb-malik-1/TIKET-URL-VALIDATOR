@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.events.Events1Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestEvents1 extends BaseTest {
 
     @Api(name = "Events1Api")
     @Module(name = "Events")
-    @Vertical(name = "TTD")
+    @Vertical(name = VerticalEnum.TTD)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testEvents1Url(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestEvents1 extends BaseTest {
 
     @Api(name = "Events1Api")
     @Module(name = "Events")
-    @Vertical(name = "TTD")
+    @Vertical(name = VerticalEnum.TTD)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testEvents1Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

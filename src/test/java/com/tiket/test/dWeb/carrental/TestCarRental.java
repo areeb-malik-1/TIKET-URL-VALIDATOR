@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.carrental.CarRentalApi;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestCarRental extends BaseTest {
 
     @Api(name = "CarRentalApi")
     @Module(name = "CarRental")
-    @Vertical(name = "NFT")
+    @Vertical(name = VerticalEnum.CAR_RENTAL)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testCarRentalUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestCarRental extends BaseTest {
 
     @Api(name = "CarRentalApi")
     @Module(name = "CarRental")
-    @Vertical(name = "NFT")
+    @Vertical(name = VerticalEnum.CAR_RENTAL)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testCarRentalEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

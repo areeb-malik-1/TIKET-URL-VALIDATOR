@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.airporttransfer.AirportTransferApi;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestAirportTransfer extends BaseTest {
 
     @Api(name = "AirportTransferApi")
     @Module(name = "AT")
-    @Vertical(name = "NFT")
+    @Vertical(name = VerticalEnum.AIRPORT_TRANSFER)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testAirportTransferUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestAirportTransfer extends BaseTest {
 
     @Api(name = "AirportTransferApi")
     @Module(name = "AT")
-    @Vertical(name = "NFT")
+    @Vertical(name = VerticalEnum.AIRPORT_TRANSFER)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testAirportTransferEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

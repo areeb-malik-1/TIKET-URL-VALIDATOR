@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.flight.FlightSrpDomestic2Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -43,7 +44,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-KNO-CJG")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider1")
@@ -53,7 +54,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-KNO-CJG")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider1")
@@ -73,7 +74,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-DPS")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider2")
@@ -83,7 +84,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-DPS")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider2")
@@ -103,7 +104,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PDG")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider3")
@@ -113,7 +114,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PDG")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider3")
@@ -133,7 +134,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PGK")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider4")
@@ -143,7 +144,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PGK")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider4")
@@ -163,7 +164,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PKU")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider5")
@@ -173,7 +174,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PKU")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider5")
@@ -193,7 +194,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-SUB")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider6")
@@ -203,7 +204,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-SUB")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider6")
@@ -223,7 +224,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-DTB-CGK")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider7")
@@ -233,7 +234,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-DTB-CGK")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider7")
@@ -253,7 +254,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PNK")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider8")
@@ -263,7 +264,7 @@ public class TestFlightSrpDomestic2 extends BaseTest {
     }
 
     @Api(name = "FlightSrpDomestic2Api")
-    @Vertical(name = "Flight")
+    @Vertical(name = VerticalEnum.FLIGHT)
     @Module(name = "Flight-SRP2-Dom-CGK-PNK")
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider8")

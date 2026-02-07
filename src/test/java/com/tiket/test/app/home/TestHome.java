@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.app.home.HomeApi;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestHome extends BaseTest {
 
     @Api(name = "HomeApi")
     @Module(name = "Home")
-    @Vertical(name = "Grand")
+    @Vertical(name = VerticalEnum.HOMEPAGE)
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "urlDataProvider")
     public void testHomeUrl(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestHome extends BaseTest {
 
     @Api(name = "HomeApi")
     @Module(name = "Home")
-    @Vertical(name = "Grand")
+    @Vertical(name = VerticalEnum.HOMEPAGE)
     @Scope(platforms = {Platform.ANDROID, Platform.IOS})
     @Test(dataProvider = "endpointDataProvider")
     public void testHomeEndpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {

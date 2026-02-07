@@ -7,6 +7,7 @@ import com.tiket.annotation.Vertical;
 import com.tiket.api.dWeb.todo.TodoPdp2Api;
 import com.tiket.model.ApiResult;
 import com.tiket.model.Platform;
+import com.tiket.model.VerticalEnum;
 import com.tiket.test.Mapping;
 import com.tiket.testbase.BaseTest;
 import com.tiket.verify.VerifyUrls;
@@ -28,7 +29,7 @@ public class TestTodoPdp2 extends BaseTest {
 
     @Api(name = "TodoPdp2Api")
     @Module(name = "Todo")
-    @Vertical(name = "TTD")
+    @Vertical(name = VerticalEnum.TTD)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "urlDataProvider")
     public void testTodoPdp2Url(VerifyUrls.UrlItem urlItem) throws Exception {
@@ -38,7 +39,7 @@ public class TestTodoPdp2 extends BaseTest {
 
     @Api(name = "TodoPdp2Api")
     @Module(name = "Todo")
-    @Vertical(name = "TTD")
+    @Vertical(name = VerticalEnum.TTD)
     @Scope(platforms = {Platform.DWEB})
     @Test(dataProvider = "endpointDataProvider")
     public void testTodoPdp2Endpoint(VerifyUrls.EndpointItem endpointItem) throws Exception {
