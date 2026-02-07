@@ -44,7 +44,8 @@ import static com.tiket.testbase.Config.PLATFORM;
 public class TestListener implements ITestListener {
 
     private static final Logger logger = LogManager.getLogger(TestListener.class);
-    private static final Map<String, Summary> summaryMap = new ConcurrentHashMap<>();
+    private static final Map<String, Summary> MODULE_SUMMARY_MAP = new ConcurrentHashMap<>();
+    private static final Map<String, Summary> VERTICAL_SUMMARY_MAP = new ConcurrentHashMap<>();
     public static final ThreadLocal<ILogger> mainLogger = new ThreadLocal<>();
     private static final ThreadLocal<String> testNameThreadLocal = new ThreadLocal<>();
     private static final SQLiteFailureDB failureDB = new SQLiteFailureDB();
@@ -144,13 +145,13 @@ public class TestListener implements ITestListener {
         // Log test count summary for debugging
         String summary = TestCountTracker.logSummary();
         ExtentTestManager.flushReports();
-        Slack.send(SlackDailySummaryFormatter.toSlackMessage(summaryMap));
+        Slack.send(SlackDailySummaryFormatter.toSlackMessage(MODULE_SUMMARY_MAP));
 
         ExtentReportManager.getReports().getReport().getTestList().removeIf(test -> test.getStatus() == Status.PASS);
         ExtentTestManager.flushReports();
 
         // Write failure summaries to InfluxDB
-        List<FailureSummary> summaries = buildFailureSummaries(summaryMap);
+        List<FailureSummary> summaries = buildFailureSummaries(VERTICAL_SUMMARY_MAP);
         writeSummaries(summaries);
     }
 
@@ -192,11 +193,21 @@ public class TestListener implements ITestListener {
     }
 
     private void updatePass(ITestResult result) {
-        String vertical = getModuleName(result);
-        if(summaryMap.get(vertical) == null) {
-            summaryMap.put(vertical, new Summary(1, 0, 0));
+        String module = getModuleName(result);
+        String vertical = getVerticalName(result);
+        if(MODULE_SUMMARY_MAP.get(module) == null) {
+            MODULE_SUMMARY_MAP.put(module, new Summary(1, 0, 0));
         } else {
-            summaryMap.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
+            MODULE_SUMMARY_MAP.computeIfPresent(module, (k, currentSummary) -> new Summary(
+                    currentSummary.pass() + 1,
+                    currentSummary.fail(),
+                    currentSummary.skip()
+            ));
+        }
+        if(VERTICAL_SUMMARY_MAP.get(vertical) == null) {
+            VERTICAL_SUMMARY_MAP.put(vertical, new Summary(1, 0, 0));
+        } else {
+            VERTICAL_SUMMARY_MAP.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
                     currentSummary.pass() + 1,
                     currentSummary.fail(),
                     currentSummary.skip()
@@ -205,11 +216,21 @@ public class TestListener implements ITestListener {
     }
 
     private void updateFail(ITestResult result) {
-        String vertical = getModuleName(result);
-        if(summaryMap.get(vertical) == null) {
-            summaryMap.put(vertical, new Summary(1, 0, 0));
+        String module = getModuleName(result);
+        String vertical = getVerticalName(result);
+        if(MODULE_SUMMARY_MAP.get(module) == null) {
+            MODULE_SUMMARY_MAP.put(module, new Summary(0, 1, 0));
         } else {
-            summaryMap.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
+            MODULE_SUMMARY_MAP.computeIfPresent(module, (k, currentSummary) -> new Summary(
+                    currentSummary.pass(),
+                    currentSummary.fail() + 1,
+                    currentSummary.skip()
+            ));
+        }
+        if(VERTICAL_SUMMARY_MAP.get(vertical) == null) {
+            VERTICAL_SUMMARY_MAP.put(vertical, new Summary(0, 1, 0));
+        } else {
+            VERTICAL_SUMMARY_MAP.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
                     currentSummary.pass(),
                     currentSummary.fail() + 1,
                     currentSummary.skip()
@@ -218,11 +239,21 @@ public class TestListener implements ITestListener {
     }
 
     public void updateSkip(ITestResult result) {
-        String vertical = getModuleName(result);
-        if(summaryMap.get(vertical) == null) {
-            summaryMap.put(vertical, new Summary(1, 0, 0));
+        String module = getModuleName(result);
+        String vertical = getVerticalName(result);
+        if(MODULE_SUMMARY_MAP.get(module) == null) {
+            MODULE_SUMMARY_MAP.put(module, new Summary(0, 0, 1));
         } else {
-            summaryMap.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
+            MODULE_SUMMARY_MAP.computeIfPresent(module, (k, currentSummary) -> new Summary(
+                    currentSummary.pass(),
+                    currentSummary.fail(),
+                    currentSummary.skip() + 1
+            ));
+        }
+        if(VERTICAL_SUMMARY_MAP.get(vertical) == null) {
+            VERTICAL_SUMMARY_MAP.put(vertical, new Summary(0, 0, 1));
+        } else {
+            VERTICAL_SUMMARY_MAP.computeIfPresent(vertical, (k, currentSummary) -> new Summary(
                     currentSummary.pass(),
                     currentSummary.fail(),
                     currentSummary.skip() + 1
