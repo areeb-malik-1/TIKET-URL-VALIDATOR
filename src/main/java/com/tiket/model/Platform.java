@@ -4,7 +4,7 @@ import org.apache.commons.lang3.NotImplementedException;
 
 public enum Platform {
 
-    IOS("IOS"), ANDROID("ANDROID"), DWEB("WEB"), AMWEB("WEB"), IMWEB("WEB");
+    IOS("IOS"), ANDROID("ANDROID"), DWEB("WEB"), AMWEB("AMWEB"), IMWEB("IMWEB");
 
     private String name;
 
